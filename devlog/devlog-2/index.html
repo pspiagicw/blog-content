@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>
+DevLog 2 | pspiagicw
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Hugo 0.92.2" />
+
+
+<link rel="canonical" href="/devlog/devlog-2/" >
+<link href="/sass/main.min.bd19d955a59805faafd36e2c4ce339deccbea14f3a0977897c5226c5fd96eda7.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a href="/">
+                <span class="terminal">pspiagicw@falconite ~ $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu">
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="/" title="" >
+                        ~/home</a>
+                </li>
+                
+                <li>
+                    <a href="/devlog" title="" >
+                        ~/devlogs</a>
+                </li>
+                
+                <li>
+                    <a href="/posts" title="" >
+                        ~/writing</a>
+                </li>
+                
+                <li>
+                    <a href="/about" title="" >
+                        ~/about</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1>DevLog 2</h1>
+    
+    <section class="postMetadata">
+        <dl>
+            
+                
+<dt>tags</dt>
+<dd><span></span>
+    <a href="/tags/golang/">#golang</a><span></span>
+    <a href="/tags/linux/">#linux</a><span></span>
+    <a href="/tags/programming/">#programming</a></dd>
+            
+            
+            
+                
+<dt>categories</dt>
+<dd><span></span>
+    <a href="/categories/development/">development</a><span></span>
+    <a href="/categories/devlog/">devlog</a></dd>
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="2023-01-25">January 25, 2023</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>3 minutes</dd>
+            
+        </dl>
+    </section>
+    
+    <div>
+        <h1 id="qemantra"><code>qemantra</code></h1>
+<p>I have finally released <code>v0.2.1</code> of my project <code>qemantra</code>. This release removed a lot of code, made it cleaner.</p>
+<p>Things I have learned while developing this release.</p>
+<ul>
+<li>
+<p>How to build a sexy website for any project.
+Using <code>vhs</code> and <code>mdbook</code>, I made a website inspired from WezTerm, mostly it&rsquo;s homepage.
+I tried to include a visual element (Picture or GIF) to improve user engagement and understanding.</p>
+</li>
+<li>
+<p>How not to complicate <code>argument parsing</code>.
+When using <code>flaggy</code>, I used to have a separate struct for each subcommand, over the structs I had for actually running the program.
+With <a href="https://abhinavg.net/2022/08/13/flag-subcommand/">this</a>, I eliminated flaggy and brought the good&rsquo;ol <code>flag</code> package.
+I also tried to eliminate almost all other <code>struct</code>s. Now I have a single struct for the entire project. This simplifies things a lot.</p>
+</li>
+</ul>
+<p>Things I could have improved</p>
+<ul>
+<li>
+<p>Testing: Even though I don&rsquo;t write a single line of code without testing, refactoring made lot of the tests not-passing.
+Causing my CI/CD (<code>Github Actions</code>) to fail on every commit. I would have to re-write these tests.</p>
+</li>
+<li>
+<p>Website deployment:
+Currently deploying the <code>qemantra</code> website is a chore. I need to build, archive, transfer to my server (Using sftp) and then unarchive and restart my reverse proxy.
+This is a lot of work and I would have to improve the workflow by a large margin. This is my plan over the next few days.</p>
+</li>
+<li>
+<p>Better planning:
+This release was a little mess, the website had a lot of references to the <code>v0.0.1</code> release, I had to do a little cleanup for the few days after the release.
+Next time I can have a ready changelog and beautiful CI/CD pipelines to make the process easier.</p>
+</li>
+</ul>
+<p>Try it <a href="https://qemantra.pspiagicw.xyz">here</a></p>
+<h1 id="bsharp-or-b"><code>bsharp</code> or <code>b#</code></h1>
+<p>This is my Lisp implementation inspired from <code>bash</code>. I finally built a hand-written recursive descent parser.
+My last implementation <code>boombash</code> had no actual parser. It had a very rude implementation and had no actual AST creation.</p>
+<p>With the current implementation I have finally created a proper AST. I have also started the <code>evaluator</code> work. It can evaluate strings, numbers and other simple objects.</p>
+<p>Ideas I have for this project</p>
+<ul>
+<li>
+<p>Write a compiler:
+Once I have a working interpreter, I can have convert it into a working compiler. I am learning this while writing a VM based compiler <code>uranus</code> ( My implementation for <code>monkey</code> from <code>Writing a Interpreter/Compiler in Go.</code>).</p>
+</li>
+<li>
+<p>Writing a transpiler:
+As <code>b#</code> is inspired from Bash and aims to replace bash scripts, transpiling to Bash script sounds like a good idea!
+With this evaluation shifts to the much better bash implementation.</p>
+</li>
+<li>
+<p>Adding a macro system
+<code>Writing a Interpreter in Go</code> has a secret chapter called <code>Writing a Macro System</code>. In keeping with this, I am also interested in making a macro system for <code>b#</code>.
+Anyway every lisp is incomplete without a macro system!</p>
+</li>
+</ul>
+<p>Try it <a href="https://github.com/pspiagicw/bsharp">here</a></p>
+<p>You can also checkout <a href="https://github.com/pspiagicw/uranus">uranus</a> and <a href="https://github.com/pspiagicw/boombash">boombash</a></p>
+<p>My goals for next few days/week.</p>
+<ul>
+<li>Work on publishing <a href="https://github.com/golang-groom/groom"><code>groom</code></a> with a sexy website.</li>
+<li>Complete <code>groom-install</code>, bringing number of subcommands to 3.</li>
+<li>Maybe implement task dependency ordering using a topological sort for <code>groom-make</code>.</li>
+<li>Finally complete <code>dpm</code> and <code>bbx</code>.</li>
+</ul>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>Made with ♥  using Hugo.</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>

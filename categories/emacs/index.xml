@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>emacs on falconite</title>
+    <link>/categories/emacs/</link>
+    <description>Recent content in emacs on falconite</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Sep 2021 00:00:00 +0530</lastBuildDate><atom:link href="/categories/emacs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Weirdest mode in Emacs</title>
+      <link>/posts/the-wierdest-mode-in-emacs-mpd-mode/</link>
+      <pubDate>Tue, 21 Sep 2021 00:00:00 +0530</pubDate>
+      
+      <guid>/posts/the-wierdest-mode-in-emacs-mpd-mode/</guid>
+      <description>Note: The user has switched to neovim since writing this post. The information may not be up-to-date</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>devlog on falconite</title>
+    <link>/categories/devlog/</link>
+    <description>Recent content in devlog on falconite</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 25 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/devlog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DevLog 2</title>
+      <link>/devlog/devlog-2/</link>
+      <pubDate>Wed, 25 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/devlog/devlog-2/</guid>
+      <description>qemantra I have finally released v0.2.1 of my project qemantra. This release removed a lot of code, made it cleaner.</description>
+    </item>
+    
+    <item>
+      <title>DevLog 1</title>
+      <link>/devlog/devlog-1/</link>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/devlog/devlog-1/</guid>
+      <description>Welcome to my first devlog!
+Here I would try to show what I have developed over the week!</description>
+    </item>
+    
+  </channel>
+</rss>
