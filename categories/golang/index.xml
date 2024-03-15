@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on falconite</title>
-    <link>/tags/golang/</link>
+    <link>/categories/golang/</link>
     <description>Recent content in Golang on falconite</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 15 Mar 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/categories/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go needs a &#39;real&#39; package manager</title>
       <link>/posts/go-needs-a-package-manager/</link>

@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>emacs on falconite</title>
+    <title>Emacs on falconite</title>
     <link>/tags/emacs/</link>
-    <description>Recent content in emacs on falconite</description>
+    <description>Recent content in Emacs on falconite</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Nov 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Microservices and Editors</title>
       <link>/posts/microservices-and-editors/</link>
       <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      
       <guid>/posts/microservices-and-editors/</guid>
       <description>When&amp;rsquo;s the last time you looked into how your editor works ? I don&amp;rsquo;t mean when you downloaded a few extensions and glanced a few themes.</description>
     </item>
-    
     <item>
       <title>The Weirdest mode in Emacs</title>
       <link>/posts/the-wierdest-mode-in-emacs-mpd-mode/</link>
       <pubDate>Tue, 21 Sep 2021 00:00:00 +0530</pubDate>
-      
       <guid>/posts/the-wierdest-mode-in-emacs-mpd-mode/</guid>
       <description>Note: The user has switched to neovim since writing this post. The information may not be up-to-date</description>
     </item>
-    
   </channel>
 </rss>

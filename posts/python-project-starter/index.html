@@ -9,7 +9,7 @@ Python Project Starter | pspiagicw
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.123.8">
 
 
 <link rel="canonical" href="/posts/python-project-starter/" >
@@ -67,16 +67,16 @@ Python Project Starter | pspiagicw
                 
 <dt>tags</dt>
 <dd><span></span>
-    <a href="/tags/linux/">#linux</a><span></span>
-    <a href="/tags/python/">#python</a><span></span>
-    <a href="/tags/devops/">#devops</a></dd>
+    <a href="/tags/linux/">#Linux</a><span></span>
+    <a href="/tags/python/">#Python</a><span></span>
+    <a href="/tags/devops/">#Devops</a></dd>
             
             
             
                 
 <dt>categories</dt>
 <dd><span></span>
-    <a href="/categories/python/">python</a></dd>
+    <a href="/categories/python/">Python</a></dd>
             
             
                 <dt>published</dt>
@@ -107,15 +107,13 @@ If any other command-line tool has the same dependency but with a different vers
 <li><code>poethepoet</code> It is a task runner. You can run <code>make</code> but DOS/Windows users may face problem installing  and configuring <code>make</code>.By using <code>poethepoet</code> we use a os-agnostic task runner.</li>
 </ul>
 <p>You can install it using <code>pip</code> or <code>pipx</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install poetry poethepoet
-
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pipx install poetry
-pipx install poethepoet
-
-</code></pre></div><h2 id="init"><code>init!</code></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pip install poetry poethepoet
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pipx install poetry
+</span></span><span style="display:flex;"><span>pipx install poethepoet
+</span></span></code></pre></div><h2 id="init"><code>init!</code></h2>
 <p>Creating a project directory is trivial.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">poetry new &lt;project-name&gt;
-</code></pre></div><p>This would create a new directory with the name <code>&lt;project-name&gt;</code>. It will ask you for some defaults simply answer them as you wish. You can change these later.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>poetry new &lt;project-name&gt;
+</span></span></code></pre></div><p>This would create a new directory with the name <code>&lt;project-name&gt;</code>. It will ask you for some defaults simply answer them as you wish. You can change these later.</p>
 <p>It would ask for your program dependencies.If you have any dependency in mind, please feel free to add them.</p>
 <p>It will ask for development dependencies. I recommend skipping this question for now (To skip simply leave the prompt empty and press Enter).</p>
 <p>Simply move into the new directory using <code>cd &lt;project-name&gt;</code></p>
@@ -144,9 +142,8 @@ This might be a learning curve and ensuring everybody learns and uses it in a te
 </ul>
 <p>Keep in mind we are installing these tools in a development environment, not production. Thus we would need to tell poetry to add them to the dev dependencies.
 To do the same run</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">poetry add -G dev black pytest pydocstyle pdoc pre-commit
-
-</code></pre></div><p>This will not only create a new virtual environment for your dependencies but also create a <code>poetry.lock</code> file which will track all dependencies.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>poetry add -G dev black pytest pydocstyle pdoc pre-commit
+</span></span></code></pre></div><p>This will not only create a new virtual environment for your dependencies but also create a <code>poetry.lock</code> file which will track all dependencies.</p>
 <h2 id="pre-commit"><code>pre-commit!</code></h2>
 <p>Let&rsquo;s configure <code>pre-commit</code>. For that we need a <code>.pre-commit-config.yml</code> file in the root of our project.</p>
 <p>Populate the <code>.pre-commit-config.yml</code> file with the given content. For more information refer to the <code>pre-commit</code> documentation.</p>
@@ -156,44 +153,41 @@ To do the same run</p>
 <li>documentation validation.</li>
 <li>misc things like trailing whitespaces.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">repos</span>:
--   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/pre-commit/pre-commit-hooks</span>
-    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">v3.2.0</span>
-    <span style="color:#f92672">hooks</span>:
-    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">trailing-whitespace</span>
-    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">end-of-file-fixer</span>
-    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">check-yaml</span>
-    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">check-added-large-files</span>
--   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/psf/black</span>
-    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">22.3.0</span>
-    <span style="color:#f92672">hooks</span>:
-    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">black</span>
--   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/pycqa/pydocstyle</span>
-    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">6.1.1</span>  <span style="color:#75715e"># pick a git hash / tag to point to</span>
-    <span style="color:#f92672">hooks</span>:
-    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">pydocstyle</span>
-
-</code></pre></div><p>Now is a good time to initialize <code>git</code>. Add the current folder to <code>git</code> and make a initial commit.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># In the project root</span>
-git init
-git add .
-git commit -m <span style="color:#e6db74">&#34;Initial Commit&#34;</span>
-
-</code></pre></div><h2 id="poethepoet"><code>poethepoet!</code></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">repos</span>:
+</span></span><span style="display:flex;"><span>-   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/pre-commit/pre-commit-hooks</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">v3.2.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hooks</span>:
+</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">trailing-whitespace</span>
+</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">end-of-file-fixer</span>
+</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">check-yaml</span>
+</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">check-added-large-files</span>
+</span></span><span style="display:flex;"><span>-   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/psf/black</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">22.3.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hooks</span>:
+</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">black</span>
+</span></span><span style="display:flex;"><span>-   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/pycqa/pydocstyle</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">6.1.1</span>  <span style="color:#75715e"># pick a git hash / tag to point to</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hooks</span>:
+</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">pydocstyle</span>
+</span></span></code></pre></div><p>Now is a good time to initialize <code>git</code>. Add the current folder to <code>git</code> and make a initial commit.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># In the project root</span>
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Initial Commit&#34;</span>
+</span></span></code></pre></div><h2 id="poethepoet"><code>poethepoet!</code></h2>
 <p>Now we can configure the task runner. This would help you to run common tasks like formatting , testing without enabling the virtual environment.
 <code>poethepoet</code> uses <code>pyproject.toml</code> file for the list of tasks.</p>
 <p>You only need to append the following section</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">tool</span>.<span style="color:#a6e22e">poe</span>.<span style="color:#a6e22e">tasks</span>]
-<span style="color:#a6e22e">test</span> = <span style="color:#e6db74">&#34;pytest&#34;</span>
-<span style="color:#a6e22e">run</span> = [<span style="color:#e6db74">&#34;doc&#34;</span>, { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;python -m &lt;project-name&gt;&#34;</span>}]
-<span style="color:#a6e22e">format</span> = [ { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;black &lt;project-name&gt; tests&#34;</span>}]
-<span style="color:#a6e22e">init</span> = [ { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;poetry install&#34;</span>} , { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;poetry run pre-commit install&#34;</span>} , { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;poetry run pre-commit &#34;</span>} ]
-<span style="color:#a6e22e">doc</span> = <span style="color:#e6db74">&#34;pdoc -o docs &lt;project-name&gt;&#34;</span>
-
-</code></pre></div><p>After adding this code you can run tasks using <code>poe</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">tool</span>.<span style="color:#a6e22e">poe</span>.<span style="color:#a6e22e">tasks</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">test</span> = <span style="color:#e6db74">&#34;pytest&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">run</span> = [<span style="color:#e6db74">&#34;doc&#34;</span>, { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;python -m &lt;project-name&gt;&#34;</span>}]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">format</span> = [ { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;black &lt;project-name&gt; tests&#34;</span>}]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">init</span> = [ { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;poetry install&#34;</span>} , { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;poetry run pre-commit install&#34;</span>} , { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;poetry run pre-commit &#34;</span>} ]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">doc</span> = <span style="color:#e6db74">&#34;pdoc -o docs &lt;project-name&gt;&#34;</span>
+</span></span></code></pre></div><p>After adding this code you can run tasks using <code>poe</code>.</p>
 <p>For example to format the entire code.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">poe format
-</code></pre></div><p>This would automatically run the formatting tool <code>black</code> within the virtual environment <code>poetry</code> created for us.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>poe format
+</span></span></code></pre></div><p>This would automatically run the formatting tool <code>black</code> within the virtual environment <code>poetry</code> created for us.
 We don&rsquo;t have to manually run anything.</p>
 <p>This is just the tip of the iceberg. We can run any tasks including building Docker images or deploying to PyPI.
 Refer to the <code>poethepoet</code> documentation for more information.</p>
@@ -217,8 +211,8 @@ It will also run <code>pre-commit</code> for the first time to check if everythi
 <ul>
 <li>Adding non-development dependencies</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">poetry add &lt;dependency&gt;
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>poetry add &lt;dependency&gt;
+</span></span></code></pre></div><ul>
 <li>Add a cute .gitignore to ignore <code>__pycache__</code> folders and other build files.</li>
 <li>If possible setup a Continous Integration workflow using GitHub Actions or any other CI service.</li>
 <li>Maybe add a <code>Dockerfile</code> and make it more isolated.</li>

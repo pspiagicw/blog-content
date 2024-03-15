@@ -9,7 +9,7 @@ The Weirdest mode in Emacs | pspiagicw
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.123.8">
 
 
 <link rel="canonical" href="/posts/the-wierdest-mode-in-emacs-mpd-mode/" >
@@ -67,15 +67,15 @@ The Weirdest mode in Emacs | pspiagicw
                 
 <dt>tags</dt>
 <dd><span></span>
-    <a href="/tags/linux/">#linux</a><span></span>
-    <a href="/tags/emacs/">#emacs</a></dd>
+    <a href="/tags/linux/">#Linux</a><span></span>
+    <a href="/tags/emacs/">#Emacs</a></dd>
             
             
             
                 
 <dt>categories</dt>
 <dd><span></span>
-    <a href="/categories/emacs/">emacs</a></dd>
+    <a href="/categories/emacs/">Emacs</a></dd>
             
             
                 <dt>published</dt>
@@ -152,38 +152,38 @@ It has a mouse-based volume bar , but it cannot be controlled using keyboard  , 
 <h3 id="evil-keybindings">Evil Keybindings</h3>
 <p>Currently the <code>evil-collection</code> does not support mpc-mode.Although it has been requested (<a href="https://github.com/emacs-evil/evil-collection/issues/535">https://github.com/emacs-evil/evil-collection/issues/535</a>) .
 Using <code>general.el</code> I have created some of my own keybindings. My keybindings also need custom function for moving up and down.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-emacs-lisp" data-lang="emacs-lisp">(defun move-mpc-down ()
-  (interactive)
-  (evil-next-visual-line)
-  (mpc-select)
- )
-(defun move-mpc-up ()
-  (interactive)
-  (evil-previous-visual-line)
-  (mpc-select)
- )
-</code></pre></div><p>Below are the keybindings I use for MPC-mode.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(defun move-mpc-down ()
+</span></span><span style="display:flex;"><span>  (interactive)
+</span></span><span style="display:flex;"><span>  (evil-next-visual-line)
+</span></span><span style="display:flex;"><span>  (mpc-select)
+</span></span><span style="display:flex;"><span> )
+</span></span><span style="display:flex;"><span>(defun move-mpc-up ()
+</span></span><span style="display:flex;"><span>  (interactive)
+</span></span><span style="display:flex;"><span>  (evil-previous-visual-line)
+</span></span><span style="display:flex;"><span>  (mpc-select)
+</span></span><span style="display:flex;"><span> )
+</span></span></code></pre></div><p>Below are the keybindings I use for MPC-mode.</p>
 <p>You can change these , according to your workflow.
 The <code>mpc-play-at-point</code> simply plays whatever you have selected directly , clearing the current playlist.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-emacs-lisp" data-lang="emacs-lisp">(general-define-key
- :keymaps <span style="color:#e6db74">&#39;mpc-mode-map</span>
- :states <span style="color:#e6db74">&#39;normal</span>
- <span style="color:#e6db74">&#34;j&#34;</span> <span style="color:#e6db74">&#39;move-mpc-down</span>
- <span style="color:#e6db74">&#34;k&#34;</span> <span style="color:#e6db74">&#39;move-mpc-up</span>
- <span style="color:#e6db74">&#34;t&#34;</span> <span style="color:#e6db74">&#39;mpc-toggle-play</span>
- <span style="color:#e6db74">&#34;r&#34;</span> <span style="color:#e6db74">&#39;mpc-toggle-repeat</span>
- <span style="color:#e6db74">&#34;s&#34;</span> <span style="color:#e6db74">&#39;mpc-toggle-shuffle</span>
- <span style="color:#e6db74">&#34;S&#34;</span> <span style="color:#e6db74">&#39;mpc-toggle-shuffle</span>
- <span style="color:#e6db74">&#34;c&#34;</span> <span style="color:#e6db74">&#39;mpc-toggle-consume</span>
- <span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#e6db74">&#39;mpc-playlist-add</span>
- <span style="color:#e6db74">&#34;p&#34;</span> <span style="color:#e6db74">&#39;mpc-playlist</span>
- <span style="color:#e6db74">&#34;&gt;&#34;</span> <span style="color:#e6db74">&#39;mpc-next</span>
- <span style="color:#e6db74">&#34;&lt;&#34;</span> <span style="color:#e6db74">&#39;mpc-prev</span>
- <span style="color:#e6db74">&#34;R&#34;</span> <span style="color:#e6db74">&#39;mpc-playlist-delete</span>
- <span style="color:#e6db74">&#34;RET&#34;</span> <span style="color:#e6db74">&#39;mpc-select</span>
- <span style="color:#e6db74">&#34;x&#34;</span> <span style="color:#e6db74">&#39;mpc-play-at-point</span>
- )
-</code></pre></div><h2 id="down-the-rabbit-hole">Down the Rabbit Hole</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(general-define-key
+</span></span><span style="display:flex;"><span> :keymaps <span style="color:#e6db74">&#39;mpc-mode-map</span>
+</span></span><span style="display:flex;"><span> :states <span style="color:#e6db74">&#39;normal</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;j&#34;</span> <span style="color:#e6db74">&#39;move-mpc-down</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;k&#34;</span> <span style="color:#e6db74">&#39;move-mpc-up</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;t&#34;</span> <span style="color:#e6db74">&#39;mpc-toggle-play</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;r&#34;</span> <span style="color:#e6db74">&#39;mpc-toggle-repeat</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;s&#34;</span> <span style="color:#e6db74">&#39;mpc-toggle-shuffle</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;S&#34;</span> <span style="color:#e6db74">&#39;mpc-toggle-shuffle</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;c&#34;</span> <span style="color:#e6db74">&#39;mpc-toggle-consume</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#e6db74">&#39;mpc-playlist-add</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;p&#34;</span> <span style="color:#e6db74">&#39;mpc-playlist</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;&gt;&#34;</span> <span style="color:#e6db74">&#39;mpc-next</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;&lt;&#34;</span> <span style="color:#e6db74">&#39;mpc-prev</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;R&#34;</span> <span style="color:#e6db74">&#39;mpc-playlist-delete</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;RET&#34;</span> <span style="color:#e6db74">&#39;mpc-select</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;x&#34;</span> <span style="color:#e6db74">&#39;mpc-play-at-point</span>
+</span></span><span style="display:flex;"><span> )
+</span></span></code></pre></div><h2 id="down-the-rabbit-hole">Down the Rabbit Hole</h2>
 <p>Keep falling in the rabbit hole of Emacs! Till next time!</p>
 
     </div>

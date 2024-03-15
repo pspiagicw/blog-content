@@ -6,52 +6,49 @@
     <description>Recent content on falconite</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go needs a &#39;real&#39; package manager</title>
+      <link>/posts/go-needs-a-package-manager/</link>
+      <pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/go-needs-a-package-manager/</guid>
+      <description>Anybody remember &amp;rsquo;leftpad&amp;rsquo; ?&#xA;If you aren&amp;rsquo;t familiar with it. Read this.&#xA;TLDR: A developer removed a package from npm and broke the internet.</description>
+    </item>
     <item>
       <title>Python Project Starter</title>
       <link>/posts/python-project-starter/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>/posts/python-project-starter/</guid>
       <description>I recently dived back into Python and got to build a fully featured Python application. Here&amp;rsquo;s how maybe you can setup a sick Python Project setup.</description>
     </item>
-    
     <item>
       <title>Microservices and Editors</title>
       <link>/posts/microservices-and-editors/</link>
       <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      
       <guid>/posts/microservices-and-editors/</guid>
       <description>When&amp;rsquo;s the last time you looked into how your editor works ? I don&amp;rsquo;t mean when you downloaded a few extensions and glanced a few themes.</description>
     </item>
-    
     <item>
       <title>The Weirdest mode in Emacs</title>
       <link>/posts/the-wierdest-mode-in-emacs-mpd-mode/</link>
       <pubDate>Tue, 21 Sep 2021 00:00:00 +0530</pubDate>
-      
       <guid>/posts/the-wierdest-mode-in-emacs-mpd-mode/</guid>
       <description>Note: The user has switched to neovim since writing this post. The information may not be up-to-date</description>
     </item>
-    
     <item>
       <title>Rough Guide to Matplotlib</title>
       <link>/posts/dirty-guide-on-matplotlib/</link>
       <pubDate>Mon, 17 May 2021 00:00:00 +0530</pubDate>
-      
       <guid>/posts/dirty-guide-on-matplotlib/</guid>
       <description>Do you have the need to create graphs? Visualize highly numerical data , or just look at beautifully generated graphs and get turned on!</description>
     </item>
-    
     <item>
       <title>About me</title>
       <link>/about/</link>
       <pubDate>Wed, 24 Aug 2016 17:51:42 +0000</pubDate>
-      
       <guid>/about/</guid>
-      <description>Hi, I am pspiagicw (call me psp).
-For communicating with me here is my public PGP key.</description>
+      <description>Hi, I am pspiagicw (call me psp).&#xA;For communicating with me here is my public PGP key.</description>
     </item>
-    
   </channel>
 </rss>

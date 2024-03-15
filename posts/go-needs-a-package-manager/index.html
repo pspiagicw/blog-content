@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>
+Go needs a &#39;real&#39; package manager | pspiagicw
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Hugo 0.123.8">
+
+
+<link rel="canonical" href="/posts/go-needs-a-package-manager/" >
+<link href="/sass/main.min.bd19d955a59805faafd36e2c4ce339deccbea14f3a0977897c5226c5fd96eda7.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a href="/">
+                <span class="terminal">pspiagicw@falconite ~ $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu">
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="/" title="" >
+                        ~/home</a>
+                </li>
+                
+                <li>
+                    <a href="/posts" title="" >
+                        ~/writing</a>
+                </li>
+                
+                <li>
+                    <a href="/about" title="" >
+                        ~/about</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1>Go needs a &#39;real&#39; package manager</h1>
+    
+    <section class="postMetadata">
+        <dl>
+            
+                
+<dt>tags</dt>
+<dd><span></span>
+    <a href="/tags/golang/">#Golang</a></dd>
+            
+            
+            
+                
+<dt>categories</dt>
+<dd><span></span>
+    <a href="/categories/golang/">Golang</a></dd>
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="2024-03-15">March 15, 2024</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>2 minutes</dd>
+            
+        </dl>
+    </section>
+    
+    <div>
+        <p>Anybody remember &rsquo;leftpad&rsquo; ?</p>
+<p>If you aren&rsquo;t familiar with it. Read <a href="https://qz.com/646467/how-one-programmer-broke-the-internet-by-deleting-a-tiny-piece-of-code">this</a>.</p>
+<p>TLDR: A developer removed a package from npm and broke the internet.</p>
+<p>Do you know what&rsquo;s worse? It&rsquo;s not the first time it happened. It&rsquo;s not the last time it will happen.
+The lesson here is that we need a package manager that is reliable and secure.
+Mainly that tracks the dependencies and ensures that the code will work even if the dependencies are removed/changed.</p>
+<p>Golang has a package manager called &lsquo;go modules&rsquo;. But it&rsquo;s not perfect. It&rsquo;s not reliable. It&rsquo;s not secure.
+I came across this while writing my own project <a href="https://github.com/pspiagicw/gox">gox</a>.
+Before this project, I was not familiar with the workings of go modules. I was using it as a black box.</p>
+<p>While developing this project, I realized that Go doesn&rsquo;t care from where the code is coming from.
+It simply clones the code blindly and compiles it accordingly.</p>
+<p>It means, other than the username in the package import path, you don&rsquo;t know much about who wrote the code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;github.com/pspiagicw/goreland&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>The above code imports my own library <code>goreland</code>. It is a very simple fancy logging library.</p>
+<p>I could sabotage the entire library (by added malicious code) and everybody using the latest version would have shipped a very dangerous product.</p>
+<p>I have used <code>pip</code> from Python, it requires authorization and other busywork to actually publish the package.</p>
+<p>This has 2 benefits</p>
+<ul>
+<li>If anything goes wrong, they can track me using my email.</li>
+<li>If I delete or sabotage my code, they can simply rollback to a more stable package.</li>
+</ul>
+<p>Go doesn&rsquo;t have this. If anything is wrong in the package, I have to hop onto <code>GitHub</code>, find the user and inform them.
+In the meantime, nobody can help me.</p>
+<p>You can&rsquo;t publish a package randomly on <code>cargo</code>, <code>npm</code> or any other widely used languages.</p>
+<p>Heck even <code>Emacs</code> packages have a rudimentary repository system. This somewhat shares the responsibility of safety.</p>
+<p>Go does have a documentation system. It indexes the modules to get documentation for the package. That gives Go package some form of trackability.</p>
+<p>But that is not enough for a language being used on a large scale.</p>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>Made with ♥  using Hugo.</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>

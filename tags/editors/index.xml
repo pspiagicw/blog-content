@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>editors on falconite</title>
+    <title>Editors on falconite</title>
     <link>/tags/editors/</link>
-    <description>Recent content in editors on falconite</description>
+    <description>Recent content in Editors on falconite</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/editors/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Nov 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/editors/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Microservices and Editors</title>
       <link>/posts/microservices-and-editors/</link>
       <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      
       <guid>/posts/microservices-and-editors/</guid>
       <description>When&amp;rsquo;s the last time you looked into how your editor works ? I don&amp;rsquo;t mean when you downloaded a few extensions and glanced a few themes.</description>
     </item>
-    
   </channel>
 </rss>
