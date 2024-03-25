@@ -6,14 +6,21 @@
     <description>Recent content on falconite</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 25 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tree-Sitting</title>
+      <link>/posts/treesitting/</link>
+      <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/treesitting/</guid>
+      <description>This is a post on how I wrote a tree-sitter parser for a new language. and how I integrated it into my editor.</description>
+    </item>
     <item>
       <title>Go needs a &#39;real&#39; package manager</title>
       <link>/posts/go-needs-a-package-manager/</link>
       <pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate>
       <guid>/posts/go-needs-a-package-manager/</guid>
-      <description>Anybody remember &amp;rsquo;leftpad&amp;rsquo; ?&#xA;If you aren&amp;rsquo;t familiar with it. Read this.&#xA;TLDR: A developer removed a package from npm and broke the internet.</description>
+      <description>Anybody remember &amp;rsquo;leftpad&amp;rsquo; ?&#xA;If you aren&amp;rsquo;t familiar with it. Read this. TLDR: A developer removed a package from npm and broke the internet.</description>
     </item>
     <item>
       <title>Python Project Starter</title>

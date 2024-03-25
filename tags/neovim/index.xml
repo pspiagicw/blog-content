@@ -6,8 +6,15 @@
     <description>Recent content in Neovim on falconite</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Nov 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 25 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/tags/neovim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tree-Sitting</title>
+      <link>/posts/treesitting/</link>
+      <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/treesitting/</guid>
+      <description>This is a post on how I wrote a tree-sitter parser for a new language. and how I integrated it into my editor.</description>
+    </item>
     <item>
       <title>Microservices and Editors</title>
       <link>/posts/microservices-and-editors/</link>
