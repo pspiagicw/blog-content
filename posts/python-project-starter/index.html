@@ -13,7 +13,9 @@ Python Project Starter | pspiagicw
 
 
 <link rel="canonical" href="/posts/python-project-starter/" >
-<link href="/sass/main.min.bd19d955a59805faafd36e2c4ce339deccbea14f3a0977897c5226c5fd96eda7.css" rel="stylesheet">
+<link href="/sass/main.min.f0b3244e1d7193fac3e2fa902a3455075e6817ff3f9bde694ff911883cb7d01d.css" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/f250909d17.js" crossorigin="anonymous"></script>
 
 
 
@@ -64,24 +66,10 @@ Python Project Starter | pspiagicw
     <section class="postMetadata">
         <dl>
             
-                
-<dt>tags</dt>
-<dd><span></span>
-    <a href="/tags/linux/">#Linux</a><span></span>
-    <a href="/tags/python/">#Python</a><span></span>
-    <a href="/tags/devops/">#Devops</a></dd>
-            
-            
-            
-                
-<dt>categories</dt>
-<dd><span></span>
-    <a href="/categories/python/">Python</a></dd>
-            
             
                 <dt>published</dt>
                 
-                <dd><time datetime="2022-12-23">December 23, 2022</time></dd>
+                <dd><time datetime="2022-12-23">Dec 23, 2022</time></dd>
             
             
                 <dt>reading time</dt>
@@ -107,12 +95,12 @@ If any other command-line tool has the same dependency but with a different vers
 <li><code>poethepoet</code> It is a task runner. You can run <code>make</code> but DOS/Windows users may face problem installing  and configuring <code>make</code>.By using <code>poethepoet</code> we use a os-agnostic task runner.</li>
 </ul>
 <p>You can install it using <code>pip</code> or <code>pipx</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pip install poetry poethepoet
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pipx install poetry
-</span></span><span style="display:flex;"><span>pipx install poethepoet
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>pip install poetry poethepoet
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>pipx install poetry
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>pipx install poethepoet
 </span></span></code></pre></div><h2 id="init"><code>init!</code></h2>
 <p>Creating a project directory is trivial.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>poetry new &lt;project-name&gt;
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>poetry new &lt;project-name&gt;
 </span></span></code></pre></div><p>This would create a new directory with the name <code>&lt;project-name&gt;</code>. It will ask you for some defaults simply answer them as you wish. You can change these later.</p>
 <p>It would ask for your program dependencies.If you have any dependency in mind, please feel free to add them.</p>
 <p>It will ask for development dependencies. I recommend skipping this question for now (To skip simply leave the prompt empty and press Enter).</p>
@@ -142,7 +130,7 @@ This might be a learning curve and ensuring everybody learns and uses it in a te
 </ul>
 <p>Keep in mind we are installing these tools in a development environment, not production. Thus we would need to tell poetry to add them to the dev dependencies.
 To do the same run</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>poetry add -G dev black pytest pydocstyle pdoc pre-commit
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>poetry add -G dev black pytest pydocstyle pdoc pre-commit
 </span></span></code></pre></div><p>This will not only create a new virtual environment for your dependencies but also create a <code>poetry.lock</code> file which will track all dependencies.</p>
 <h2 id="pre-commit"><code>pre-commit!</code></h2>
 <p>Let&rsquo;s configure <code>pre-commit</code>. For that we need a <code>.pre-commit-config.yml</code> file in the root of our project.</p>
@@ -153,40 +141,40 @@ To do the same run</p>
 <li>documentation validation.</li>
 <li>misc things like trailing whitespaces.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">repos</span>:
-</span></span><span style="display:flex;"><span>-   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/pre-commit/pre-commit-hooks</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">v3.2.0</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hooks</span>:
-</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">trailing-whitespace</span>
-</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">end-of-file-fixer</span>
-</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">check-yaml</span>
-</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">check-added-large-files</span>
-</span></span><span style="display:flex;"><span>-   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/psf/black</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">22.3.0</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hooks</span>:
-</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">black</span>
-</span></span><span style="display:flex;"><span>-   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">https://github.com/pycqa/pydocstyle</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rev</span>: <span style="color:#ae81ff">6.1.1</span>  <span style="color:#75715e"># pick a git hash / tag to point to</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hooks</span>:
-</span></span><span style="display:flex;"><span>    -   <span style="color:#f92672">id</span>: <span style="color:#ae81ff">pydocstyle</span>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1"> 1</a></span><span><span style="color:#cba6f7">repos</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2"> 2</a></span><span>-   <span style="color:#cba6f7">repo</span>: https://github.com/pre-commit/pre-commit-hooks
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3"> 3</a></span><span>    <span style="color:#cba6f7">rev</span>: v3.2.0
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4"> 4</a></span><span>    <span style="color:#cba6f7">hooks</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5"> 5</a></span><span>    -   <span style="color:#cba6f7">id</span>: trailing-whitespace
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-6"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-6"> 6</a></span><span>    -   <span style="color:#cba6f7">id</span>: end-of-file-fixer
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-7"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-7"> 7</a></span><span>    -   <span style="color:#cba6f7">id</span>: check-yaml
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-8"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-8"> 8</a></span><span>    -   <span style="color:#cba6f7">id</span>: check-added-large-files
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-9"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-9"> 9</a></span><span>-   <span style="color:#cba6f7">repo</span>: https://github.com/psf/black
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-10"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-10">10</a></span><span>    <span style="color:#cba6f7">rev</span>: <span style="color:#fab387">22.3.0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-11"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-11">11</a></span><span>    <span style="color:#cba6f7">hooks</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-12"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-12">12</a></span><span>    -   <span style="color:#cba6f7">id</span>: black
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-13"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-13">13</a></span><span>-   <span style="color:#cba6f7">repo</span>: https://github.com/pycqa/pydocstyle
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-14"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-14">14</a></span><span>    <span style="color:#cba6f7">rev</span>: <span style="color:#fab387">6.1.1</span>  <span style="color:#6c7086;font-style:italic"># pick a git hash / tag to point to</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-15"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-15">15</a></span><span>    <span style="color:#cba6f7">hooks</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-16"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-16">16</a></span><span>    -   <span style="color:#cba6f7">id</span>: pydocstyle
 </span></span></code></pre></div><p>Now is a good time to initialize <code>git</code>. Add the current folder to <code>git</code> and make a initial commit.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># In the project root</span>
-</span></span><span style="display:flex;"><span>git init
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Initial Commit&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic"># In the project root</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>git init
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3">3</a></span><span>git add .
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4">4</a></span><span>git commit -m <span style="color:#a6e3a1">&#34;Initial Commit&#34;</span>
 </span></span></code></pre></div><h2 id="poethepoet"><code>poethepoet!</code></h2>
 <p>Now we can configure the task runner. This would help you to run common tasks like formatting , testing without enabling the virtual environment.
 <code>poethepoet</code> uses <code>pyproject.toml</code> file for the list of tasks.</p>
 <p>You only need to append the following section</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">tool</span>.<span style="color:#a6e22e">poe</span>.<span style="color:#a6e22e">tasks</span>]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">test</span> = <span style="color:#e6db74">&#34;pytest&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">run</span> = [<span style="color:#e6db74">&#34;doc&#34;</span>, { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;python -m &lt;project-name&gt;&#34;</span>}]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">format</span> = [ { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;black &lt;project-name&gt; tests&#34;</span>}]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">init</span> = [ { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;poetry install&#34;</span>} , { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;poetry run pre-commit install&#34;</span>} , { <span style="color:#a6e22e">shell</span> = <span style="color:#e6db74">&#34;poetry run pre-commit &#34;</span>} ]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">doc</span> = <span style="color:#e6db74">&#34;pdoc -o docs &lt;project-name&gt;&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>[tool.poe.tasks]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>test = <span style="color:#a6e3a1">&#34;pytest&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3">3</a></span><span>run = [<span style="color:#a6e3a1">&#34;doc&#34;</span>, { shell = <span style="color:#a6e3a1">&#34;python -m &lt;project-name&gt;&#34;</span>}]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4">4</a></span><span>format = [ { shell = <span style="color:#a6e3a1">&#34;black &lt;project-name&gt; tests&#34;</span>}]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5">5</a></span><span>init = [ { shell = <span style="color:#a6e3a1">&#34;poetry install&#34;</span>} , { shell = <span style="color:#a6e3a1">&#34;poetry run pre-commit install&#34;</span>} , { shell = <span style="color:#a6e3a1">&#34;poetry run pre-commit &#34;</span>} ]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-6"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-6">6</a></span><span>doc = <span style="color:#a6e3a1">&#34;pdoc -o docs &lt;project-name&gt;&#34;</span>
 </span></span></code></pre></div><p>After adding this code you can run tasks using <code>poe</code>.</p>
 <p>For example to format the entire code.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>poe format
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>poe format
 </span></span></code></pre></div><p>This would automatically run the formatting tool <code>black</code> within the virtual environment <code>poetry</code> created for us.
 We don&rsquo;t have to manually run anything.</p>
 <p>This is just the tip of the iceberg. We can run any tasks including building Docker images or deploying to PyPI.
@@ -211,7 +199,7 @@ It will also run <code>pre-commit</code> for the first time to check if everythi
 <ul>
 <li>Adding non-development dependencies</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>poetry add &lt;dependency&gt;
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>poetry add &lt;dependency&gt;
 </span></span></code></pre></div><ul>
 <li>Add a cute .gitignore to ignore <code>__pycache__</code> folders and other build files.</li>
 <li>If possible setup a Continous Integration workflow using GitHub Actions or any other CI service.</li>

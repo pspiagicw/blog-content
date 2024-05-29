@@ -13,7 +13,7 @@
       <link>/posts/go-needs-a-package-manager/</link>
       <pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate>
       <guid>/posts/go-needs-a-package-manager/</guid>
-      <description>Anybody remember &amp;rsquo;leftpad&amp;rsquo; ?&#xA;If you aren&amp;rsquo;t familiar with it. Read this. TLDR: A developer removed a package from npm and broke the internet.</description>
+      <description>Remember &amp;rsquo;leftpad&amp;rsquo; ? Apparently Go doesn&amp;rsquo;t.</description>
     </item>
   </channel>
 </rss>

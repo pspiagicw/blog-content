@@ -13,7 +13,9 @@ Go needs a &#39;real&#39; package manager | pspiagicw
 
 
 <link rel="canonical" href="/posts/go-needs-a-package-manager/" >
-<link href="/sass/main.min.bd19d955a59805faafd36e2c4ce339deccbea14f3a0977897c5226c5fd96eda7.css" rel="stylesheet">
+<link href="/sass/main.min.f0b3244e1d7193fac3e2fa902a3455075e6817ff3f9bde694ff911883cb7d01d.css" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/f250909d17.js" crossorigin="anonymous"></script>
 
 
 
@@ -64,22 +66,10 @@ Go needs a &#39;real&#39; package manager | pspiagicw
     <section class="postMetadata">
         <dl>
             
-                
-<dt>tags</dt>
-<dd><span></span>
-    <a href="/tags/golang/">#Golang</a></dd>
-            
-            
-            
-                
-<dt>categories</dt>
-<dd><span></span>
-    <a href="/categories/golang/">Golang</a></dd>
-            
             
                 <dt>published</dt>
                 
-                <dd><time datetime="2024-03-15">March 15, 2024</time></dd>
+                <dd><time datetime="2024-03-15">Mar 15, 2024</time></dd>
             
             
                 <dt>reading time</dt>
@@ -101,9 +91,9 @@ Before this project, I was not familiar with the workings of go modules. I was u
 <p>While developing this project, I realized that Go doesn&rsquo;t care from where the code is coming from.
 It simply clones the code blindly and compiles it accordingly.</p>
 <p>It means, other than the username in the package import path, you don&rsquo;t know much about who wrote the code.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;github.com/pspiagicw/goreland&#34;</span>
-</span></span><span style="display:flex;"><span>)
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#94e2d5">import</span> (
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>    <span style="color:#a6e3a1">&#34;github.com/pspiagicw/goreland&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3">3</a></span><span>)
 </span></span></code></pre></div><p>The above code imports my own library <code>goreland</code>. It is a very simple fancy logging library.</p>
 <p>I could sabotage the entire library (by added malicious code) and everybody using the latest version would have shipped a very dangerous product.</p>
 <p>I have used <code>pip</code> from Python, it requires authorization and other busywork to actually publish the package.</p>
