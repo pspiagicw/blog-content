@@ -16,6 +16,13 @@
       <description>A revealing review of my own blog</description>
     </item>
     <item>
+      <title>Syntax highlighting for Tree-sitter</title>
+      <link>/posts/tree-sitter2/</link>
+      <pubDate>Sun, 26 May 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/tree-sitter2/</guid>
+      <description>You have a tree-sitter grammar. You just need syntax highlighting.</description>
+    </item>
+    <item>
       <title>Tree-Sitting</title>
       <link>/posts/tree-sitter/</link>
       <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>

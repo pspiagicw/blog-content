@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>
+Syntax highlighting for Tree-sitter | pspiagicw
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Hugo 0.123.8">
+
+
+<link rel="canonical" href="/posts/tree-sitter2/" >
+<link href="/sass/main.min.c3129d41c79338570e08a69e5d085d95f9b5d50b2008e432747e4664ae76d258.css" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/f250909d17.js" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a href="/">
+                <span class="terminal">pspiagicw@falconite $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu">
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="/" title="" >
+                        ~/home</a>
+                </li>
+                
+                <li>
+                    <a href="/posts" title="" >
+                        ~/writing</a>
+                </li>
+                
+                <li>
+                    <a href="/about" title="" >
+                        ~/about</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1>Syntax highlighting for Tree-sitter</h1>
+    
+    <section class="postMetadata">
+        <dl>
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="2024-05-26">May 26, 2024</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>5 minutes</dd>
+            
+        </dl>
+    </section>
+    
+    <div>
+        <p>If you haven&rsquo;t read the previous post, you might wan&rsquo;t to check it out <a href="https://falconite.xyz/posts/tree-sitter/">here</a>.</p>
+<p>This post explores how to write tree-sitter queries for a custom grammar and enable syntax highlighting within <code>Neovim</code>.
+If you don&rsquo;t know how to make a tree-sitter grammar or want a primer, click <a href="https://falconite.xyz/posts/tree-sitter/">here</a>.</p>
+<blockquote>
+<p>This guide is focused on <code>Neovim</code>, you may refer to it for syntax highlighting, but you will have to adapt the neovim configuration part.</p>
+</blockquote>
+<h2 id="neovim-configuration">neovim configuration</h2>
+<p>You can setup neovim to parse your local tree-sitter grammar by adding these line to your config.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1"> 1</a></span><span><span style="color:#6c7086;font-style:italic">-- Somewhere in you config</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2"> 2</a></span><span><span style="color:#f38ba8">local</span> parser_config <span style="color:#89dceb;font-weight:bold">=</span> require(<span style="color:#a6e3a1">&#34;nvim-treesitter.parsers&#34;</span>).get_parser_configs()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3"> 3</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4"> 4</a></span><span>parser_config.hotshot <span style="color:#89dceb;font-weight:bold">=</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5"> 5</a></span><span>    install_info <span style="color:#89dceb;font-weight:bold">=</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-6"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-6"> 6</a></span><span>        <span style="color:#6c7086;font-style:italic">-- url = &#34;~/code/other-projects/tree-sitter-hotshot&#34;,</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-7"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-7"> 7</a></span><span>        url <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#a6e3a1">&#34;&lt;path-to-your-tree-sitter-folder&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-8"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-8"> 8</a></span><span>        files <span style="color:#89dceb;font-weight:bold">=</span> { <span style="color:#a6e3a1">&#34;src/parser.c&#34;</span> }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-9"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-9"> 9</a></span><span>    },
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-10"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-10">10</a></span><span>    filetype <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#a6e3a1">&#34;ht&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-11"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-11">11</a></span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-12"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-12">12</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-13"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-13">13</a></span><span><span style="color:#6c7086;font-style:italic">-- To add filetype to the extension of `.ht&#39;`</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-14"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-14">14</a></span><span>vim.filetype.add({ extension <span style="color:#89dceb;font-weight:bold">=</span> { ht <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#a6e3a1">&#39;hotshot&#39;</span> } })
+</span></span></code></pre></div><p>After loading the config, you can run this in Neovim.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:TSInstall hotshot
+</span></span></code></pre></div><p>This would install the corresponding grammar.</p>
+<blockquote>
+<p>This doesn&rsquo;t install the tree-sitter queries.
+It only makes it recognize the grammar.
+We will cover the queries part later in the post.</p>
+</blockquote>
+<h2 id="tree-sitter-queries">tree-sitter queries</h2>
+<p>Tree-sitter has a excellent querying syntax inspired from <code>scheme</code>.
+This query syntax is the reason it&rsquo;s as efficient at it&rsquo;s job.
+Parsing is of no use without using it for something.</p>
+<p>You write the queries inside the <code>queries</code> directory inside your <code>tree-sitter-&lt;language&gt;</code> directory.</p>
+<ul>
+<li>Inside this directory the <code>highlights.scm</code> file provides syntax highlights.</li>
+<li>Other features like <code>indentation</code>/<code>text-objects</code> can be defined inside the <code>queries</code> directory.</li>
+</ul>
+<p>For reference here is how my directory is layed out.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1"> 1</a></span><span>.
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2"> 2</a></span><span>├── bindings
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3"> 3</a></span><span>│   ├── c
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4"> 4</a></span><span>│   ├── .... (some other files)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5"> 5</a></span><span>│   └── swift
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-6"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-6"> 6</a></span><span>├── grammar.js
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-7"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-7"> 7</a></span><span>├── .... (some other files)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-8"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-8"> 8</a></span><span>├── programs
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-9"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-9"> 9</a></span><span>│   ├── arithmetic.ht
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-10"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-10">10</a></span><span>│   ├── booleans.ht
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-11"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-11">11</a></span><span>│   ├── .... (some other files)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-12"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-12">12</a></span><span>│   └── variables.ht
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-13"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-13">13</a></span><span>├── queries
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-14"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-14">14</a></span><span>│   └── highlights.scm    &lt;== The `highlights.scm`
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-15"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-15">15</a></span><span>└── src
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-16"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-16">16</a></span><span>    ├── grammar.json
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-17"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-17">17</a></span><span>    ├── node-types.json
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-18"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-18">18</a></span><span>    ├── parser.c
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-19"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-19">19</a></span><span>    └── tree_sitter
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-20"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-20">20</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-21"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-21">21</a></span><span>11 directories, 31 files
+</span></span></code></pre></div><p>In this <code>highlights.scm</code> you will write all the queries for highlighting.</p>
+<p>To query you use the following syntax.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>(<span style="color:#89b4fa">node-type</span> <span style="color:#f5e0dc">optional_name:</span> (<span style="color:#89b4fa">subquery-to-match</span>) <span style="color:#f5e0dc">@tag</span>)
+</span></span></code></pre></div><p>For example, to match a integer with the tag <code>number</code>. You can write</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic">;; In &#39;queries/highlights.scm&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>(<span style="color:#89b4fa">integer</span>) <span style="color:#f5e0dc">@number</span>
+</span></span></code></pre></div><p>This will match all <code>integer</code> rules within your tree-sitter grammar to match with the <code>@number</code> tag.</p>
+<p>But what are tags ?</p>
+<hr>
+<h2 id="tree-sitter-tags">Tree-sitter tags</h2>
+<p>These tags are either user-defined or pre-defined keywords used to mark the query.
+These can be later used for any operation on the matching elements.</p>
+<p>Or in this case, predefined syntax targets defined by <code>Neovim</code> and most editors.</p>
+<blockquote>
+<p>There are multiple tags predefined by <code>Neovim</code>, I haven&rsquo;t found a place where all the tags are defined. These tags are taken from existing langauge queries like <code>Go</code>.</p>
+</blockquote>
+<hr>
+<p>These queries can also contain multiple matching targets. For example these are the keywords tagged.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic">;; In &#39;queries/highlights.scm&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>[
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3">3</a></span><span> <span style="color:#a6e3a1">&#34;let&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4">4</a></span><span> <span style="color:#a6e3a1">&#34;while&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5">5</a></span><span> <span style="color:#a6e3a1">&#34;fn&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-6"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-6">6</a></span><span> <span style="color:#a6e3a1">&#34;cond&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-7"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-7">7</a></span><span> <span style="color:#a6e3a1">&#34;lambda&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-8"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-8">8</a></span><span> ] <span style="color:#f5e0dc">@keyword</span>
+</span></span></code></pre></div><p>For matching other simple targets, like <code>booleans</code> and <code>strings</code>. Here&rsquo;s how you can do that.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic">;; In &#39;queries/highlights.scm&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>(<span style="color:#89b4fa">boolean</span>) <span style="color:#f5e0dc">@constant</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3">3</a></span><span>(<span style="color:#89b4fa">integer</span>) <span style="color:#f5e0dc">@number</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4">4</a></span><span>(<span style="color:#89b4fa">string</span>) <span style="color:#f5e0dc">@string</span>
+</span></span></code></pre></div><p>For variables, <code>Neovim</code> provides 3 targets.</p>
+<ul>
+<li><code>@type</code> for type declarations</li>
+<li><code>@function</code> for function names</li>
+<li><code>@property</code> for classes etc.</li>
+</ul>
+<p>For example, for matching the name of a function in a <code>function call</code>.
+We need to use a subquery to match the <code>fname</code> inside a <code>fcall</code>.
+We optionally provide a name to the query.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic">;; In &#39;queries/highlights.scm&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>(<span style="color:#89b4fa">fcall</span> <span style="color:#f5e0dc">name:</span> (<span style="color:#89b4fa">fname</span>) <span style="color:#f5e0dc">@function</span>)
+</span></span></code></pre></div><p>The <code>fname</code> rule inside the <code>fcall</code> rule is matched and tagged with <code>@function.</code></p>
+<p>Accordingly all the other keywords are matched with appropriate tags.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1"> 1</a></span><span><span style="color:#6c7086;font-style:italic">;; In &#39;queries/highlights.scm&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2"> 2</a></span><span>(<span style="color:#89b4fa">fcall</span> <span style="color:#f5e0dc">name:</span> (<span style="color:#89b4fa">fname</span>) <span style="color:#f5e0dc">@function</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3"> 3</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4"> 4</a></span><span>(<span style="color:#89b4fa">fdec</span> <span style="color:#f5e0dc">name:</span> (<span style="color:#89b4fa">identifier</span>) <span style="color:#f5e0dc">@function</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5"> 5</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-6"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-6"> 6</a></span><span>(<span style="color:#cba6f7">lambda </span><span style="color:#f5e0dc">argument:</span> (<span style="color:#89b4fa">identifier</span>) <span style="color:#f5e0dc">@type</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-7"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-7"> 7</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-8"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-8"> 8</a></span><span>(<span style="color:#89b4fa">fdec</span> <span style="color:#f5e0dc">argument:</span> (<span style="color:#89b4fa">identifier</span>) <span style="color:#f5e0dc">@type</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-9"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-9"> 9</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-10"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-10">10</a></span><span>(<span style="color:#cba6f7">let </span><span style="color:#f5e0dc">name:</span> (<span style="color:#89b4fa">identifier</span>) <span style="color:#f5e0dc">@property</span>)
+</span></span></code></pre></div><p>Other targets like <code>punctuation</code> and comments also need to be matched.
+Here is the code for matching them.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1"> 1</a></span><span><span style="color:#6c7086;font-style:italic">;; In &#39;queries/highlights.scm&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2"> 2</a></span><span>(<span style="color:#89b4fa">comments</span>) <span style="color:#f5e0dc">@comment</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3"> 3</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4"> 4</a></span><span>(<span style="color:#89b4fa">operator</span>) <span style="color:#f5e0dc">@operator</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5"> 5</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-6"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-6"> 6</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-7"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-7"> 7</a></span><span><span style="color:#a6e3a1">&#34;)&#34;</span> <span style="color:#f5e0dc">@punctuation</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-8"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-8"> 8</a></span><span><span style="color:#a6e3a1">&#34;(&#34;</span> <span style="color:#f5e0dc">@punctuation</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-9"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-9"> 9</a></span><span><span style="color:#a6e3a1">&#34;{&#34;</span> <span style="color:#f5e0dc">@punctuation</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-10"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-10">10</a></span><span><span style="color:#a6e3a1">&#34;}&#34;</span> <span style="color:#f5e0dc">@punctuation</span>
+</span></span></code></pre></div><p>It&rsquo;s all the queries you can write for a small language like <code>hotshot</code>. Here&rsquo;s the <code>highlights.scm</code> file in it&rsquo;s entirety.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1"> 1</a></span><span><span style="color:#6c7086;font-style:italic">;; `queries/highlights.scm`.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2"> 2</a></span><span>(<span style="color:#89b4fa">fcall</span> <span style="color:#f5e0dc">name:</span> (<span style="color:#89b4fa">fname</span>) <span style="color:#f5e0dc">@function</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3"> 3</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4"> 4</a></span><span>(<span style="color:#89b4fa">fdec</span> <span style="color:#f5e0dc">name:</span> (<span style="color:#89b4fa">identifier</span>) <span style="color:#f5e0dc">@function</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5"> 5</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-6"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-6"> 6</a></span><span>(<span style="color:#cba6f7">lambda </span><span style="color:#f5e0dc">argument:</span> (<span style="color:#89b4fa">identifier</span>) <span style="color:#f5e0dc">@type</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-7"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-7"> 7</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-8"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-8"> 8</a></span><span>(<span style="color:#89b4fa">fdec</span> <span style="color:#f5e0dc">argument:</span> (<span style="color:#89b4fa">identifier</span>) <span style="color:#f5e0dc">@type</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-9"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-9"> 9</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-10"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-10">10</a></span><span>(<span style="color:#cba6f7">let </span><span style="color:#f5e0dc">name:</span> (<span style="color:#89b4fa">identifier</span>) <span style="color:#f5e0dc">@property</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-11"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-11">11</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-12"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-12">12</a></span><span>(<span style="color:#89b4fa">boolean</span>) <span style="color:#f5e0dc">@constant</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-13"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-13">13</a></span><span>(<span style="color:#89b4fa">integer</span>) <span style="color:#f5e0dc">@number</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-14"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-14">14</a></span><span>(<span style="color:#89b4fa">string</span>) <span style="color:#f5e0dc">@string</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-15"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-15">15</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-16"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-16">16</a></span><span>[
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-17"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-17">17</a></span><span> <span style="color:#a6e3a1">&#34;let&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-18"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-18">18</a></span><span> <span style="color:#a6e3a1">&#34;while&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-19"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-19">19</a></span><span> <span style="color:#a6e3a1">&#34;fn&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-20"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-20">20</a></span><span> <span style="color:#a6e3a1">&#34;cond&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-21"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-21">21</a></span><span> <span style="color:#a6e3a1">&#34;lambda&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-22"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-22">22</a></span><span> ] <span style="color:#f5e0dc">@keyword</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-23"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-23">23</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-24"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-24">24</a></span><span>(<span style="color:#89b4fa">comments</span>) <span style="color:#f5e0dc">@comment</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-25"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-25">25</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-26"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-26">26</a></span><span>(<span style="color:#89b4fa">operator</span>) <span style="color:#f5e0dc">@operator</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-27"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-27">27</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-28"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-28">28</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-29"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-29">29</a></span><span><span style="color:#a6e3a1">&#34;)&#34;</span> <span style="color:#f5e0dc">@punctuation</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-30"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-30">30</a></span><span><span style="color:#a6e3a1">&#34;(&#34;</span> <span style="color:#f5e0dc">@punctuation</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-31"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-31">31</a></span><span><span style="color:#a6e3a1">&#34;{&#34;</span> <span style="color:#f5e0dc">@punctuation</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-32"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-32">32</a></span><span><span style="color:#a6e3a1">&#34;}&#34;</span> <span style="color:#f5e0dc">@punctuation</span>
+</span></span></code></pre></div><p>Now&rsquo;s the time to embed these into <code>Neovim</code>.</p>
+<h2 id="integration-with-neovim">Integration with neovim</h2>
+<p><code>Neovim</code> doesn&rsquo;t support installing queries when you install the <code>tree-sitter</code> grammar (Atleast for local installation).
+You need to manually <code>symlink</code> the queries directory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic"># ln -s ~/.config/nvim/queries/hotshot ~/code/other-projects/tree-sitter-hotshot/queries</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>$ ln -s ~/.config/nvim/queries/hotshot &lt;your-queries-directory&gt;
+</span></span></code></pre></div><blockquote>
+<p>You need to make the <code>~/.config/nvim/queries</code> directory if it doesn&rsquo;t exist already.</p>
+</blockquote>
+<p>Now the syntax highlighting should work.</p>
+<h2 id="tips-and-tricks">tips and tricks</h2>
+<ul>
+<li>
+<p>You can use <code>tree-sitter highlight</code> to test and highlight code while writing the queries.</p>
+<p>It requires the <code>tree-sitter</code> config to be initialized, but if are developing for a complex language, it is useful.</p>
+</li>
+<li>
+<p>Develop the queries incrementally, start with the simple rules and then move to the bigger ones.</p>
+<p>Once you know your editor understands the queries, you can be confident about complex queries.</p>
+</li>
+</ul>
+<h2 id="help">help</h2>
+<p>The documentation for <code>tree-sitter</code> is spotty and hard to understand. Here are some references where you might find further help.</p>
+<ul>
+<li>
+<p>In <code>neovim</code>  the <code>:help treesitter-query</code> provides with the highlight groups to target (The <code>@comment</code> , <code>@property</code> tags)</p>
+</li>
+<li>
+<p>The official documentation by <code>tree-sitter</code>, available <a href="https://tree-sitter.github.io/tree-sitter/syntax-highlighting">here</a></p>
+</li>
+<li>
+<p>The official tree-sitter grammar for <a href="https://github.com/tree-sitter/tree-sitter-go"><code>Go</code></a>, <a href="https://github.com/tree-sitter/tree-sitter-rust"><code>Rust</code></a> and <a href="https://github.com/tree-sitter/py-tree-sitter"><code>Python</code></a>.
+These are a little hard to understand but might provide insights into real-world applications.</p>
+</li>
+</ul>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>Made with ♥  using Hugo.</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>
