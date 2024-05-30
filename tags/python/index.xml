@@ -10,16 +10,16 @@
     <atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python Project Starter</title>
-      <link>/posts/python-project-starter/</link>
+      <link>/posts/python-starter-guide/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>/posts/python-project-starter/</guid>
-      <description>I recently dived back into Python and got to build a fully featured Python application. Here&amp;rsquo;s how maybe you can setup a sick Python Project setup.</description>
+      <guid>/posts/python-starter-guide/</guid>
+      <description>A simple (probably old, cause Python) guide for setting up a project.</description>
     </item>
     <item>
       <title>Rough Guide to Matplotlib</title>
-      <link>/posts/dirty-guide-on-matplotlib/</link>
+      <link>/posts/rough-guide-on-matplotlib/</link>
       <pubDate>Mon, 17 May 2021 00:00:00 +0530</pubDate>
-      <guid>/posts/dirty-guide-on-matplotlib/</guid>
+      <guid>/posts/rough-guide-on-matplotlib/</guid>
       <description>Do you have the need to create graphs? Visualize highly numerical data , or just look at beautifully generated graphs and get turned on!</description>
     </item>
   </channel>

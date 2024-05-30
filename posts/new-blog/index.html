@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <title>
+New Blog Design | pspiagicw
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Hugo 0.123.8">
+
+
+<link rel="canonical" href="//192.168.1.51:1313/posts/new-blog/" >
+<link href="/sass/main.min.580ea0f431d735692e843e1b12975baa38435b3b65dfad2765db4af8ba89642f.css" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/f250909d17.js" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a href="//192.168.1.51:1313/">
+                <span class="terminal">pspiagicw@falconite $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu">
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="//192.168.1.51:1313/" title="" >
+                        ~/home</a>
+                </li>
+                
+                <li>
+                    <a href="//192.168.1.51:1313/posts" title="" >
+                        ~/writing</a>
+                </li>
+                
+                <li>
+                    <a href="//192.168.1.51:1313/about" title="" >
+                        ~/about</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1>New Blog Design</h1>
+    
+    <section class="postMetadata">
+        <dl>
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="2024-05-30">May 30, 2024</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>2 minutes</dd>
+            
+        </dl>
+    </section>
+    
+    <div>
+        <p>You must be reading this post on the new redesigned blog theme.</p>
+<p>For the ones that can guess, this blog runs on <code>Hugo</code>.
+My reasons to choose <code>Hugo</code> were simple, it was written in <code>Go</code>.
+Atleast that&rsquo;s what I tell people.</p>
+<p>The theme I am using is called <a href="https://themes.gohugo.io/themes/hugo-theme-nightfall/"><code>nightfall</code></a>.</p>
+<p>The theme is very simple with a almost empty homepage and a <code>linux-shell</code> like interface for the <code>header</code>.
+This is what I wanted for most part in my blog.</p>
+<p>But the default colorscheme, font and the presentation elements of the theme was not to my liking.</p>
+<p>By default it uses a <code>Sans-Serif</code> font, like <code>OpenSans</code>. I hate sans-serif font, especially for nerdy things.</p>
+<p>Let me rant systematically</p>
+<h2 id="colorscheme">Colorscheme</h2>
+<ul>
+<li>
+<p>New</p>
+</li>
+<li>
+<p>Old</p>
+</li>
+</ul>
+<p>The colorscheme I wanted was a very dark almost black theme, with flat/matte colors.
+They don&rsquo;t pop, but provide enough constrast for HTML elements to differencitate themselves.</p>
+<p>I would say the best tool to use is <code>ChatGPT</code>, I only provided a few dark colors and it completed the rest of the colorscheme for me.</p>
+<blockquote>
+<p>I was using the <code>ChatGPT-3.5</code> model that is freely available.</p>
+</blockquote>
+<p>I don&rsquo;t know how, but it has a innate sense of colors within it&rsquo;s text-only model.</p>
+<p>Here&rsquo;s the pallete I am using for this website</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1"> 1</a></span><span><span style="color:#f5e0dc">$white</span><span style="color:#89dceb;font-weight:bold">:</span> <span style="color:#fab387">#FAFAFA</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2"> 2</a></span><span><span style="color:#f5e0dc">$black</span><span style="color:#89dceb;font-weight:bold">:</span> <span style="color:#fab387">#2f2f2f</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3"> 3</a></span><span><span style="color:#f5e0dc">$blue</span><span style="color:#89dceb;font-weight:bold">:</span> <span style="color:#fab387">#659DBD</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4"> 4</a></span><span><span style="color:#f5e0dc">$red</span><span style="color:#89dceb;font-weight:bold">:</span> <span style="color:#fab387">#BD5A5A</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5"> 5</a></span><span><span style="color:#f5e0dc">$green</span><span style="color:#89dceb;font-weight:bold">:</span> <span style="color:#fab387">#77A88D</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-6"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-6"> 6</a></span><span><span style="color:#f5e0dc">$charcoal</span><span style="color:#89dceb;font-weight:bold">:</span> <span style="color:#fab387">#1a1a1a</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-7"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-7"> 7</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-8"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-8"> 8</a></span><span><span style="color:#f5e0dc">$backgroundDarker</span><span style="color:#89dceb;font-weight:bold">:</span> <span style="color:#fab387">#1C1C1C</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-9"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-9"> 9</a></span><span><span style="color:#f5e0dc">$backgroundDark</span><span style="color:#89dceb;font-weight:bold">:</span> <span style="color:#fab387">#0F0F0F</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-10"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-10">10</a></span><span><span style="color:#f5e0dc">$backgroundCode</span><span style="color:#89dceb;font-weight:bold">:</span> <span style="color:#fab387">#000000</span>;
+</span></span></code></pre></div><h2 id="fonts">Fonts</h2>
+<p>I only like <code>Monospace</code> fonts, especially for reading purposes.
+I have becomed accustomed to it.
+I will change it wherever possible.</p>
+<p>In the same ferver, I moved to these 3 fonts for this blog</p>
+<ul>
+<li>Fira Mono (for Headings and Title)</li>
+<li>Iosevka (for Code Samples and <code>these types of inline code</code>)</li>
+<li>Ubuntu Mono (for normal text, like the one you are reading!)</li>
+</ul>
+<p>It makes the blog much more readable and so much more nerdy.
+I don&rsquo;t care if you don&rsquo;t like it.</p>
+<h2 id="elements">Elements</h2>
+<p>For some reason, most elements of the blog were invisible.</p>
+<p>Like <code>blockquotes</code>.</p>
+<blockquote>
+<p>I mean these kind of text.</p>
+</blockquote>
+<p>Earlier they were not at all contrasted, you would think that&rsquo;s a mistake.
+But now they are clearly bordered with full visibility to the text written inside them.</p>
+<p>The code blocks were also replaced with <code>Line Number</code> and other useful stuff.</p>
+<h2 id="homepage">HomePage</h2>
+<ul>
+<li>
+<p>New</p>
+</li>
+<li>
+<p>Old</p>
+</li>
+</ul>
+<p>I didn&rsquo;t change much of the homepage, other than the font, and adding icons.</p>
+<p>Most of the aesthetic changed because of the colorscheme</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Overrall I am very happy with the CSS work I have achieved over the weekend.
+Most times I am far from artistic, I even wrote a blog post about it!</p>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>Made with ♥  using Hugo.</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>

@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/</loc>
+    <lastmod>2024-05-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2024-05-30T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/categories/</loc>
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
   </url><url>
@@ -14,25 +20,19 @@
     <loc>/tags/emacs/</loc>
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/</loc>
-    <lastmod>2024-03-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/tags/linux/</loc>
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/neovim/</loc>
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2024-03-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/tags/</loc>
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/treesitting/</loc>
+    <loc>/posts/tree-sitter/</loc>
     <lastmod>2024-03-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/go-needs-a-package-manager/</loc>
+    <loc>/posts/go-needs-package-manager/</loc>
     <lastmod>2024-03-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/golang/</loc>
@@ -50,7 +50,7 @@
     <loc>/categories/python/</loc>
     <lastmod>2022-12-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/python-project-starter/</loc>
+    <loc>/posts/python-starter-guide/</loc>
     <lastmod>2022-12-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/microservices-and-editors/</loc>
@@ -59,7 +59,7 @@
     <loc>/categories/emacs/</loc>
     <lastmod>2021-09-21T00:00:00+05:30</lastmod>
   </url><url>
-    <loc>/posts/the-wierdest-mode-in-emacs-mpd-mode/</loc>
+    <loc>/posts/mpc/</loc>
     <lastmod>2021-09-21T00:00:00+05:30</lastmod>
   </url><url>
     <loc>/tags/machinelearning/</loc>
@@ -71,7 +71,7 @@
     <loc>/categories/programming/</loc>
     <lastmod>2021-05-17T00:00:00+05:30</lastmod>
   </url><url>
-    <loc>/posts/dirty-guide-on-matplotlib/</loc>
+    <loc>/posts/rough-guide-on-matplotlib/</loc>
     <lastmod>2021-05-17T00:00:00+05:30</lastmod>
   </url><url>
     <loc>/about/</loc>

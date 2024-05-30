@@ -10,44 +10,44 @@
     <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tree-Sitting</title>
-      <link>/posts/treesitting/</link>
+      <link>/posts/tree-sitter/</link>
       <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>/posts/treesitting/</guid>
-      <description>This is a post on how I wrote a tree-sitter parser for a new language. and how I integrated it into my editor.</description>
+      <guid>/posts/tree-sitter/</guid>
+      <description>Do you lust for tree-sitter in your own custom language ? Let me satisfy your cravings.</description>
     </item>
     <item>
       <title>Go needs a &#39;real&#39; package manager</title>
-      <link>/posts/go-needs-a-package-manager/</link>
+      <link>/posts/go-needs-package-manager/</link>
       <pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>/posts/go-needs-a-package-manager/</guid>
+      <guid>/posts/go-needs-package-manager/</guid>
       <description>Remember &amp;rsquo;leftpad&amp;rsquo; ? Apparently Go doesn&amp;rsquo;t.</description>
     </item>
     <item>
       <title>Python Project Starter</title>
-      <link>/posts/python-project-starter/</link>
+      <link>/posts/python-starter-guide/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>/posts/python-project-starter/</guid>
-      <description>I recently dived back into Python and got to build a fully featured Python application. Here&amp;rsquo;s how maybe you can setup a sick Python Project setup.</description>
+      <guid>/posts/python-starter-guide/</guid>
+      <description>A simple (probably old, cause Python) guide for setting up a project.</description>
     </item>
     <item>
       <title>Microservices and Editors</title>
       <link>/posts/microservices-and-editors/</link>
       <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
       <guid>/posts/microservices-and-editors/</guid>
-      <description>When&amp;rsquo;s the last time you looked into how your editor works ? I don&amp;rsquo;t mean when you downloaded a few extensions and glanced a few themes.</description>
+      <description>Understand why your editor is so fast (most times)</description>
     </item>
     <item>
       <title>The Weirdest mode in Emacs</title>
-      <link>/posts/the-wierdest-mode-in-emacs-mpd-mode/</link>
+      <link>/posts/mpc/</link>
       <pubDate>Tue, 21 Sep 2021 00:00:00 +0530</pubDate>
-      <guid>/posts/the-wierdest-mode-in-emacs-mpd-mode/</guid>
-      <description>Note: The user has switched to neovim since writing this post. The information may not be up-to-date</description>
+      <guid>/posts/mpc/</guid>
+      <description>Want to control MPD from Emacs ? Why not, you use Emacs for everything anyway.</description>
     </item>
     <item>
       <title>Rough Guide to Matplotlib</title>
-      <link>/posts/dirty-guide-on-matplotlib/</link>
+      <link>/posts/rough-guide-on-matplotlib/</link>
       <pubDate>Mon, 17 May 2021 00:00:00 +0530</pubDate>
-      <guid>/posts/dirty-guide-on-matplotlib/</guid>
+      <guid>/posts/rough-guide-on-matplotlib/</guid>
       <description>Do you have the need to create graphs? Visualize highly numerical data , or just look at beautifully generated graphs and get turned on!</description>
     </item>
   </channel>

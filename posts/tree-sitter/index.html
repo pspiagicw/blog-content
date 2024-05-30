@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
     <title>
 Tree-Sitting | pspiagicw
 </title>
@@ -12,8 +12,8 @@ Tree-Sitting | pspiagicw
 <meta name="generator" content="Hugo 0.123.8">
 
 
-<link rel="canonical" href="//192.168.1.51:1313/posts/treesitting/" >
-<link href="/sass/main.min.5f162818c3833b5d0273383bad50b145ab13d1beb6d5c7ba6065890affd6a6bd.css" rel="stylesheet">
+<link rel="canonical" href="/posts/tree-sitter/" >
+<link href="/sass/main.min.580ea0f431d735692e843e1b12975baa38435b3b65dfad2765db4af8ba89642f.css" rel="stylesheet">
 
 <script src="https://kit.fontawesome.com/f250909d17.js" crossorigin="anonymous"></script>
 
@@ -27,7 +27,7 @@ Tree-Sitting | pspiagicw
         <header class="headerWrapper">
     <div class="header">
         <div>
-            <a href="//192.168.1.51:1313/">
+            <a href="/">
                 <span class="terminal">pspiagicw@falconite $</span>
             </a>
         </div>
@@ -37,17 +37,17 @@ Tree-Sitting | pspiagicw
             <ul>
                 
                 <li>
-                    <a href="//192.168.1.51:1313/" title="" >
+                    <a href="/" title="" >
                         ~/home</a>
                 </li>
                 
                 <li>
-                    <a href="//192.168.1.51:1313/posts" title="" >
+                    <a href="/posts" title="" >
                         ~/writing</a>
                 </li>
                 
                 <li>
-                    <a href="//192.168.1.51:1313/about" title="" >
+                    <a href="/about" title="" >
                         ~/about</a>
                 </li>
                 
@@ -94,12 +94,12 @@ This language is a LISP-like scripting language.</p>
 </span></span></code></pre></div><p>Notice how the syntax highlighting is pretty shit.</p>
 <p>By the end of this post, you will be able to fix just that (Atleast in your editor)</p>
 <hr>
-<p>Before:
-<img src="/images/tree-sitting/before.png" alt="Before"></p>
-<p>After:
-<img src="/images/tree-sitting/after.png" alt="After"></p>
+<p>Before:</p>
+<p><img src="before.png" alt="Before"></p>
+<p>After:</p>
+<p><img src="after.png" alt="After"></p>
 <hr>
-<h2 id="tree-sitter"><code>Tree-Sitter</code></h2>
+<h2 id="tree-sitter">Tree-Sitter</h2>
 <p>I like using <code>neovim</code>.</p>
 <p>Editors like <code>neovim</code> including <code>emacs</code>, <code>kakoune</code> and <code>helix</code> use the <code>tree-sitter</code> library for syntax highlighting.</p>
 <p>Developed for the <code>atom</code> editor, it&rsquo;s a incremental parsing library that can perform syntax highlighting, indentation and other wizardry.</p>
@@ -107,7 +107,7 @@ This language is a LISP-like scripting language.</p>
 <p>My previous post on the <a href="https://falconite.xyz/posts/microservices-and-editors/">composition of editors</a> has more info on it&rsquo;s working.</p>
 <p>See the <a href="https://tree-sitter.github.io/tree-sitter">tree-sitter official docs</a> for complete information.</p>
 <hr>
-<h2 id="dependencies"><code>Dependencies</code></h2>
+<h2 id="dependencies">Dependencies</h2>
 <p>You will need</p>
 <ul>
 <li>
@@ -119,7 +119,7 @@ This language is a LISP-like scripting language.</p>
 </ul>
 <p>You can also install <code>tree-sitter-cli</code> from <code>npm</code>, and you will have to configure your PATH to include the <code>node_modules/.bin</code> directory.</p>
 <hr>
-<h2 id="getting-started"><code>Getting Started</code></h2>
+<h2 id="getting-started">Getting Started</h2>
 <ul>
 <li>Create a directory called <code>tree-sitter-hotshot</code>.</li>
 <li>Inside this directory, create a <code>grammar.js</code> file.</li>
@@ -135,7 +135,7 @@ This language is a LISP-like scripting language.</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-8"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-8">8</a></span><span>    }
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-9"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-9">9</a></span><span>});
 </span></span></code></pre></div><hr>
-<h2 id="grammar"><code>Grammar</code></h2>
+<h2 id="grammar">Grammar</h2>
 <p>Tree-Sitter grammar works on <code>rules</code>. A <code>rule</code> in essence is</p>
 <ul>
 <li>
@@ -153,7 +153,7 @@ It will start parsing the source code according to this rule.</p>
 <p><em>It helps if you are familiar with <code>BNF</code> forms or used <code>ANTLR</code>/<code>bison</code>/<code>yacc</code></em></p>
 <p>The grammar currently has a single rule, that matches the text <code>hello</code>.</p>
 <p>Generate the parser by running the following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>tree-sitter generate
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>tree-sitter generate
 </span></span></code></pre></div><p>It should create a shitload of files in the current directory.</p>
 <p>You never have to directly interact with these files, tree-sitter manages these for us.</p>
 <p>Although these are important files for the future. If you are using <code>git</code> add them into the repository.</p>
@@ -162,26 +162,9 @@ It will start parsing the source code according to this rule.</p>
 <li><code>grammar.js</code></li>
 <li><code>package.json</code></li>
 </ul>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 <hr>
-<h2 id="writing-the-grammar"><code>Writing the Grammar</code></h2>
-<h3 id="expression"><code>expression</code></h3>
+<h2 id="writing-the-grammar">Writing the Grammar</h2>
+<h3 id="expression">expression</h3>
 <p>In my language, most statement returns some value.</p>
 <p>It can have a single <code>string</code>, <code>boolean</code> or <code>integer</code> as a statement.</p>
 <p>Example</p>
@@ -248,23 +231,24 @@ It will start parsing the source code according to this rule.</p>
 </li>
 </ul>
 <p>The <code>integer</code> rule uses <code>Regular Expressions</code>, to declare one or more consecutive digits to be a <code>integer</code>.</p>
+<blockquote>
 <p><em>If you want to implement rules in <code>tree-sitter</code>, you need to be comfortable with <code>regex</code></em></p>
-<hr>
-<h2 id="a-friendly-tip"><code>A friendly tip!</code></h2>
+</blockquote>
+<blockquote>
 <p>There are multiple times in this post, you will be required to use <code>tree-sitter</code> to test and parse source code.</p>
 <p>It goes without saying, you need to run <code>tree-sitter generate</code> each time, before doing any testing or parsing.</p>
-<hr>
-<h3 id="testing-the-parser"><code>testing the parser</code></h3>
+</blockquote>
+<h3 id="testing-the-parser">testing the parser</h3>
 <p>We can write a few <code>hotshot</code> programs to test if the parsing is accurate.</p>
 <p>Save this under <code>programs/integer.ht</code>. We will use the <code>programs</code> directory to store example files.</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#fab387">420</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3">3</a></span><span><span style="color:#fab387">69</span>
-</span></span></code></pre></div><hr>
+</span></span></code></pre></div><blockquote>
 <p><em>Tree-Sitter has a full fledged testing framework embedded into it.
 But it&rsquo;s not recommended for beginners. It is also quite not useful for such a small grammar.</em></p>
 <p><em>You can refer it <a href="https://tree-sitter.github.io/tree-sitter/creating-parsers#command-test">here</a> later</em></p>
-<hr>
+</blockquote>
 <p>We will be using a simple command to test the parser.</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic"># Parses all `hotshot` programs and prints only the stats</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>tree-sitter parse --quiet --stat programs/*.ht
@@ -281,7 +265,7 @@ But it&rsquo;s not recommended for beginners. It is also quite not useful for su
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-7"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-7">7</a></span><span>      (<span style="color:#89b4fa">integer</span> [<span style="color:#fab387">2</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">0</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">2</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">2</span>]))))
 </span></span></code></pre></div><p>You can clearly see the AST built for our language here.</p>
 <hr>
-<h3 id="comments"><code>comments</code></h3>
+<h3 id="comments">comments</h3>
 <p>We can add support for comments by adding the following rule to the grammar:</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1"> 1</a></span><span>module.exports <span style="color:#89dceb;font-weight:bold">=</span> grammar({
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2"> 2</a></span><span>    name<span style="color:#89dceb;font-weight:bold">:</span> <span style="color:#a6e3a1">&#39;hotshot&#39;</span>,
@@ -308,8 +292,12 @@ But it&rsquo;s not recommended for beginners. It is also quite not useful for su
 <p><code>hotshot</code> supports <code>inline</code> comments. Meaning <code>(+ 1 ;some comments here; 2)</code> is a valid statement.</p>
 <p>That&rsquo;s the reason I have added <code>comments</code> to the <code>extras</code> field.</p>
 <p>If your language integrates comments into the syntax tree, you can add it to the <code>statement</code> rule.</p>
-<hr>
-<h3 id="more-expressions"><code>more expressions</code></h3>
+<blockquote>
+<p><em>If comments are not part of the AST, why are they parsed?</em></p>
+<p>They are parsed because they are still important to the source code.
+Features like syntax highlighting and indentation still apply to comments.</p>
+</blockquote>
+<h3 id="more-expressions">more expressions</h3>
 <p>Now that we have added support for <code>integers</code> and <code>comments</code>, we can add support for <code>strings</code> and <code>booleans</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1"> 1</a></span><span><span style="color:#6c7086;font-style:italic">// ...
 </span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2"> 2</a></span><span><span style="color:#6c7086;font-style:italic"></span>      expression<span style="color:#89dceb;font-weight:bold">:</span> $ =&gt; choice(
@@ -354,11 +342,7 @@ But it&rsquo;s not recommended for beginners. It is also quite not useful for su
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-14"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-14">14</a></span><span>   (<span style="color:#89b4fa">expression</span> [<span style="color:#fab387">8</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">0</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">8</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">5</span>]
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-15"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-15">15</a></span><span>     (<span style="color:#89b4fa">boolean</span> [<span style="color:#fab387">8</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">0</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">8</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">5</span>]))))
 </span></span></code></pre></div><hr>
-<p><em>If comments are not part of the AST, why are they parsed?</em></p>
-<p>They are parsed because they are still important to the source code.
-Features like syntax highlighting and indentation still apply to comments.</p>
-<hr>
-<h3 id="hello-world"><code>hello-world</code></h3>
+<h3 id="hello-world">hello-world</h3>
 <p>Let&rsquo;s add support for the most overrated program of all time, the <code>hello-world</code> program.</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic">; programs/hello-world.ht ;</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>(<span style="color:#f5e0dc">echo</span> <span style="color:#a6e3a1">&#34;Hello, World!&#34;</span>)
@@ -425,12 +409,12 @@ Features like syntax highlighting and indentation still apply to comments.</p>
 <p>Identifiers are defined as a sequence of one or more alphabets.</p>
 </li>
 </ul>
-<hr>
+<blockquote>
 <p><code>returnables</code> are different from <code>statements</code>.</p>
 <p><code>hotshot</code> has few statements that aren&rsquo;t supposed to evaluate into values, like function declaration etc.</p>
 <p>They will be syntax highlighted differently thus separating them from other expressions is required.</p>
 <p>I have made separate rule for those that evaluate to values.</p>
-<hr>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1"> 1</a></span><span>(<span style="color:#89b4fa">source_file</span> [<span style="color:#fab387">0</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">0</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">3</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">0</span>]
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2"> 2</a></span><span>  (<span style="color:#89b4fa">comment</span> [<span style="color:#fab387">0</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">0</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">0</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">27</span>])
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3"> 3</a></span><span>  (<span style="color:#89b4fa">comment</span> [<span style="color:#fab387">1</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">0</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">1</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">25</span>])
@@ -507,17 +491,19 @@ Features like syntax highlighting and indentation still apply to comments.</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-7"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-7">7</a></span><span>      <span style="color:#f5e0dc">argument:</span> (<span style="color:#89b4fa">expression</span> [<span style="color:#fab387">2</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">6</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">2</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">20</span>]
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-8"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-8">8</a></span><span>        (<span style="color:#89dceb">string </span>[<span style="color:#fab387">2</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">6</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">2</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">20</span>])))))
 </span></span></code></pre></div><hr>
-<h3 id="let"><code>let</code></h3>
+<h3 id="let">let</h3>
 <p>Let&rsquo;s examine the <code>let</code> statement</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>(<span style="color:#cba6f7">let</span> <span style="color:#f5e0dc">a</span> <span style="color:#fab387">1</span>)
 </span></span></code></pre></div><p>This statement can be parsed as <code>(function-call arg1 arg2)</code>, which is kinda wrong syntax wise.</p>
 <p>It&rsquo;s a separate statement altogether, not a function-call. I want it selected and syntax-highlighted as a separate statement.</p>
 <p>But if I put <code>fcall</code> as a expression, there would no way of differenciating the <code>let</code> statement from any other <code>function call</code></p>
 <p>It&rsquo;s the reason I added the <code>returnable</code> , <code>sparen</code> and <code>paren</code> rules.</p>
+<blockquote>
 <p>There is way to prevent adding them.</p>
 <p><em>It&rsquo;s to use precedence in defining rules.
 It tells tree-sitter to give precedence to one kind of statements over another.</em></p>
 <p>But <code>precedence</code> is a big topic and a overkill for such a simple language.</p>
+</blockquote>
 <p>For the <code>let</code> statements, add the following code.</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1"> 1</a></span><span><span style="color:#6c7086;font-style:italic">// ..
 </span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2"> 2</a></span><span><span style="color:#6c7086;font-style:italic"></span>    _paren<span style="color:#89dceb;font-weight:bold">:</span> $ =&gt; choice(
@@ -550,12 +536,12 @@ It tells tree-sitter to give precedence to one kind of statements over another.<
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-11"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-11">11</a></span><span>      <span style="color:#f5e0dc">argument:</span> (<span style="color:#89b4fa">expression</span> [<span style="color:#fab387">4</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">6</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">4</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">7</span>]
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-12"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-12">12</a></span><span>        (<span style="color:#89b4fa">identifier</span> [<span style="color:#fab387">4</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">6</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">4</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">7</span>])))))
 </span></span></code></pre></div><hr>
-<h3 id="control-flow"><code>control-flow</code></h3>
+<h3 id="control-flow">control-flow</h3>
 <p>Now that we have added support for <code>let</code> statements, we can add support for <code>control-flow</code> statements.</p>
 <p>This includes <code>if</code>, <code>cond</code> and <code>while</code> statements.</p>
 <p>We can skim over these quite quickly as they are easy to implement and test.</p>
 <hr>
-<h3 id="if"><code>if</code></h3>
+<h3 id="if">if</h3>
 <p><code>if</code> statements in <code>hotshot</code> have a simple syntax.
 Both the <code>body</code> and <code>else</code> have a single statement.</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>(<span style="color:#cba6f7">if </span><span style="color:#f5e0dc">condition</span> <span style="color:#f5e0dc">body-statement</span> <span style="color:#f5e0dc">else-statement</span>)
@@ -633,7 +619,7 @@ Cause a <code>if</code> statement might not have a <code>else</code> part.</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-22"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-22">22</a></span><span>        (<span style="color:#89b4fa">expression</span> [<span style="color:#fab387">6</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">19</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">6</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">25</span>]
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-23"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-23">23</a></span><span>          (<span style="color:#89dceb">string </span>[<span style="color:#fab387">6</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">19</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">6</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">25</span>]))))))
 </span></span></code></pre></div><hr>
-<h3 id="while"><code>while</code></h3>
+<h3 id="while">while</h3>
 <p><code>while</code> statements in <code>hotshot</code> have the following syntax.</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>(<span style="color:#89b4fa">while</span> <span style="color:#f5e0dc">condition</span> <span style="color:#f5e0dc">body</span>)
 </span></span></code></pre></div><ul>
@@ -704,14 +690,14 @@ Cause a <code>if</code> statement might not have a <code>else</code> part.</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-25"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-25">25</a></span><span>          <span style="color:#f5e0dc">argument:</span> (<span style="color:#89b4fa">expression</span> [<span style="color:#fab387">8</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">2</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">8</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">13</span>]
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-26"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-26">26</a></span><span>            (<span style="color:#89dceb">string </span>[<span style="color:#fab387">8</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">2</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">8</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">13</span>])))))))
 </span></span></code></pre></div><hr>
-<h3 id="cond"><code>cond</code></h3>
+<h3 id="cond">cond</h3>
 <p><code>cond</code> is a tricky statement.</p>
 <p>It&rsquo;s syntax is this</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>(<span style="color:#89b4fa">cond</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>    (<span style="color:#89b4fa">condition1</span> <span style="color:#f5e0dc">body1</span>)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3">3</a></span><span>    (<span style="color:#89b4fa">condition2</span> <span style="color:#f5e0dc">body2</span>))
 </span></span></code></pre></div><ul>
-<li>The <code>condition</code> is a <code>returnable</code> expression. The body is a single <code>statement</code></li>
+<li>The <code>condition</code> is a <code>returnable</code> expression. The <code>body</code> is a single <code>statement</code></li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic">; programs/cond.ht ;</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>
@@ -776,7 +762,7 @@ Cause a <code>if</code> statement might not have a <code>else</code> part.</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-25"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-25">25</a></span><span>          (<span style="color:#89b4fa">expression</span> [<span style="color:#fab387">6</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">10</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">6</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">27</span>]
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-26"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-26">26</a></span><span>            (<span style="color:#89dceb">string </span>[<span style="color:#fab387">6</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">10</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">6</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">27</span>])))))))
 </span></span></code></pre></div><hr>
-<h3 id="functions"><code>functions</code></h3>
+<h3 id="functions">functions</h3>
 <p>Now that we have added support for <code>control-flow</code> statements, we can add support for function declaration.</p>
 <p>This also includes <code>lambda</code> functions.</p>
 <p>Functions have the following syntax</p>
@@ -841,7 +827,7 @@ Cause a <code>if</code> statement might not have a <code>else</code> part.</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-21"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-21">21</a></span><span>          <span style="color:#f5e0dc">argument:</span> (<span style="color:#89b4fa">expression</span> [<span style="color:#fab387">4</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">20</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">4</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">21</span>]
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-22"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-22">22</a></span><span>            (<span style="color:#89b4fa">identifier</span> [<span style="color:#fab387">4</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">20</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">4</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">21</span>])))))))
 </span></span></code></pre></div><hr>
-<h3 id="lambda"><code>lambda</code></h3>
+<h3 id="lambda">lambda</h3>
 <p><code>lambda</code> is a name-less function.</p>
 <p>It&rsquo;s main function is to pass it around as a argument, to be used by other functions like <code>map</code>, <code>filter</code> etc.</p>
 <p>You can bind it to a variable, meaning it is a <code>returnable</code>.</p>
@@ -908,13 +894,13 @@ Cause a <code>if</code> statement might not have a <code>else</code> part.</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-17"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-17">17</a></span><span>          <span style="color:#f5e0dc">argument:</span> (<span style="color:#89b4fa">expression</span> [<span style="color:#fab387">5</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">21</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">5</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">22</span>]
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-18"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-18">18</a></span><span>            (<span style="color:#89b4fa">identifier</span> [<span style="color:#fab387">5</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">21</span>] <span style="color:#f5e0dc">-</span> [<span style="color:#fab387">5</span><span style="color:#89dceb;font-weight:bold">,</span> <span style="color:#fab387">22</span>])))))))
 </span></span></code></pre></div><hr>
-<h2 id="testing"><code>testing</code></h2>
+<h2 id="testing">testing</h2>
 <p>Ensure all the programs we wrote earlier are still parsing correctly.</p>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>tree-sitter parse --quiet --stat programs/*.ht
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ tree-sitter parse --quiet --stat programs/*.ht
 </span></span></code></pre></div><p>It should give the following output.</p>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>Total parses: 9; successful parses: 9; failed parses: 0; success percentage: 100.00%; average speed: 6000 bytes/ms
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ Total parses: 9; successful parses: 9; failed parses: 0; success percentage: 100.00%; average speed: <span style="color:#fab387">6000</span> bytes/ms
 </span></span></code></pre></div><hr>
-<h2 id="end"><code>end</code></h2>
+<h2 id="end">end</h2>
 <p>We have successfully implemented the parsing of a LISP-like language.</p>
 <p>Parsing is useless if don&rsquo;t do anything with the AST.</p>
 <p>We can implement</p>
@@ -932,8 +918,9 @@ Cause a <code>if</code> statement might not have a <code>else</code> part.</p>
 <p>Having syntax highlighting to your custom language is useful while developing a <code>interpreter</code> or a <code>compiler</code> for it.</p>
 </li>
 </ul>
+<blockquote>
 <p>BTW <a href="https://github.com/pspiagicw/tree-sitter-hotshot">Hotshot&rsquo;s Tree-Sitter</a> can be referenced for the entire code.</p>
-<hr>
+</blockquote>
 <h2 id="next-post"><code>next-post</code></h2>
 <p>We will learn how to implement <code>syntax-highlighting</code> along with tree-sitter <code>queries</code></p>
 <p>We will also see how <code>nvim-treesitter</code> works with the <code>tree-sitter</code> library.</p>
