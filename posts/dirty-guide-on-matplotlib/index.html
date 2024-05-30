@@ -13,7 +13,7 @@ Rough Guide to Matplotlib | pspiagicw
 
 
 <link rel="canonical" href="/posts/dirty-guide-on-matplotlib/" >
-<link href="/sass/main.min.f0b3244e1d7193fac3e2fa902a3455075e6817ff3f9bde694ff911883cb7d01d.css" rel="stylesheet">
+<link href="/sass/main.min.5f162818c3833b5d0273383bad50b145ab13d1beb6d5c7ba6065890affd6a6bd.css" rel="stylesheet">
 
 <script src="https://kit.fontawesome.com/f250909d17.js" crossorigin="anonymous"></script>
 
@@ -28,7 +28,7 @@ Rough Guide to Matplotlib | pspiagicw
     <div class="header">
         <div>
             <a href="/">
-                <span class="terminal">pspiagicw@falconite ~ $</span>
+                <span class="terminal">pspiagicw@falconite $</span>
             </a>
         </div>
         <input class="side-menu" type="checkbox" id="side-menu">
@@ -80,17 +80,19 @@ Rough Guide to Matplotlib | pspiagicw
     
     <div>
         <p>Do you have the need to create graphs? Visualize highly numerical data , or just look at beautifully generated graphs and get turned on!</p>
-<p><strong>Well like any other situation Python has you covered!</strong></p>
+<blockquote>
+<p>Well like any other situation Python has you covered!</p>
+</blockquote>
 <p>Matplotlib provides easy and efficient way of creating graphs.It is a python module , so you need <code>pip</code> to install it. <code>Pip</code> is python&rsquo;s modular structure allowing , us to share our code with others.</p>
 <p><code>pip</code> can install any module from PyPI , python&rsquo;s official module location , or as cool people call it repository.
 To install use <code>pip install</code> command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>pip install --user matplotlib
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ pip install --user matplotlib
 </span></span></code></pre></div><p>Now that matplotlib is installed. We have to import it in Python , <strong>importing</strong> in python is easy!</p>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>import matplotlib
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ import matplotlib
 </span></span></code></pre></div><p>But we don&rsquo;t need to import matplotlib itself, <code>matplotlib.pyplot</code> provides most of the features we need. The rest of matplotlib can be used to create extremely complex graphs.
 Pyplot is inspired from <em>MATLAB</em> . If you have used <em>MATLAB</em> before , it has the same API.
 This guide only focuses on PyPlot API , for a more object-based approach , see matplotlib&rsquo;s documentation, or refer to this guide.</p>
-<h3 id="important-funcs">Important Funcs</h3>
+<h2 id="important-funcs">Important Funcs</h2>
 <p>PyPlot provides some useful functions mainly <code>pyplot.show()</code> and <code>pyplot.savefig()</code>.
 These provide functionality to show and save the graphs we create!.
 Without these method, you can plot your graphs , but can never see them.</p>
@@ -108,7 +110,7 @@ For example</p>
 Most people alias <code>pyplot</code> to <code>plt</code> in Python. So if you see <code>plt</code> anywhere, don&rsquo;t worry it is the same thing.
 To alias pyplot to plt</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#94e2d5">import</span> <span style="color:#fab387">matplotlib.pyplot</span> <span style="color:#cba6f7">as</span> <span style="color:#fab387">plt</span>
-</span></span></code></pre></div><h3 id="basic-plotting">Basic Plotting</h3>
+</span></span></code></pre></div><h2 id="basic-plotting">Basic Plotting</h2>
 <p>For plotting basic lines , <code>plt.plot()</code> function is enough, it takes list of x and y coordinates as arguments.</p>
 <p>Plotting points (3,2),(5,4) and (4,1).Keep in mind plot method connects all the dots with a line.</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>x_coordinates <span style="color:#89dceb;font-weight:bold">=</span> [ <span style="color:#fab387">3</span> , <span style="color:#fab387">5</span> , <span style="color:#fab387">4</span>]
@@ -123,7 +125,7 @@ To alias pyplot to plt</p>
         </figcaption>
 </figure>
 
-<h3 id="simple-scattering">Simple Scattering</h3>
+<h2 id="simple-scattering">Simple Scattering</h2>
 <p>Scatter plot simply shows all the coordinates/points without connecting them with a line.</p>
 <p>Scatter plot are very useful in showing actual points , thus analyzing them separately.
 It also takes list of x and y coordinates as arguments.</p>
@@ -140,7 +142,7 @@ It also takes list of x and y coordinates as arguments.</p>
         </figcaption>
 </figure>
 
-<h3 id="histograms">Histograms</h3>
+<h2 id="histograms">Histograms</h2>
 <p>Histograms in matplotlib is as easy as just giving the list of values you want a histogram of.Matplotlib automatically calculates the rest!</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>plt<span style="color:#89dceb;font-weight:bold">.</span>hist([ random<span style="color:#89dceb;font-weight:bold">.</span>randint(<span style="color:#fab387">5</span>,<span style="color:#fab387">100</span>) <span style="color:#cba6f7">for</span> _ <span style="color:#89dceb;font-weight:bold">in</span> <span style="color:#89dceb">range</span>(<span style="color:#fab387">300</span>) ])
 </span></span></code></pre></div><figure><img src="/images/simple-hist-matplotlib.png"
@@ -150,7 +152,7 @@ It also takes list of x and y coordinates as arguments.</p>
 </figure>
 
 <p>It provides a good view of how the data is distributed.</p>
-<h3 id="showing-images-dot">Showing Images.</h3>
+<h2 id="showing-images-dot">Showing Images.</h2>
 <p>One more useful function , I use most of the time is <code>plt.imshow()</code> . When working with a lot of images data ,  this can display your image with extra info/special filters etc.</p>
 <p>It takes a 2-D matrix or 3-D matrix as input , depending on channels of image , that is how many colors are recorded , in data.A single color is represented as intensity value.
 It can vary from 1 to 255.
@@ -166,7 +168,7 @@ If having all 3 colors , image is a normal color image.The colors are simply RGB
         </figcaption>
 </figure>
 
-<h3 id="aesthetics-dot">Aesthetics.</h3>
+<h2 id="aesthetics-dot">Aesthetics.</h2>
 <p>Graphs being almost 100% visual feedback , you might need to add some bling to it.
 Matplotlib supports everything a graph might have.Make sure to read it&rsquo;s documentation later.</p>
 <p>To add label to any plot/scatter , just add label argument.Label make it easy to spot , when multiple plots are present.
@@ -217,9 +219,9 @@ This text can be customized (Color , Border etc).</p>
 <p>You can also customize matplotlib itself, using <code>styles</code>.
 By default matplotlib&rsquo;s style is boring,I am using dracula style for my graphs.You can change everything from fonts to background. More info is present in matplotlib&rsquo;s documentation.
 If you want to learn to use matplotlib , you have to read it.</p>
-<p>Anyway , here&rsquo;s how to use a default dark-style(included in matplotlib).</p>
+<p>Here&rsquo;s how to use a default dark-style(included in matplotlib).</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>plt<span style="color:#89dceb;font-weight:bold">.</span>style<span style="color:#89dceb;font-weight:bold">.</span>use(<span style="color:#a6e3a1">&#39;dark_background&#39;</span>)
-</span></span></code></pre></div><h3 id="bon-voyage">Bon Voyage!</h3>
+</span></span></code></pre></div><h2 id="bon-voyage">Bon Voyage!</h2>
 <p>That&rsquo;s basic matplotlib for you.You should definately look at their documentation.
 You can also look at the Object API for matplotlib. It is a little advanced , but is highly configurable.</p>
 <p>With the required info, you can make basic graphs , with text. I personally use matplotlib to create graphs for my Physics classes and of-course Data Visualization in ML.</p>
