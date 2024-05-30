@@ -6,8 +6,15 @@
     <description>Recent content in Posts on falconite</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 May 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New Blog Design</title>
+      <link>/posts/new-blog/</link>
+      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/new-blog/</guid>
+      <description>A revealing review of my own blog</description>
+    </item>
     <item>
       <title>Tree-Sitting</title>
       <link>/posts/tree-sitter/</link>
