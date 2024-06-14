@@ -78,5 +78,12 @@
       <guid>/about/</guid>
       <description>Hi, I am pspiagicw (call me psp).&#xA;For communicating with me here is my public PGP key.</description>
     </item>
+    <item>
+      <title></title>
+      <link>/hotshot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/hotshot/</guid>
+      <description>This documentation is available on GitHub or my website&#xA;Contents Hotshot status getting started testing development contribution Concepts expressions variables flow-control functions builtin Data Structures tables list hash Import import stdlib Internals hotshot This is hotshot.</description>
+    </item>
   </channel>
 </rss>

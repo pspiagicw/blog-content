@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <title>
+ | pspiagicw
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Hugo 0.123.8">
+
+
+<link rel="canonical" href="//192.168.1.51:1313/hotshot/readme/" >
+<link href="/sass/main.min.c3129d41c79338570e08a69e5d085d95f9b5d50b2008e432747e4664ae76d258.css" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/f250909d17.js" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a href="//192.168.1.51:1313/">
+                <span class="terminal">pspiagicw@falconite $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu">
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="//192.168.1.51:1313/" title="" >
+                        ~/home</a>
+                </li>
+                
+                <li>
+                    <a href="//192.168.1.51:1313/posts" title="" >
+                        ~/writing</a>
+                </li>
+                
+                <li>
+                    <a href="//192.168.1.51:1313/about" title="" >
+                        ~/about</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1></h1>
+    
+    <section class="postMetadata">
+        <dl>
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="0001-01-01">Jan 1, 1</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>2 minutes</dd>
+            
+        </dl>
+    </section>
+    
+    <div>
+        <p>This documentation is available on <a href="https://github.com/pspiagicw/hotshot">GitHub</a> or <a href="https://falconite.xyz/hotshot">my website</a></p>
+<h1 id="contents">Contents</h1>
+<ul>
+<li><a href="#hotshot">Hotshot</a>
+<ul>
+<li><a href="#status">status</a></li>
+<li><a href="#getting-started">getting started</a></li>
+<li><a href="#testing">testing</a></li>
+<li><a href="#development">development</a></li>
+<li><a href="#contribution">contribution</a></li>
+</ul>
+</li>
+<li><a href="#concepts">Concepts</a>
+<ul>
+<li><a href="#expressions">expressions</a></li>
+<li><a href="#variables">variables</a></li>
+<li><a href="#flow-control">flow-control</a></li>
+<li><a href="#functions">functions</a></li>
+<li><a href="#builtin">builtin</a></li>
+</ul>
+</li>
+<li><a href="#data-stucture">Data Structures</a>
+<ul>
+<li><a href="#table">tables</a></li>
+<li><a href="#list">list</a></li>
+<li><a href="#hash">hash</a></li>
+</ul>
+</li>
+<li><a href="#import">Import</a>
+<ul>
+<li><a href="#import">import</a></li>
+<li><a href="#stdlib">stdlib</a></li>
+</ul>
+</li>
+<li><a href="">Internals</a></li>
+</ul>
+<h1 id="hotshot">hotshot</h1>
+<p>This is <code>hotshot</code>. A LISP based language written in Golang.</p>
+<p>It&rsquo;s a dynamically typed language with hint of languages like Lua.
+It&rsquo;s built in Go.</p>
+<p>It looks like this</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>(<span style="color:#f5e0dc">fn</span> <span style="color:#f5e0dc">fizzbuzz</span> (<span style="color:#f5e0dc">n</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>  (<span style="color:#89dceb">cond</span> ((<span style="color:#89dceb">and</span> (<span style="color:#89b4fa">=</span> (<span style="color:#89b4fa">mod</span> <span style="color:#f5e0dc">n</span> <span style="color:#fab387">3</span>) <span style="color:#fab387">0</span>) (<span style="color:#89b4fa">=</span> (<span style="color:#89b4fa">mod</span> <span style="color:#f5e0dc">n</span> <span style="color:#fab387">5</span>) <span style="color:#fab387">0</span>)) <span style="color:#a6e3a1">&#34;FizzBuzz&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3">3</a></span><span>        ((<span style="color:#89b4fa">=</span> (<span style="color:#89b4fa">mod</span> <span style="color:#f5e0dc">n</span> <span style="color:#fab387">3</span>) <span style="color:#fab387">0</span>) <span style="color:#a6e3a1">&#34;Fizz&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4">4</a></span><span>        ((<span style="color:#89b4fa">=</span> (<span style="color:#89b4fa">mod</span> <span style="color:#f5e0dc">n</span> <span style="color:#fab387">5</span>) <span style="color:#fab387">0</span>) <span style="color:#a6e3a1">&#34;Buzz&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5">5</a></span><span>        (<span style="color:#f5e0dc">true</span> <span style="color:#f5e0dc">n</span>)))
+</span></span></code></pre></div><h1 id="status">Status</h1>
+<p>This language is practically newborn and has a lot of it&rsquo;s features unplanned.
+But it&rsquo;s big enough to be considered releasing to the public.</p>
+<p>It does have around 40 builtin functions implemented.
+But no you can&rsquo;t use this language in production.</p>
+<p>Its designed for reading and experimenting, and maybe small scripts.</p>
+<h1 id="getting-started">Getting Started</h1>
+<p>The only way to use the langauge is to manually compile and run it on the CLI.</p>
+<p>It has a builtin REPL, along with ability to run scripts.</p>
+<h2 id="compilation">Compilation</h2>
+<ol>
+<li>Clone the project</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>git clone https://github.com/pspiagicw/hotshot
+</span></span></code></pre></div><ol start="2">
+<li>Compile using <code>Go</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#89dceb">cd</span> hotshot
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>go build .
+</span></span></code></pre></div><h2 id="running">Running</h2>
+<p>Run the binary without any arguments to open the REPL.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>./hotshot
+</span></span></code></pre></div><p>To run a script pass it as a argument.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>./hotshot &lt;script-to-run&gt;
+</span></span></code></pre></div><h2 id="testing">Testing</h2>
+<p>You can run</p>
+<ol>
+<li>To run all the tests.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>go <span style="color:#89dceb">test</span> ./...
+</span></span></code></pre></div><ol start="2">
+<li>To run specific tests (<code>lexer</code> in this case).</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>go <span style="color:#89dceb">test</span> ./lexer
+</span></span></code></pre></div><ol start="3">
+<li>use the <code>-v</code> flag to provide information about all the subtests being run.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>go <span style="color:#89dceb">test</span> -v ./...
+</span></span></code></pre></div><h1 id="contribution">Contribution</h1>
+<p>This project is under heavy development and contributions are highly appreciated.
+A lot of decisions are already taken regarding the language, but a lot of them are still remaining.
+Hope you can join us in making them.</p>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>Made with ♥  using Hugo.</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>
