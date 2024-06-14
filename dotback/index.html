@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>
+ | pspiagicw
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Hugo 0.123.8">
+
+
+<link rel="canonical" href="/dotback/" >
+<link href="/sass/main.min.97161df4f83944626e7535501fb36fe59f5d08310a4792f92c5b4d05740c863c.css" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/f250909d17.js" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a href="/">
+                <span class="terminal">pspiagicw@falconite $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu">
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="/" title="" >
+                        ~/home</a>
+                </li>
+                
+                <li>
+                    <a href="/posts" title="" >
+                        ~/writing</a>
+                </li>
+                
+                <li>
+                    <a href="/about" title="" >
+                        ~/about</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1></h1>
+    
+    <section class="postMetadata">
+        <dl>
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="0001-01-01">Jan 1, 1</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>3 minutes</dd>
+            
+        </dl>
+    </section>
+    
+    <div>
+        <h1 id="dotback"><code>dotback</code></h1>
+<p><code>dotback</code> backs up your dotfiles.</p>
+<p>Instead of making confusing and outright dangerous symlinks, this simply backs up your dotfiles using a <code>toml</code> file.</p>
+<!-- raw HTML omitted -->
+<ul>
+<li><a href="#dotback"><code>dotback</code></a>
+<ul>
+<li><a href="#features">Features</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#usage">Usage</a>
+<ul>
+<li><a href="#backup">Backup</a></li>
+</ul>
+</li>
+<li><a href="#unix-philosophy">Unix philosophy</a></li>
+<li><a href="#it-does-not">It does not</a></li>
+<li><a href="#it-does">It does</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#contribution">Contribution</a></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="features">Features</h2>
+<ul>
+<li>A single binary, no runtime environments or large dependencies.</li>
+<li>Designed with Unix philosophy, it only does backup.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>You can download the binary from the <a href="https://github.com/pspiagicw/dotback/releases">releases</a> section.</p>
+<p>If you have the <code>Go</code> compiler installed, you can also install it using the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>go install github.com/pspiagicw/gox@latest
+</span></span></code></pre></div><p>If you use <a href="https://github.com/pspiagicw/gox"><code>gox</code></a> to manage your go binaries, you can also install it using the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>gox install github.com/pspiagicw/gox@latest
+</span></span></code></pre></div><h2 id="configuration">Configuration</h2>
+<p>It tries to find the default configuration in <code>$XDG_CONFIG_HOME/dotback/backup.toml</code>.</p>
+<ul>
+<li>It should have a <code>storeDir</code> variable defined.</li>
+<li>It can optionally provide a <code>after-backup</code> list of commands to run.</li>
+</ul>
+<blockquote>
+<p>You can also run <code>dotback --example-config</code> to get an example config file.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1"> 1</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2"> 2</a></span><span><span style="color:#6c7086;font-style:italic"># A folder to store the backup, it will be created if it does not exist.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3"> 3</a></span><span>storeDir = <span style="color:#a6e3a1">&#34;~/.local/state/backup&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4"> 4</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5"> 5</a></span><span><span style="color:#6c7086;font-style:italic"># All commands should be defined by the user.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-6"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-6"> 6</a></span><span><span style="color:#6c7086;font-style:italic"># It can be left empty or omitted.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-7"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-7"> 7</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-8"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-8"> 8</a></span><span>after-backup = [
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-9"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-9"> 9</a></span><span>    <span style="color:#a6e3a1">&#34;scp -r ...&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-10"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-10">10</a></span><span>    <span style="color:#a6e3a1">&#34;rsync ....&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-11"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-11">11</a></span><span>    <span style="color:#a6e3a1">&#34;tar -xvzf ...&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-12"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-12">12</a></span><span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-13"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-13">13</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-14"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-14">14</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-15"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-15">15</a></span><span><span style="color:#6c7086;font-style:italic"># A backup rule has [backup.&lt;rule-name&gt;] format.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-16"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-16">16</a></span><span><span style="color:#6c7086;font-style:italic"># It should contain a `location` parameter.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-17"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-17">17</a></span><span>[backup.nvim]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-18"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-18">18</a></span><span>location = <span style="color:#a6e3a1">&#34;~/.config/nvim&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-19"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-19">19</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-20"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-20">20</a></span><span>[backup.neomutt]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-21"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-21">21</a></span><span>location = <span style="color:#a6e3a1">&#34;~/.config/neomutt&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-22"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-22">22</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-23"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-23">23</a></span><span><span style="color:#6c7086;font-style:italic"># Backup location can also be a file.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-24"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-24">24</a></span><span>[backup.gitconfig]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-25"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-25">25</a></span><span>location = <span style="color:#a6e3a1">&#34;~/.gitconfig&#34;</span>
+</span></span></code></pre></div><blockquote>
+<p>You can run <code>dotback config</code> to get info about the current config.</p>
+</blockquote>
+<p><img src="./gifs/config.gif" alt="config"></p>
+<h2 id="usage">Usage</h2>
+<h3 id="flags"><code>flags</code></h3>
+<p><code>dotback</code> provides the following flags.</p>
+<ul>
+<li><code>--config</code> : Path to a alternate config file. (Should be absolute path)</li>
+<li><code>--example-config</code> : Print an example config file.</li>
+</ul>
+<h3 id="backup"><code>backup</code></h3>
+<p>Simply run <code>dotback backup</code> to backup configured in the config file.</p>
+<ul>
+<li>It would backup everything to <code>storeDir</code>.</li>
+<li>This ignores <code>.git</code> and <code>.gitignore</code> files within any backup folder.</li>
+</ul>
+<p><img src="./gifs/backup.gif" alt="demo"></p>
+<ul>
+<li>You can also specify selective rules for backup.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic"># Only backup neovim config</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>dotback backup nvim
+</span></span></code></pre></div><ul>
+<li>You can also provide <code>--ignore</code> flag to ignore selective rules for backup.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic"># Backup everything except neovim and neomutt</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>dotback backup --ignore nvim neomutt
+</span></span></code></pre></div><p><img src="./gifs/ignore.gif" alt="ignore"></p>
+<ul>
+<li>You can provide <code>--dry-run</code> flag to not actually backup anything.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic"># Don&#39;t actually backup anything</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>dotback backup --dry-run
+</span></span></code></pre></div><h2 id="unix-philosophy">Unix philosophy</h2>
+<p><code>dotback</code> is not a full fledged backup solution for your dotfiles. It is a simple tool with a simple use.</p>
+<h2 id="it-does-not"><code>it does not</code></h2>
+<ul>
+<li>Provide incremental backup (Use rsync or borg)</li>
+<li>Provide automatic backup (Use systemd or cron for that)</li>
+<li>Sync with different machines (Use syncthing for that)</li>
+<li>Install your dotfiles on a new machine.</li>
+</ul>
+<h2 id="it-does"><code>it does</code></h2>
+<ul>
+<li>Copy the file or folder into the <code>storeDir</code>.</li>
+<li>Provide ability to run scripts before and after running the backups.</li>
+</ul>
+<p>You can see the backup.yml example file(in the repo) for more reference.</p>
+<h2 id="contribution">Contribution</h2>
+<p>It is a very highly opinated tool. It does not fit in everybody&rsquo;s workflow.
+But if it does, please do share your support and love.</p>
+<p>Anybody is welcome to contribute and extend this project.</p>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>Made with ♥  using Hugo.</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>
