@@ -6,8 +6,15 @@
     <description>Recent content in Posts on falconite</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Age of the NPU</title>
+      <link>/posts/age-of-the-npu/</link>
+      <pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/age-of-the-npu/</guid>
+      <description>CPU, GPU and now the NPU!</description>
+    </item>
     <item>
       <title>stupid github stuff</title>
       <link>/posts/updates-to-github/</link>
