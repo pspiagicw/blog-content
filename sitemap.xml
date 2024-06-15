@@ -2,10 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/posts/age-of-the-npu/</loc>
-    <lastmod>2024-06-14T00:00:00+00:00</lastmod>
+    <loc>/dotback/</loc>
+    <lastmod>2024-06-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/</loc>
+    <lastmod>2024-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/groom/</loc>
+    <lastmod>2024-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/hotshot/</loc>
+    <lastmod>2024-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/qemantra/</loc>
+    <lastmod>2024-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/sinister/</loc>
+    <lastmod>2024-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/age-of-the-npu/</loc>
     <lastmod>2024-06-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
@@ -88,15 +103,5 @@
   </url><url>
     <loc>/about/</loc>
     <lastmod>2016-08-24T17:51:42+00:00</lastmod>
-  </url><url>
-    <loc>/dotback/</loc>
-  </url><url>
-    <loc>/groom/</loc>
-  </url><url>
-    <loc>/hotshot/</loc>
-  </url><url>
-    <loc>/qemantra/</loc>
-  </url><url>
-    <loc>/sinister/</loc>
   </url>
 </urlset>

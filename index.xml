@@ -6,8 +6,43 @@
     <description>Recent content on falconite</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dotback</title>
+      <link>/dotback/</link>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>/dotback/</guid>
+      <description>dotback dotback backs up your dotfiles.&#xA;Instead of making confusing and outright dangerous symlinks, this simply backs up your dotfiles using a toml file.</description>
+    </item>
+    <item>
+      <title>groom</title>
+      <link>/groom/</link>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>/groom/</guid>
+      <description>🧹 groom groom is a yet another os-agnostic task runner.&#xA;groom Features Functionality Config file List Executing tasks Neovim Plugin Contributing ✨ Features 🔥 Task runner with a simple yet powerful toml syntax 🧹 Single static binary without dependencies 💻 Neovim plugin for integration with neovim.</description>
+    </item>
+    <item>
+      <title>hotshot</title>
+      <link>/hotshot/</link>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>/hotshot/</guid>
+      <description>This documentation is available on GitHub or my website&#xA;Contents Hotshot status getting started testing development contribution Concepts expressions variables flow-control functions builtin Data Structures tables list hash Import import stdlib Internals hotshot This is hotshot.</description>
+    </item>
+    <item>
+      <title>qemantra</title>
+      <link>/qemantra/</link>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>/qemantra/</guid>
+      <description>qemantra qemantra is a tool to manage QEMU/KVM virtual machines.&#xA;qemantra Features Dependencies Installation Config Usage create run list rename edit UEFI Similar Projects Contribution Features Use QEMU without a graphical interface.</description>
+    </item>
+    <item>
+      <title>sinister</title>
+      <link>/sinister/</link>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>/sinister/</guid>
+      <description>sinister sinister is a tool to sync and download videos from Youtube.&#xA;config To start using sinister, you need to create a config file at /home/&amp;lt;username&amp;gt;/.</description>
+    </item>
     <item>
       <title>Age of the NPU</title>
       <link>/posts/age-of-the-npu/</link>
@@ -84,41 +119,6 @@
       <pubDate>Wed, 24 Aug 2016 17:51:42 +0000</pubDate>
       <guid>/about/</guid>
       <description>Hi, I am pspiagicw (call me psp).&#xA;For communicating with me here is my public PGP key.</description>
-    </item>
-    <item>
-      <title></title>
-      <link>/dotback/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/dotback/</guid>
-      <description>dotback dotback backs up your dotfiles.&#xA;Instead of making confusing and outright dangerous symlinks, this simply backs up your dotfiles using a toml file.</description>
-    </item>
-    <item>
-      <title></title>
-      <link>/groom/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/groom/</guid>
-      <description>🧹 groom groom is a yet another os-agnostic task runner.&#xA;groom Features Functionality Config file List Executing tasks Neovim Plugin Contributing ✨ Features 🔥 Task runner with a simple yet powerful toml syntax 🧹 Single static binary without dependencies 💻 Neovim plugin for integration with neovim.</description>
-    </item>
-    <item>
-      <title></title>
-      <link>/hotshot/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/hotshot/</guid>
-      <description>This documentation is available on GitHub or my website&#xA;Contents Hotshot status getting started testing development contribution Concepts expressions variables flow-control functions builtin Data Structures tables list hash Import import stdlib Internals hotshot This is hotshot.</description>
-    </item>
-    <item>
-      <title></title>
-      <link>/qemantra/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/qemantra/</guid>
-      <description>qemantra qemantra is a tool to manage QEMU/KVM virtual machines.&#xA;qemantra Features Dependencies Installation Config Usage create run list rename edit UEFI Similar Projects Contribution Features Use QEMU without a graphical interface.</description>
-    </item>
-    <item>
-      <title></title>
-      <link>/sinister/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/sinister/</guid>
-      <description>sinister sinister is a tool to sync and download videos from Youtube.&#xA;config To start using sinister, you need to create a config file at /home/&amp;lt;username&amp;gt;/.</description>
     </item>
   </channel>
 </rss>
