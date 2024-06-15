@@ -81,7 +81,6 @@ dotback | pspiagicw
     <div>
         <h1 id="dotback"><code>dotback</code></h1>
 <p><code>dotback</code> backs up your dotfiles.</p>
-<p>Instead of making confusing and outright dangerous symlinks, this simply backs up your dotfiles using a <code>toml</code> file.</p>
 <!-- raw HTML omitted -->
 <ul>
 <li><a href="#dotback"><code>dotback</code></a>
@@ -102,18 +101,19 @@ dotback | pspiagicw
 </li>
 </ul>
 <!-- raw HTML omitted -->
-<h2 id="features">Features</h2>
+<h1 id="features">Features</h1>
 <ul>
 <li>A single binary, no runtime environments or large dependencies.</li>
 <li>Designed with Unix philosophy, it only does backup.</li>
+<li>No symlinks, only simple copying.</li>
 </ul>
-<h2 id="installation">Installation</h2>
+<h1 id="installation">Installation</h1>
 <p>You can download the binary from the <a href="https://github.com/pspiagicw/dotback/releases">releases</a> section.</p>
 <p>If you have the <code>Go</code> compiler installed, you can also install it using the following command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>go install github.com/pspiagicw/gox@latest
-</span></span></code></pre></div><p>If you use <a href="https://github.com/pspiagicw/gox"><code>gox</code></a> to manage your go binaries, you can also install it using the following command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>gox install github.com/pspiagicw/gox@latest
-</span></span></code></pre></div><h2 id="configuration">Configuration</h2>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>go install github.com/pspiagicw/gox@latest
+</span></span></code></pre></div><p>If you use <a href="https://github.com/pspiagicw/gox"><code>gox</code></a> to manage your go binaries, you can run.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>gox install github.com/pspiagicw/gox@latest
+</span></span></code></pre></div><h1 id="configuration">Configuration</h1>
 <p>It tries to find the default configuration in <code>$XDG_CONFIG_HOME/dotback/backup.toml</code>.</p>
 <ul>
 <li>It should have a <code>storeDir</code> variable defined.</li>
@@ -151,8 +151,8 @@ dotback | pspiagicw
 <p>You can run <code>dotback config</code> to get info about the current config.</p>
 </blockquote>
 <p><img src="/dotback/gifs/config.gif" alt="config"></p>
-<h2 id="usage">Usage</h2>
-<h3 id="flags"><code>flags</code></h3>
+<h1 id="usage">Usage</h1>
+<h2 id="flags"><code>flags</code></h2>
 <p><code>dotback</code> provides the following flags.</p>
 <ul>
 <li><code>--config</code> : Path to a alternate config file. (Should be absolute path)</li>
@@ -168,20 +168,20 @@ dotback | pspiagicw
 <ul>
 <li>You can also specify selective rules for backup.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic"># Only backup neovim config</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>dotback backup nvim
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#6c7086;font-style:italic"># Only backup neovim config</span>
+</span></span><span style="display:flex;"><span>dotback backup nvim
 </span></span></code></pre></div><ul>
 <li>You can also provide <code>--ignore</code> flag to ignore selective rules for backup.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic"># Backup everything except neovim and neomutt</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>dotback backup --ignore nvim neomutt
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#6c7086;font-style:italic"># Backup everything except neovim and neomutt</span>
+</span></span><span style="display:flex;"><span>dotback backup --ignore nvim neomutt
 </span></span></code></pre></div><p><img src="/dotback/gifs/ignore.gif" alt="ignore"></p>
 <ul>
 <li>You can provide <code>--dry-run</code> flag to not actually backup anything.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic"># Don&#39;t actually backup anything</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>dotback backup --dry-run
-</span></span></code></pre></div><h2 id="unix-philosophy">Unix philosophy</h2>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#6c7086;font-style:italic"># Don&#39;t actually backup anything</span>
+</span></span><span style="display:flex;"><span>dotback backup --dry-run
+</span></span></code></pre></div><h1 id="unix-philosophy">Unix philosophy</h1>
 <p><code>dotback</code> is not a full fledged backup solution for your dotfiles. It is a simple tool with a simple use.</p>
 <h2 id="it-does-not"><code>it does not</code></h2>
 <ul>
@@ -196,10 +196,10 @@ dotback | pspiagicw
 <li>Provide ability to run scripts before and after running the backups.</li>
 </ul>
 <p>You can see the backup.yml example file(in the repo) for more reference.</p>
-<h2 id="contribution">Contribution</h2>
+<h1 id="contribution">Contribution</h1>
 <p>It is a very highly opinated tool. It does not fit in everybody&rsquo;s workflow.
 But if it does, please do share your support and love.</p>
-<p>Anybody is welcome to contribute and extend this project.</p>
+<p>Anybody is welcome to contribute and extend this project on <a href="https://github.com/pspiagicw/dotback">GitHub</a>.</p>
 
     </div>
 </div>

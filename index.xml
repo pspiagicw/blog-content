@@ -13,7 +13,7 @@
       <link>/dotback/</link>
       <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
       <guid>/dotback/</guid>
-      <description>dotback dotback backs up your dotfiles.&#xA;Instead of making confusing and outright dangerous symlinks, this simply backs up your dotfiles using a toml file.</description>
+      <description>dotback dotback backs up your dotfiles.&#xA;dotback Features Configuration Usage Backup Unix philosophy It does not It does Installation Contribution Features A single binary, no runtime environments or large dependencies.</description>
     </item>
     <item>
       <title>groom</title>
@@ -34,14 +34,14 @@
       <link>/qemantra/</link>
       <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
       <guid>/qemantra/</guid>
-      <description>qemantra qemantra is a tool to manage QEMU/KVM virtual machines.&#xA;qemantra Features Dependencies Installation Config Usage create run list rename edit UEFI Similar Projects Contribution Features Use QEMU without a graphical interface.</description>
+      <description>qemantra qemantra is a tool to manage QEMU/KVM virtual machines.&#xA;qemantra Features Dependencies Installation Config Usage Create Run List Rename Edit UEFI Similar Projects Contribution Features Use QEMU without a graphical interface.</description>
     </item>
     <item>
       <title>sinister</title>
       <link>/sinister/</link>
       <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
       <guid>/sinister/</guid>
-      <description>sinister sinister is a tool to sync and download videos from Youtube.&#xA;config To start using sinister, you need to create a config file at /home/&amp;lt;username&amp;gt;/.</description>
+      <description>sinister sinister is a tool to track and download videos from YouTube.&#xA;sinister features installation config usage update status download mark auto RSS Feeds Contribution Features Tracks your subscription using RSS feeds and download whatever you are interested in.</description>
     </item>
     <item>
       <title>Age of the NPU</title>

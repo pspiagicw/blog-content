@@ -91,11 +91,11 @@ qemantra | pspiagicw
 <li><a href="#config">Config</a></li>
 <li><a href="#usage">Usage</a>
 <ul>
-<li><a href="#create"><code>create</code></a></li>
-<li><a href="#run"><code>run</code></a></li>
-<li><a href="#list"><code>list</code></a></li>
-<li><a href="#rename"><code>rename</code></a></li>
-<li><a href="#edit"><code>edit</code></a></li>
+<li><a href="#create">Create</a></li>
+<li><a href="#run">Run</a></li>
+<li><a href="#list">List</a></li>
+<li><a href="#rename">Rename</a></li>
+<li><a href="#edit">Edit</a></li>
 </ul>
 </li>
 <li><a href="#uefi">UEFI</a></li>
@@ -105,16 +105,16 @@ qemantra | pspiagicw
 </li>
 </ul>
 <!-- raw HTML omitted -->
-<h2 id="features">Features</h2>
+<h1 id="features">Features</h1>
 <ul>
 <li>Use QEMU without a graphical interface.</li>
 <li>Single static binary, no dependencies.</li>
 <li>No fuss, run VM&rsquo;s with a single command.</li>
 </ul>
-<h2 id="who-is-it-for-">Who is it for ?</h2>
-<p><code>qemantra</code> is a opionated tool.</p>
+<h1 id="who-is-it-for-">Who is it for ?</h1>
 <p><code>qemantra</code> is</p>
 <ul>
+<li>A opionated tool.</li>
 <li>A simple tool for simple uses. It is for the casual virtualizer.</li>
 <li>Will probably never support highly complex features.</li>
 </ul>
@@ -124,44 +124,45 @@ qemantra | pspiagicw
 <li>A performant or efficient tool.</li>
 <li>A production/enterprise tool.</li>
 </ul>
-<h2 id="dependencies">Dependencies</h2>
+<h1 id="dependencies">Dependencies</h1>
 <ul>
 <li><code>qemu-system-*</code> binaries.</li>
 </ul>
-<p>Mostly packaged with <code>qemu-full</code> (Arch/Debian).</p>
+<p>Mostly packaged with <code>qemu-full</code> on Arch/Debian.</p>
 <ul>
 <li><code>ovmf</code> (<em>Optional</em>): for UEFI. See <a href="#uefi">here</a>.</li>
 </ul>
-<h3 id="debian">Debian</h3>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>sudo apt install qemu-system-x86 qemu-system-sparc qemu-system-ppc qemu-system-arm
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>sudo apt install qemu-full
-</span></span></code></pre></div><h3 id="arch">Arch</h3>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>sudo pacman -S qemu-system-x86 qemu-system-arm
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>sudo pacman -S qemu-full
-</span></span></code></pre></div><h2 id="installation">Installation</h2>
+<h2 id="debian">Debian</h2>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo apt install qemu-system-x86 qemu-system-sparc qemu-system-ppc qemu-system-arm
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo apt install qemu-full
+</span></span></code></pre></div><h2 id="arch">Arch</h2>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo pacman -S qemu-system-x86 qemu-system-arm
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo pacman -S qemu-full
+</span></span></code></pre></div><h1 id="installation">Installation</h1>
 <ul>
 <li>You can download a binary from the releases section on <a href="https://github.com/pspiagicw/qemantra/releases">GitHub</a>.</li>
 </ul>
 <p>If you have the <code>Go</code> compiler installed, you can install using this command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>go install github.com/pspiagicw/qemantra@latest
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>go install github.com/pspiagicw/qemantra@latest
 </span></span></code></pre></div><p>If you use <a href="https://github.com/pspiagicw/gox"><code>gox</code></a>, you can also run.</p>
-<p>If can also clone the repo and compile it manually.</p>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>git clone https://github.com/pspiagicw/qemantra
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span><span style="color:#89dceb">cd</span> qemantra
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3">3</a></span><span>go build .
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4">4</a></span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5">5</a></span><span><span style="color:#6c7086;font-style:italic"># Or</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-6"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-6">6</a></span><span>groom build
-</span></span></code></pre></div><h2 id="config">Config</h2>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>gox install github.com/pspiagicw/qemantra@latest
+</span></span></code></pre></div><p>If can also clone the repo and compile it manually.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/pspiagicw/qemantra
+</span></span><span style="display:flex;"><span><span style="color:#89dceb">cd</span> qemantra
+</span></span><span style="display:flex;"><span>go build .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6c7086;font-style:italic"># Or</span>
+</span></span><span style="display:flex;"><span>groom build
+</span></span></code></pre></div><h1 id="config">Config</h1>
 <ul>
 <li>You will need a config to get started.</li>
 <li>You can create a config at <code>/home/&lt;username&gt;/.config/qemantra/config.toml</code></li>
 <li>It should have the following content, change it accordingly</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>imageDir = <span style="color:#a6e3a1">&#34;~/.local/share/qemantra/images&#34;</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>machineDir = <span style="color:#a6e3a1">&#34;~/.local/share/qemantra/machines&#34;</span>
-</span></span></code></pre></div><h2 id="usage">Usage</h2>
-<h3 id="create"><code>create</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>imageDir = <span style="color:#a6e3a1">&#34;~/.local/share/qemantra/images&#34;</span>
+</span></span><span style="display:flex;"><span>machineDir = <span style="color:#a6e3a1">&#34;~/.local/share/qemantra/machines&#34;</span>
+</span></span></code></pre></div><h1 id="usage">Usage</h1>
+<h2 id="create"><code>create</code></h2>
 <ul>
 <li>You can create virtual machines using the <code>qemantra create</code> command.</li>
 </ul>
@@ -186,41 +187,41 @@ qemantra | pspiagicw
 <li>A disk format</li>
 <li>A disk size</li>
 </ul>
-<h3 id="run"><code>run</code></h3>
+<h2 id="run"><code>run</code></h2>
 <ul>
 <li>You can run machines using <code>qemantra run</code></li>
 <li>Running the virtual machine uses QEMU to run the machine using the given details.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>qemantra run <span style="color:#89dceb;font-weight:bold">[</span>FLAGS<span style="color:#89dceb;font-weight:bold">]</span>
 </span></span></code></pre></div><p><img src="/qemantra/gifs/run.gif" alt="run"></p>
-<h3 id="flags">Flags</h3>
-<h4 id="--boot"><code>--boot</code></h4>
+<h2 id="flags">Flags</h2>
+<h3 id="--boot"><code>--boot</code></h3>
 <p>This allows to select a different boot option.</p>
 <p>The different boot options available are</p>
 <ul>
 <li><code>iso</code> This boots the ISO.</li>
 <li><code>menu</code> This enables the menu, interactively choose the disk to boot.</li>
 </ul>
-<h4 id="--external"><code>--external</code></h4>
+<h3 id="--external"><code>--external</code></h3>
 <p>Provide a external disk to attach. This would be attached in addition to the existing disk (if present).</p>
-<h4 id="--kvm"><code>--kvm</code></h4>
+<h3 id="--kvm"><code>--kvm</code></h3>
 <p>Enable or disable KVM. By default <code>kvm</code> is enabled. To disable use <code>-kvm false</code>.</p>
 <blockquote>
 <p>Features such as SMP depend on KVM.</p>
 </blockquote>
-<h4 id="--iso"><code>--iso</code></h4>
+<h3 id="--iso"><code>--iso</code></h3>
 <p>Provide ISO disk to attach.</p>
-<h4 id="--uefi"><code>--uefi</code></h4>
+<h3 id="--uefi"><code>--uefi</code></h3>
 <p>Provide a OVMF file to use as UEFI bios.</p>
-<h3 id="list"><code>list</code></h3>
+<h2 id="list"><code>list</code></h2>
 <p>You can list machines using <code>qemantra list</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>qemantra list 
 </span></span></code></pre></div><p><img src="/qemantra/gifs/list.gif" alt="list"></p>
-<h3 id="rename"><code>rename</code></h3>
+<h2 id="rename"><code>rename</code></h2>
 <p>You can use the <code>qemantra rename</code> command to rename any previously created machine.</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>qemantra rename 
 </span></span></code></pre></div><p><img src="/qemantra/gifs/rename.gif" alt="rename"></p>
-<h3 id="edit"><code>edit</code></h3>
+<h2 id="edit"><code>edit</code></h2>
 <ul>
 <li>You can use the <code>qemantra edit</code> command to edit any previously created machine.</li>
 <li>It would show prompts to change the details of any given VM.</li>
@@ -231,20 +232,20 @@ qemantra | pspiagicw
 </blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>qemantra <span style="color:#89dceb;font-weight:bold">[</span>GLOBAL<span style="color:#89dceb;font-weight:bold">]</span> edit <span style="color:#89dceb;font-weight:bold">[</span>OPTIONS<span style="color:#89dceb;font-weight:bold">]</span>
 </span></span></code></pre></div><p><img src="/qemantra/gifs/edit.gif" alt="edit"></p>
-<h2 id="uefi">UEFI</h2>
+<h1 id="uefi">UEFI</h1>
 <ul>
 <li>UEFI support is not natively bundled with QEMU, you need to install a external package using your package manager.</li>
 <li>You will need to install <code>ovmf</code> package.</li>
 <li>When running a virtual machine, point to the appropriate (.fd) file.</li>
 <li>In most systems, this would be installed in <code>/usr/share/ovmf/OVMF.fd</code></li>
 </ul>
-<h2 id="similar-projects">Similar Projects</h2>
+<h1 id="similar-projects">Similar Projects</h1>
 <ul>
 <li><a href="libvirt.org">libvirt</a> (GUI and CLI)</li>
 <li><a href="https://docs.oracle.com/en/virtualization/virtualbox/7.0/user/vboxmanage.html#vboxmanage">VBoxManage</a> (CLI for VirtualBox).</li>
 <li><a href="https://github.com/quickemu-project/quickemu">Quickemu</a> (CLI, written in Bash)</li>
 </ul>
-<h2 id="contribution">Contribution</h2>
+<h1 id="contribution">Contribution</h1>
 <p>Star the project on <a href="https://github.com/pspiagicw/qemantra">GitHub</a> if you like it!</p>
 <p>Anyone is free to contribute to the project, either by raising a issue or opening a PR.</p>
 

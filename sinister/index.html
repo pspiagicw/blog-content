@@ -73,15 +73,48 @@ sinister | pspiagicw
             
             
                 <dt>reading time</dt>
-                <dd>2 minutes</dd>
+                <dd>3 minutes</dd>
             
         </dl>
     </section>
     
     <div>
         <h1 id="sinister"><code>sinister</code></h1>
-<p><code>sinister</code> is a tool to sync and download videos from Youtube.</p>
-<h2 id="config">config</h2>
+<p><code>sinister</code> is a tool to track and download videos from YouTube.</p>
+<ul>
+<li><a href="#sinister">sinister</a>
+<ul>
+<li><a href="#features">features</a></li>
+<li><a href="#installation">installation</a></li>
+<li><a href="#config">config</a></li>
+<li><a href="#usage">usage</a>
+<ul>
+<li><a href="#update">update</a></li>
+<li><a href="#status">status</a></li>
+<li><a href="#download">download</a></li>
+<li><a href="#mark">mark</a></li>
+<li><a href="#auto">auto</a></li>
+</ul>
+</li>
+<li><a href="#youtube-rss-feeds">RSS Feeds</a></li>
+<li><a href="#youtube-rss-feeds">Contribution</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="features">Features</h1>
+<ul>
+<li>Tracks your subscription using RSS feeds and download whatever you are interested in.</li>
+<li>Remove the web interface and watch videos in your favorite video player.</li>
+<li>No recommendations, no ads, no distractions.</li>
+<li>Treat Youtube like a news feed.</li>
+</ul>
+<h1 id="installation">Installation</h1>
+<p>You can install <code>sinister</code> by downloading a binary from the <a href="https://github.com/pspiagicw/sinister/releases">releases</a> page.</p>
+<p>Or if you have the <code>Go</code> compiler installed. Use</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>go install github.com/pspiagicw/sinister@latest
+</span></span></code></pre></div><p>If you use <a href="https://github.com/pspiagicw/gox"><code>gox</code></a> to manage binary packages, you can run</p>
+<pre tabindex="0"><code>gox install github.com/pspiagicw/sinister@latest
+</code></pre><h1 id="config">Config</h1>
 <p>To start using <code>sinister</code>, you need to create a config file at <code>/home/&lt;username&gt;/.config/sinister/config.toml</code></p>
 <ul>
 <li>You can use the <code>--config</code> argument to pass in a alternate config file location.</li>
@@ -102,20 +135,7 @@ sinister | pspiagicw
 <blockquote>
 <p>Channel URL don&rsquo;t work, only RSS feeds work.</p>
 </blockquote>
-<h2 id="features">Features</h2>
-<ul>
-<li>Tracks your subscription using RSS feeds and download whatever you are interested in.</li>
-<li>Remove the web interface and watch videos in your favorite video player.</li>
-<li>No recommendations, no ads, no distractions.</li>
-<li>Treat Youtube like a news feed.</li>
-</ul>
-<h2 id="installation">Installation</h2>
-<p>You can install <code>sinister</code> by downloading a binary from the <a href="https://github.com/pspiagicw/sinister/releases">releases</a> page.</p>
-<p>Or if you have the <code>Go</code> compiler installed. Use</p>
-<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>go install github.com/pspiagicw/sinister@latest
-</span></span></code></pre></div><p>If you use <a href="https://github.com/pspiagicw/gox"><code>gox</code></a> to manage binary packages, you can run</p>
-<pre tabindex="0"><code>gox install github.com/pspiagicw/sinister@latest
-</code></pre><h2 id="usage">Usage</h2>
+<h1 id="usage">Usage</h1>
 <h3 id="update"><code>update</code></h3>
 <ul>
 <li>If the config file is set up, you can run <code>sinister update</code> to update the database.</li>
@@ -157,16 +177,16 @@ sinister | pspiagicw
 <li>Filters include <code>--days</code></li>
 </ul>
 <p><img src="/sinister/gifs/auto-filter.gif" alt="auto-filter"></p>
-<h2 id="youtube-rss-feeds">Youtube RSS Feeds</h2>
+<h1 id="youtube-rss-feeds">Youtube RSS Feeds</h1>
 <p>There are multiple ways of getting the RSS feed of a youtube channel.</p>
 <p>One sureshot method is to view the page source (of the channel page) and search for <code>rss</code></p>
 <p>There are some other resources for this:</p>
 <ul>
 <li><a href="https://feeder.co/knowledge-base/rss-feed-creation/youtube-rss/">Feeder</a></li>
 </ul>
-<h2 id="contributing">Contributing</h2>
-<p>If you want to contribute, you can open an issue or a pull request.</p>
-<h2 id="disclaimer">Disclaimer</h2>
+<h1 id="contributing">Contributing</h1>
+<p>If you want to contribute, you can open an issue or a pull request on <a href="https://github.com/pspiagicw/sinister">GitHub</a>.</p>
+<h1 id="disclaimer">Disclaimer</h1>
 <p>Downloading videos from Youtube is against their terms of service. Use at your own risk.</p>
 
     </div>
