@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>
+kato | pspiagicw
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Hugo 0.123.8">
+
+
+<link rel="canonical" href="/kato/" >
+<link href="/sass/main.min.35ede6e07c742c06dd99b0ac94bafd5a9710b8beb7105c54219c1ecf59af90f8.css" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/f250909d17.js" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a href="/">
+                <span class="terminal">pspiagicw@falconite $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu">
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="/" title="" >
+                        ~/home</a>
+                </li>
+                
+                <li>
+                    <a href="/posts" title="" >
+                        ~/writing</a>
+                </li>
+                
+                <li>
+                    <a href="/about" title="" >
+                        ~/about</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1>kato</h1>
+    
+    <section class="postMetadata">
+        <dl>
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="2024-07-02">Jul 2, 2024</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>2 minutes</dd>
+            
+            
+        </dl>
+    </section>
+    
+    <div>
+        <h1 id="kato">kato</h1>
+<p><code>kato</code> is a MPD client.</p>
+<ul>
+<li><a href="#kato">kato</a>
+<ul>
+<li><a href="#features">features</a></li>
+<li><a href="#installation">installation</a></li>
+<li><a href="#documentation">documentation</a></li>
+<li><a href="#commands">commands</a></li>
+<li><a href="#purpose">purpose</a></li>
+<li><a href="#contribution">contribution</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="features">Features</h1>
+<p><code>kato</code> is a <a href="https://musicpd.org">mpd</a> client.
+It acts like a remote controller to a already running music server.</p>
+<ul>
+<li>Psuedo-TUI interface.</li>
+<li>Easy &amp; Simple commands.</li>
+<li>Intuitive interface</li>
+</ul>
+<h1 id="installation">Installation</h1>
+<p>You need to have a configured and running <code>MPD</code> server.</p>
+<p>You can download a binary from the <a href="https://github.com/psipagicw/kato/releases">releases</a> section.</p>
+<p>Or else if you have the <code>Go</code> compiler installed. You can run</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>go install github.com/pspiagicw/kato@latest
+</span></span></code></pre></div><p>If you use <a href="https://github.com/pspiagicw/gox"><code>gox</code></a>, you can also run</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>gox install github.com/pspiagicw/kato@latest
+</span></span></code></pre></div><p>To build the project, download the project and run <code>go build .</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/pspiagicw/kato
+</span></span><span style="display:flex;"><span><span style="color:#89dceb">cd</span> kato
+</span></span><span style="display:flex;"><span>go build .
+</span></span></code></pre></div><h1 id="documentation">Documentation</h1>
+<p><code>kato</code> includes a thorough help section.</p>
+<p>Just run <code>kato help</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>kato <span style="color:#89dceb">help</span>
+</span></span></code></pre></div><p>For more help per command, run <code>kato help [command]</code></p>
+<h1 id="commands">Commands</h1>
+<h3 id="simple-commands">Simple commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>play</td>
+<td>Play the current song</td>
+</tr>
+<tr>
+<td>stop</td>
+<td>Stop playback</td>
+</tr>
+<tr>
+<td>pause</td>
+<td>Pause playback</td>
+</tr>
+<tr>
+<td>next</td>
+<td>Play next song</td>
+</tr>
+<tr>
+<td>prev</td>
+<td>Play previous song</td>
+</tr>
+<tr>
+<td>toggle</td>
+<td>Toggle playback</td>
+</tr>
+<tr>
+<td>version</td>
+<td>Print version info</td>
+</tr>
+</tbody>
+</table>
+<h3 id="status">status</h3>
+<ul>
+<li>Print info about current song</li>
+<li>Includes title, artist, quant size and frequency</li>
+</ul>
+<p><img src="/kato/gifs/status.gif" alt="status"></p>
+<h3 id="album">album</h3>
+<ul>
+<li>Run a album</li>
+<li>Interactively select the album</li>
+<li>The current queue is cleared.</li>
+<li><code>random</code> is turned off.</li>
+</ul>
+<p><img src="/kato/gifs/album.gif" alt="album"></p>
+<h3 id="artist">artist</h3>
+<ul>
+<li>Play songs by a specific artist</li>
+<li>Multi-select songs.</li>
+<li>The current queue is cleared</li>
+<li><code>random</code> is turned off.</li>
+</ul>
+<p><img src="/kato/gifs/artist.gif" alt="volume"></p>
+<h3 id="shuffle">shuffle</h3>
+<ul>
+<li>Shuffle all songs in the library.</li>
+<li><code>random</code> is turned on.</li>
+</ul>
+<h3 id="volume">volume</h3>
+<ul>
+<li>Control volume interactively.</li>
+</ul>
+<p><img src="/kato/gifs/volume.gif" alt="volume"></p>
+<h3 id="seek">seek</h3>
+<ul>
+<li>Control song position interactively.</li>
+</ul>
+<p><img src="/kato/gifs/seek.gif" alt="seek"></p>
+<h3 id="playlist">playlist</h3>
+<ul>
+<li>Display the playlist in a pager.</li>
+</ul>
+<p><img src="/kato/gifs/playlist.gif" alt="playlist"></p>
+<h3 id="dash">dash</h3>
+<ul>
+<li>Display a simple dash UI with essential info.</li>
+<li>Simple keybinds to next/prev songs.</li>
+</ul>
+<p><img src="/kato/gifs/dash.gif" alt="dash"></p>
+<h3 id="repeat">repeat</h3>
+<ul>
+<li>Repeat current song indefinately.</li>
+<li><code>repeat</code> is turned on.</li>
+<li><code>single</code> is turned on.</li>
+</ul>
+<h1 id="purpose">Purpose</h1>
+<p><code>kato</code> doesn&rsquo;t aim to replace tools like <code>ncmpcpp</code> and <code>mpc</code>.</p>
+<p>It only provides a helpful interface for common interactions like</p>
+<ul>
+<li>Playing a album</li>
+<li>Play all songs but shuffled.</li>
+</ul>
+<p>It provides quality of life features that would require some scripting or a learning curve in other clients.
+If you want complex, minute edits you WILL need to use tools like <code>mpc</code>.</p>
+<p>Or if you need a TUI experience complete with a visualizer and other goodies, you will need to use <code>ncmpcpp</code>.</p>
+<h1 id="contribution">Contribution</h1>
+<p>This tool is made to provide qol features, thus your opinion and contribution is essential to this project.</p>
+<ul>
+<li>You can file a issue to request a feature or report a bug</li>
+<li>If you a little bit of Go, you can fix/implement said feature/bug and file a PR.</li>
+</ul>
+<p>You can also show your love for <code>kato</code> by giving this project a star on <a href="https://github.com/pspiagicw/kato"><code>GitHub</code></a>.</p>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>Made with ♥  using Hugo.</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>

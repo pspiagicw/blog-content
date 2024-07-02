@@ -6,47 +6,54 @@
     <description>Recent content on falconite</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>dotback</title>
       <link>/dotback/</link>
-      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
       <guid>/dotback/</guid>
       <description>dotback dotback backs up your dotfiles.&#xA;dotback Features Configuration Usage Backup Unix philosophy It does not It does Installation Contribution Features A single binary, no runtime environments or large dependencies.</description>
     </item>
     <item>
       <title>fener</title>
       <link>/fener/</link>
-      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
       <guid>/fener/</guid>
       <description>fener fener is a interpreted ruby/lua-like language.</description>
     </item>
     <item>
       <title>groom</title>
       <link>/groom/</link>
-      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
       <guid>/groom/</guid>
       <description>🧹 groom groom is a yet another os-agnostic task runner.&#xA;groom Features Functionality Config file List Executing tasks Neovim Plugin Contributing ✨ Features 🔥 Task runner with a simple yet powerful toml syntax 🧹 Single static binary without dependencies 💻 Neovim plugin for integration with neovim.</description>
     </item>
     <item>
       <title>hotshot</title>
       <link>/hotshot/</link>
-      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
       <guid>/hotshot/</guid>
       <description>This documentation is available on GitHub or my website&#xA;hotshot hotshot is a LISP interpreter, borrowing features from Lua.</description>
     </item>
     <item>
+      <title>kato</title>
+      <link>/kato/</link>
+      <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>/kato/</guid>
+      <description>kato kato is a MPD client.&#xA;kato features installation documentation commands purpose contribution Features kato is a mpd client.</description>
+    </item>
+    <item>
       <title>qemantra</title>
       <link>/qemantra/</link>
-      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
       <guid>/qemantra/</guid>
       <description>qemantra qemantra is a tool to manage QEMU/KVM virtual machines.&#xA;qemantra Features Dependencies Installation Config Usage Create Run List Rename Edit UEFI Similar Projects Contribution Features Use QEMU without a graphical interface.</description>
     </item>
     <item>
       <title>sinister</title>
       <link>/sinister/</link>
-      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
       <guid>/sinister/</guid>
       <description>sinister sinister is a tool to track and download videos from YouTube.&#xA;sinister features installation config usage update status download mark auto RSS Feeds Contribution Features Tracks your subscription using RSS feeds and download whatever you are interested in.</description>
     </item>
