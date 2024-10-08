@@ -9,11 +9,11 @@ Rough Guide to Matplotlib | pspiagicw
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="generator" content="Hugo 0.123.8">
+<meta name="generator" content="Hugo 0.126.1">
 
 
 <link rel="canonical" href="/posts/rough-guide-on-matplotlib/" >
-<link href="/sass/main.min.35ede6e07c742c06dd99b0ac94bafd5a9710b8beb7105c54219c1ecf59af90f8.css" rel="stylesheet">
+<link href="/sass/main.min.ea91723d7236f1197c092b474cf79c543f6ec967f38424be6111cdd70ed10c3d.css" rel="stylesheet">
 
 <script src="https://kit.fontawesome.com/f250909d17.js" crossorigin="anonymous"></script>
 
@@ -120,10 +120,10 @@ To alias pyplot to plt</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4">4</a></span><span>plt<span style="color:#89dceb;font-weight:bold">.</span>plot(x_coordinates,y_coordinates)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5">5</a></span><span>plt<span style="color:#89dceb;font-weight:bold">.</span>show()
 </span></span></code></pre></div><p>The graph created is</p>
-<figure><img src="simple-plot-matplotlib.png"
-         alt="Figure 1: Simple Plot"/><figcaption>
-            <p>Figure 1: Simple Plot</p>
-        </figcaption>
+<figure><img src="/posts/rough-guide-on-matplotlib/simple-plot-matplotlib.png"
+    alt="Figure 1: Simple Plot"><figcaption>
+      <p>Figure 1: Simple Plot</p>
+    </figcaption>
 </figure>
 
 <h2 id="simple-scattering">Simple Scattering</h2>
@@ -137,19 +137,19 @@ It also takes list of x and y coordinates as arguments.</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4">4</a></span><span>plt<span style="color:#89dceb;font-weight:bold">.</span>scatter(x_coordinates , y_coordinates)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5">5</a></span><span>plt<span style="color:#89dceb;font-weight:bold">.</span>show()
 </span></span></code></pre></div><p>The end result</p>
-<figure><img src="scatter-plot-matplotlib.png"
-         alt="Figure 2: Scattering Example"/><figcaption>
-            <p>Figure 2: Scattering Example</p>
-        </figcaption>
+<figure><img src="/posts/rough-guide-on-matplotlib/scatter-plot-matplotlib.png"
+    alt="Figure 2: Scattering Example"><figcaption>
+      <p>Figure 2: Scattering Example</p>
+    </figcaption>
 </figure>
 
 <h2 id="histograms">Histograms</h2>
 <p>Histograms in matplotlib is as easy as just giving the list of values you want a histogram of.Matplotlib automatically calculates the rest!</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>plt<span style="color:#89dceb;font-weight:bold">.</span>hist([ random<span style="color:#89dceb;font-weight:bold">.</span>randint(<span style="color:#fab387">5</span>,<span style="color:#fab387">100</span>) <span style="color:#cba6f7">for</span> _ <span style="color:#89dceb;font-weight:bold">in</span> <span style="color:#89dceb">range</span>(<span style="color:#fab387">300</span>) ])
-</span></span></code></pre></div><figure><img src="simple-hist-matplotlib.png"
-         alt="Figure 3: Simple Histogram"/><figcaption>
-            <p>Figure 3: Simple Histogram</p>
-        </figcaption>
+</span></span></code></pre></div><figure><img src="/posts/rough-guide-on-matplotlib/simple-hist-matplotlib.png"
+    alt="Figure 3: Simple Histogram"><figcaption>
+      <p>Figure 3: Simple Histogram</p>
+    </figcaption>
 </figure>
 
 <p>It provides a good view of how the data is distributed.</p>
@@ -163,10 +163,10 @@ If having all 3 colors , image is a normal color image.The colors are simply RGB
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic"># Usage of matplotlib.pyplot.imshow()</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>plt<span style="color:#89dceb;font-weight:bold">.</span>imshow(image)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3">3</a></span><span>plt<span style="color:#89dceb;font-weight:bold">.</span>show()
-</span></span></code></pre></div><figure><img src="mnist-plot-matplotlib.png"
-         alt="Figure 4: MNIST Number in Matplotlib"/><figcaption>
-            <p>Figure 4: MNIST Number in Matplotlib</p>
-        </figcaption>
+</span></span></code></pre></div><figure><img src="/posts/rough-guide-on-matplotlib/mnist-plot-matplotlib.png"
+    alt="Figure 4: MNIST Number in Matplotlib"><figcaption>
+      <p>Figure 4: MNIST Number in Matplotlib</p>
+    </figcaption>
 </figure>
 
 <h2 id="aesthetics-dot">Aesthetics.</h2>
@@ -183,20 +183,20 @@ This text can be customized (Color , Border etc).</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span><span style="color:#cba6f7">for</span> x,y <span style="color:#89dceb;font-weight:bold">in</span> <span style="color:#89dceb">zip</span>(x_coordinates,y_coordinates):
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3">3</a></span><span>    plt<span style="color:#89dceb;font-weight:bold">.</span>text(x,y,<span style="color:#a6e3a1">&#39;Point (</span><span style="color:#a6e3a1">{x}</span><span style="color:#a6e3a1">,</span><span style="color:#a6e3a1">{y}</span><span style="color:#a6e3a1">)&#39;</span><span style="color:#89dceb;font-weight:bold">.</span>format(x<span style="color:#89dceb;font-weight:bold">=</span>x,y<span style="color:#89dceb;font-weight:bold">=</span>y))
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4">4</a></span><span>    plt<span style="color:#89dceb;font-weight:bold">.</span>show()
-</span></span></code></pre></div><figure><img src="labels-matplotlib.png"
-         alt="Figure 5: Labels in Matplotlib"/><figcaption>
-            <p>Figure 5: Labels in Matplotlib</p>
-        </figcaption>
+</span></span></code></pre></div><figure><img src="/posts/rough-guide-on-matplotlib/labels-matplotlib.png"
+    alt="Figure 5: Labels in Matplotlib"><figcaption>
+      <p>Figure 5: Labels in Matplotlib</p>
+    </figcaption>
 </figure>
 
 <p>To plot one graph over another , use the plot/scatter function without using <code>plt.show()</code> or <code>plt.savefig()</code> first.</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>plt<span style="color:#89dceb;font-weight:bold">.</span>plot([ <span style="color:#fab387">3</span> , <span style="color:#fab387">5</span> , <span style="color:#fab387">7</span>] , [ <span style="color:#fab387">3</span> , <span style="color:#fab387">5</span> , <span style="color:#fab387">7</span>],label<span style="color:#89dceb;font-weight:bold">=</span><span style="color:#a6e3a1">&#39;Line y=x&#39;</span>)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>plt<span style="color:#89dceb;font-weight:bold">.</span>scatter([ <span style="color:#fab387">5</span> , <span style="color:#fab387">6</span> ] , [ <span style="color:#fab387">2</span>, <span style="color:#fab387">5</span> ] , label<span style="color:#89dceb;font-weight:bold">=</span><span style="color:#a6e3a1">&#39;Group of people&#39;</span>)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3">3</a></span><span>plt<span style="color:#89dceb;font-weight:bold">.</span>show()
-</span></span></code></pre></div><figure><img src="multiple-plot-matplotlib.png"
-         alt="Figure 6: Multiple Plots in Matplotlib"/><figcaption>
-            <p>Figure 6: Multiple Plots in Matplotlib</p>
-        </figcaption>
+</span></span></code></pre></div><figure><img src="/posts/rough-guide-on-matplotlib/multiple-plot-matplotlib.png"
+    alt="Figure 6: Multiple Plots in Matplotlib"><figcaption>
+      <p>Figure 6: Multiple Plots in Matplotlib</p>
+    </figcaption>
 </figure>
 
 <p>To show a legend in the graph use the <code>plt.legend()</code> function .</p>
@@ -214,7 +214,7 @@ This text can be customized (Color , Border etc).</p>
 <p>This graph uses linestyle of <code>--</code> and linewidth of 3.5 ,marker type of <code>+</code> and color green.</p>
 <div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>plt<span style="color:#89dceb;font-weight:bold">.</span>plot(x_coodinates,y_coordinates,label<span style="color:#89dceb;font-weight:bold">=</span><span style="color:#a6e3a1">&#39;Line&#39;</span>,linestyle<span style="color:#89dceb;font-weight:bold">=</span><span style="color:#a6e3a1">&#39;--&#39;</span>,linewidth<span style="color:#89dceb;font-weight:bold">=</span><span style="color:#fab387">3.5</span>,marker<span style="color:#89dceb;font-weight:bold">=</span><span style="color:#a6e3a1">&#39;+&#39;</span>,color<span style="color:#89dceb;font-weight:bold">=</span><span style="color:#a6e3a1">&#39;g&#39;</span>)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>plt<span style="color:#89dceb;font-weight:bold">.</span>show()
-</span></span></code></pre></div><figure><img src="ultimate-custom-matplotlib.png"/>
+</span></span></code></pre></div><figure><img src="/posts/rough-guide-on-matplotlib/ultimate-custom-matplotlib.png">
 </figure>
 
 <p>You can also customize matplotlib itself, using <code>styles</code>.

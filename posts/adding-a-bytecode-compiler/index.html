@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <title>
+Bytecoding! | pspiagicw
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Hugo 0.126.1">
+
+
+<link rel="canonical" href="//localhost:1313/posts/adding-a-bytecode-compiler/" >
+<link href="/sass/main.min.ea91723d7236f1197c092b474cf79c543f6ec967f38424be6111cdd70ed10c3d.css" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/f250909d17.js" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a href="//localhost:1313/">
+                <span class="terminal">pspiagicw@falconite $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu">
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="//localhost:1313/" title="" >
+                        ~/home</a>
+                </li>
+                
+                <li>
+                    <a href="//localhost:1313/posts" title="" >
+                        ~/writing</a>
+                </li>
+                
+                <li>
+                    <a href="//localhost:1313/about" title="" >
+                        ~/about</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1>Bytecoding!</h1>
+    
+    <section class="postMetadata">
+        <dl>
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="2024-07-26">Jul 26, 2024</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>10 minutes</dd>
+            
+            
+        </dl>
+    </section>
+    
+    <div>
+        <p>After working on <code>hotshot</code> on since the last few months, I finally completed writing a bytecode-compiler for it.</p>
+<p>In case you aren&rsquo;t familiar, <code>hotshot</code> is a LISP language. You can find out more about it <a href="https://falconite.xyz/hotshot">here</a>.
+I had already developed a interpreter with extended features. It was time I wrote a bytecode-compiler for it.</p>
+<h2 id="history">history</h2>
+<p><code>hotshot</code> is not the first implementation of this language.
+This language was born after completion of the book <code>Writing a Interpreter in Go</code>.</p>
+<p>The initial implementation was in <code>Python</code>. Written in 2020-21.</p>
+<p>This implementation was called <a href="https://github.com/pspiagicw/boombash">boombash</a>.
+The implementation was a very crude implementation.</p>
+<ul>
+<li>The parsing was practically non-existent.</li>
+<li>The AST was nothing but nested Python lists.</li>
+<li>Written in Python, without any type hints and bug-prone.</li>
+</ul>
+<p>I rewrote this project sometime in 2022, with a more robust AST and improved project management.
+It was published as <a href="https://github.com/pspiagicw/bsharp">bsharp</a>.</p>
+<ul>
+<li>It is robust and better written.</li>
+<li>It resembles what a modern interpreter might look.</li>
+<li>Even includes thoroughly written documentation and comments.</li>
+</ul>
+<p>Finally in the end of 2023, I started writing <code>hotshot</code>.</p>
+<ul>
+<li>Written in Go, typed and fast.</li>
+<li>Supports almost all features including imports, tables etc.</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<p>The biggest reference in writing this project has to be <code>Writing a Compiler in Go</code>.
+Other books like <code>Crafting Interpreters</code> are also useful, but focuses on other elements.</p>
+<p><code>Crafting Interpreters</code> is one of the top books for Compilers/Interpreters.
+I consider it one of the most well-written books in Computer Science.
+But</p>
+<ul>
+<li>Uses C and Java, I don&rsquo;t like/use both.</li>
+<li>It&rsquo;s bytecode compiler is fundamentally different.</li>
+</ul>
+<p>&lsquo;Writing a Compiler in Go&rsquo; is the obvious reference for me as I not only started with it&rsquo;s predecessor, but use and love the <code>Go</code> language.
+The <code>bytecode</code> shares lot of elements with it, although many differences/deviations are highlighted later.</p>
+<h2 id="bytecode">bytecode</h2>
+<p>If you don&rsquo;t know how compilation works, the goal is to convert any programming language into another language with less abstract implementation.</p>
+<p>What I mean by that is, the less clear a code is harder it is to execute.
+So the aim is to reduce it to a handful of instructions that don&rsquo;t assume anything.</p>
+<p>Let&rsquo;s see an example.</p>
+<p>Take this <code>Python</code> code snippet.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#89dceb">print</span>(<span style="color:#fab387">2</span> <span style="color:#89dceb;font-weight:bold">+</span> <span style="color:#fab387">3</span> <span style="color:#89dceb;font-weight:bold">*</span> <span style="color:#fab387">5</span>)
+</span></span></code></pre></div><p>Most people would guess correctly that it will print <code>17</code>.
+But in terms of computation we are assuming a lot of concepts.</p>
+<ul>
+<li>We assume that the code will be parsed correctly</li>
+<li>We assume that proper precedence will be used, meaning it will multiply before adding.</li>
+<li>We don&rsquo;t care what kind of encoding is being used for the numbers, will it be <code>signed</code> ? or <code>unsigned</code> ?</li>
+<li>What&rsquo;s print ? How does it print it ?</li>
+<li>Where will the calculations we stored ? In my RAM ? Or my processors ?</li>
+<li>Will the memory be cleaned after execution ?</li>
+</ul>
+<p>When we try to remove each of these assumptions one by one, we make a more verbose/detailed form of the code.
+The more detailed we go, more complex it is to understand and write.</p>
+<blockquote>
+<p>What&rsquo;s the most detailed we can go ?</p>
+</blockquote>
+<p>The most detailed you can go is write binary, but not just any binary.
+It should be according to your Operating System and processor.</p>
+<p>But it&rsquo;s easier to not go there.
+A form which is somewhat in the middle (or <code>intermediate</code>) is called &lsquo;IR&rsquo; (<code>intermediate Representation</code>)</p>
+<p>IR comes in many forms</p>
+<ul>
+<li>Like an &lsquo;AST&rsquo; (<code>Abstract Syntax Tree</code>)</li>
+<li>A form of assembly (Like in <code>LLVM</code>)</li>
+<li>A <code>bytecode</code> (Like in <code>Java</code>)</li>
+</ul>
+<p>A <code>AST</code> is something that most people would be familiar with, it represents code as a tree.
+With instructions as nodes and data as leaves.</p>
+<p>For example, for the same expression, here&rsquo;s the AST.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span>print
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>└─ +
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3">3</a></span><span>   ├─ Integer(2)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4">4</a></span><span>   └─ *
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5">5</a></span><span>      ├─ Integer(3)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-6"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-6">6</a></span><span>      └─ Integer(5)
+</span></span></code></pre></div><p>It is intuitive to understand, but kinda expensive to traverse and execute.
+Most production langauges don&rsquo;t go this route as it makes the langauge slow.
+But toy langauges and prototype implementations may use it.
+This implementation can&rsquo;t catch bugs and can&rsquo;t optimize the code.</p>
+<p>So most compilers come to a agreement.</p>
+<p>They compile it to a lower language, meaning a language with much more complex syntax but less assumptions.
+It&rsquo;s hard for humans to write and maintain it, but for a compiler it&rsquo;s easy work.</p>
+<p>This is either some form of &lsquo;Assembly&rsquo;.
+This assembly is compiled again into binary, but that part is already handled by the people made the processor.</p>
+<p>Many form of these assembly exist, some are direct by the company that made the &lsquo;processor&rsquo;.
+Or people who don&rsquo;t like the syntax and make another one which is better syntax wise.
+You might have heard the <code>AT&amp;T</code> syntax or <code>Intel</code> syntax, or even better alternate assembly implementations like <code>fasm</code>.</p>
+<p><code>LLVM</code> is kind of a big businessman that allows you to compile to multiple systems each with a different OS or processor,
+but in return you need to compile your code into <code>LLVM IR</code>, it&rsquo;s a kind of assembly made by the <code>LLVM</code> library.</p>
+<p><code>LLVM</code> is used by a lot of languages, including <code>C</code> (clang), <code>Haskell</code> and the infamous <code>Rust</code>.
+<code>LLVM</code> is a beast that does lot of things including &lsquo;Compiler Passes&rsquo;, &lsquo;Optimizations&rsquo;, &lsquo;Just in Time Compilation&rsquo;, etc.</p>
+<p>You can also go a third route.</p>
+<p>Make your custom assembly, which curtails to your language, but instead of compiling that into binary, execute it like a processor would.</p>
+<p>That&rsquo;s what languages like <code>Java</code>,<code>Ruby</code>, <code>Python</code>, <code>Lua</code> and many others do. That&rsquo;s what <code>hotshot</code> does.
+This custom assembly is commonly called <code>bytecode</code>.
+The <code>bytecode</code> is executed by a <code>Virtual Machine</code>, which you write.
+But this gives you a lot of advantages.</p>
+<ul>
+<li>You can make your langauge simple, but still make it less abstract.</li>
+<li>You can make your <code>bytecode</code> specialized to your language and it&rsquo;s features.</li>
+<li>You can have alternate implementations that target the same bytecode.</li>
+<li>You can perform optimizations, get insights and detect bugs.</li>
+</ul>
+<p>Let me explain the above points.</p>
+<p>Most <code>bytecode</code> produced by most langauges are quite easy to understand (Although not easy to write).
+Here&rsquo;s Python&rsquo;s bytecode, for the same expression <code>2 + 3 * 5</code></p>
+<blockquote>
+<p>You can get this by using the <code>dis</code> module. Find out more <a href="">here</a>.</p>
+</blockquote>
+<pre tabindex="0"><code>              0 LOAD_CONST               1 (2)
+              2 LOAD_CONST               2 (3)
+              4 LOAD_CONST               3 (5)
+              6 BINARY_MULTIPLY
+              7 BINARY_ADD
+</code></pre><p>Although you can&rsquo;t understand it you can still read it, it has 3 parts.</p>
+<ul>
+<li>
+<p>The line number</p>
+<pre tabindex="0"><code>              ...
+          --&gt; 0 LOAD_CONST               1 (2)
+              2 LOAD_CONST               2 (3)
+              ...
+</code></pre></li>
+<li>
+<p>The opcode</p>
+<pre tabindex="0"><code>              ...
+              0 LOAD_CONST &lt;--           1 (2)
+              2 LOAD_CONST               2 (3)
+              ...
+</code></pre></li>
+<li>
+<p>The argument</p>
+<pre tabindex="0"><code>              ...
+              0 LOAD_CONST           --&gt; 1 (2)
+              2 LOAD_CONST               2 (3)
+              ...
+</code></pre></li>
+</ul>
+<p>Some operations might not have argument like <code>BINARY_ADD</code>.</p>
+<p>Even though this is very human readable, it is faster than a simple interpreter.</p>
+<p>BTW it&rsquo;s called <code>bytecode</code> is cause the entire thing is encoded as a sequence of bytes.
+The entire <code>bytecode</code> is just integers which is encoded as bytes, which is very fast to decode by the <code>Virtual Machines</code>.</p>
+<p>For example, this is what the above bytecode actually looks like</p>
+<pre tabindex="0"><code>&#39;d\x01}\x00d\x02}\x01d\x03}\x02|\x00|\x01|\x02\x14\x00\x17\x00}\x03d\x00S\x00&#39;
+</code></pre><p>Let&rsquo;s finally look at some <code>hotshot</code> bytecode. This is again for the same <code>2 + 3 * 5</code> expression.</p>
+<pre tabindex="0"><code>╔════════════╗ ┌──────────────────┐
+║            ║ │                  │
+║ 0. (int 2) ║ │ 00000 PUSH 0     │
+║ 1. (int 3) ║ │ 00001 PUSH 1     │
+║ 2. (int 5) ║ │ 00002 PUSH 2     │
+║            ║ │ 00003 MUL 2      │
+║            ║ │ 00004 ADD 2      │
+╚════════════╝ │                  │
+               └──────────────────┘
+</code></pre><p>The box on the left stores the constants and the right one has the bytecode.</p>
+<p>You can see almost instructions in my bytecode has an argument. The <code>hotshot</code> bytecode has an argument for most instructions.</p>
+<p>The instruction itself is represented by the following struct.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#f38ba8">type</span> Instruction <span style="color:#f38ba8">struct</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>    OpCode   <span style="color:#f38ba8">int</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3">3</a></span><span>    Argument <span style="color:#f38ba8">int16</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4">4</a></span><span>}
+</span></span></code></pre></div><p>Unlike most <code>bytecode</code> hotshot&rsquo;s bytecode has a constant sized argument for every instruction, of size int16.
+But like most <code>bytecode</code> it is written for a <code>Stack based VM</code>.</p>
+<p>Without getting into the nitty-gritty details, let&rsquo;s see how optimizations work when compiling bytecode.</p>
+<pre tabindex="0"><code>00000 PUSH 0 (2)
+00001 PUSH 1 (3)
+00002 PUSH 2 (5)
+00003 MUL 2 
+00004 ADD 2 
+</code></pre><p>In the above bytecode the <code>PUSH</code> instruction loads 2 constants (<code>3</code> and <code>5</code>) and <code>MUL</code> instruction multiplies them.
+But we can observe that the result of the multiplication doesn&rsquo;t change, inspite of how many times you execute it in your VM.</p>
+<p>You can catch this pattern and reduce any arithmetic operation into a pre-computed constant. This results in the below bytecode.</p>
+<pre tabindex="0"><code>00000 PUSH 3 (17)
+</code></pre><p>We reduced 4 instructions into 1.</p>
+<p>These patterns can be easily identified and used to optimize the bytecode into a more compact form.
+These pattern-matching and optimizing procedure is called a <code>Compiler Pass</code>.
+The specific pass I described above is called <code>Constant Folding</code>.</p>
+<p>Any such passes can be implemented depending on the design of the bytecode.</p>
+<p>For example, here is the bytecode for a <code>if</code> statement.</p>
+<pre tabindex="0"><code>╔═══════════════════════╗ ┌──────────────────┐
+║                       ║ │                  │
+║ 0. (int 2)            ║ │ 00000 PUSH 0     │
+║ 1. (int 1)            ║ │ 00001 PUSH 1     │
+║ 2. (str &#39;It&#39;s true&#39;)  ║ │ 00002 LT 2       │
+║ 3. (str &#39;It&#39;s false&#39;) ║ │ 00003 JCMP 1     │
+║                       ║ │ 00004 PUSH 2     │
+║                       ║ │ 00005 JMP 2      │
+╚═══════════════════════╝ │ 00006 JT 1       │
+                          │ 00007 PUSH 3     │
+                          │ 00008 JT 2       │
+                          │                  │
+                          └──────────────────┘
+</code></pre><p>Here there is a <code>JMP</code> and <code>JCMP</code> instruction.
+These instruction cause the <code>VM</code> to skip instructions and move back or forward in the bytecode.
+These are essential to implementation of conditional constructs like <code>if-else</code>, <code>cond</code> and even looping ones like <code>for</code> and <code>while</code>.</p>
+<p>If you look at the bytecode, you can find a <code>JT</code> instruction, these serve as <code>Jump Targets</code> to the <code>JMP</code> and <code>JCMP</code> targets.
+Meaning if you encounter a <code>JMP 2</code> instruction, you jump to the <code>Jump Target</code> with the id <code>2</code>.</p>
+<blockquote>
+<p><code>JCMP</code> only jumps when the value is false. Or else it continues with the next instruction</p>
+</blockquote>
+<p>It is quite obvious this is slower than a snail to execute code.</p>
+<p>Everytime you need to jump, you need to perform a linear search (in both directions!) to find the corresponding jump target.</p>
+<p>This is done as you can&rsquo;t know beforehand how many instructions to jump.
+You can only find that after you have compiled later instructions.
+Most languages use <code>backpatching</code> to fix this.</p>
+<p><code>Backpatching</code> is when you go back and change a instruction after it has been added to the bytecode, all in the same pass.
+It is a little hacky and requires a tad bit more effort to implement.</p>
+<p>The easier method is to use a compiler pass, which <code>hotshot</code> does.
+A separate pass goes through the entire bytecode and matches all jumps to their jump targets.
+It changes all <code>jmp</code> and <code>jcmp</code> instructions to have &rsquo;number of instructions to skip&rsquo; as their argument.</p>
+<p>This argument is negative to previous instrution and position for the next ones.</p>
+<p>Here is the same bytecode with the necessary amends.
+We don&rsquo;t remove the <code>JT</code> instruction as it can change the number of instructions which is critical to the jump instructions.</p>
+<pre tabindex="0"><code>00000 PUSH 0
+00001 PUSH 1
+00002 LT 2
+00003 JCMP 2
+00004 PUSH 2
+00005 JMP 2
+00006 JT
+00007 PUSH 3
+00008 JT
+</code></pre><p>Other such compiler optimizations can be performed. These include (non-exhaustive)</p>
+<ul>
+<li>Dead code elimination</li>
+<li>Argument mismatch (In function calls)</li>
+<li>Tail call optimizations</li>
+</ul>
+<blockquote>
+<p>If you compile your language to <code>LLVM IR</code>, <code>LLVM</code> does all of this for you.</p>
+</blockquote>
+<p>Like I said before, your language can have specialized instructions for your language.</p>
+<ul>
+<li>Languages like <code>Java</code> has bytecode instructions that cater to the more object oriented kind.
+<code>Erlang</code> has a lot of instructions which are designed for concurrency and parallelism</li>
+</ul>
+<p>A side-effect of having a robust bytecode is that other languages can target your bytecode.</p>
+<p>A great example is <code>Groovy</code>, <code>Scala</code>, <code>Clojure</code> all target the JVM.
+Similarly the <code>BEAM</code> (designed for the <code>Erlang</code> VM) bytecode is very mature and robust.
+Thus languages like <code>GLEAM</code> (Released this year), <code>Elixir</code>, <code>Elm</code> all target <code>BEAM</code>.</p>
+<blockquote>
+<p>Fun Fact: There exists a implementation of Python that targets Java. It&rsquo;s called <code>Jython</code>.
+In the same spirit <code>Rython</code>(Ruby) also exists.</p>
+</blockquote>
+<p>Lua is one of the most easy language to pick up, it&rsquo;s bytecode is also really robust and mature.
+A alternate implementation called <code>Fennel</code> exists which targets <code>Lua 5.0</code> bytecode.</p>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>Made with ♥  using Hugo.</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>

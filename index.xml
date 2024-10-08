@@ -4,23 +4,23 @@
     <title>falconite</title>
     <link>/</link>
     <description>Recent content on falconite</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 11 Aug 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nixing my life!</title>
+      <link>/posts/how-i-started-loving-nixos/</link>
+      <pubDate>Sun, 11 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/how-i-started-loving-nixos/</guid>
+      <description>How NixOS became my ultimate goal</description>
+    </item>
     <item>
       <title>dotback</title>
       <link>/dotback/</link>
       <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
       <guid>/dotback/</guid>
       <description>dotback dotback backs up your dotfiles.&#xA;dotback Features Configuration Usage Backup Unix philosophy It does not It does Installation Contribution Features A single binary, no runtime environments or large dependencies.</description>
-    </item>
-    <item>
-      <title>fener</title>
-      <link>/fener/</link>
-      <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>/fener/</guid>
-      <description>fener fener is a interpreted ruby/lua-like language.</description>
     </item>
     <item>
       <title>groom</title>
@@ -133,6 +133,13 @@
       <pubDate>Wed, 24 Aug 2016 17:51:42 +0000</pubDate>
       <guid>/about/</guid>
       <description>Hi, I am pspiagicw (call me psp).&#xA;For communicating with me here is my public PGP key.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>/fener/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/fener/</guid>
+      <description>fener fener is a interpreted ruby/lua-like language. It is a object-oriented programming language with first-class functions.</description>
     </item>
   </channel>
 </rss>

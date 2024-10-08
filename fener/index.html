@@ -3,17 +3,17 @@
 
 <head>
     <title>
-fener | pspiagicw
+ | pspiagicw
 </title>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="generator" content="Hugo 0.123.8">
+<meta name="generator" content="Hugo 0.126.1">
 
 
 <link rel="canonical" href="/fener/" >
-<link href="/sass/main.min.35ede6e07c742c06dd99b0ac94bafd5a9710b8beb7105c54219c1ecf59af90f8.css" rel="stylesheet">
+<link href="/sass/main.min.ea91723d7236f1197c092b474cf79c543f6ec967f38424be6111cdd70ed10c3d.css" rel="stylesheet">
 
 <script src="https://kit.fontawesome.com/f250909d17.js" crossorigin="anonymous"></script>
 
@@ -61,7 +61,7 @@ fener | pspiagicw
             <main class="main">
                 
 <div class="postWrapper">
-    <h1>fener</h1>
+    <h1></h1>
     
     <section class="postMetadata">
         <dl>
@@ -69,11 +69,11 @@ fener | pspiagicw
             
                 <dt>published</dt>
                 
-                <dd><time datetime="2024-07-02">Jul 2, 2024</time></dd>
+                <dd><time datetime="0001-01-01">Jan 1, 1</time></dd>
             
             
                 <dt>reading time</dt>
-                <dd>1 minute</dd>
+                <dd>3 minutes</dd>
             
             
         </dl>
@@ -81,7 +81,157 @@ fener | pspiagicw
     
     <div>
         <h1 id="fener">fener</h1>
-<p><code>fener</code> is a interpreted ruby/lua-like language.</p>
+<p><code>fener</code> is a interpreted ruby/lua-like language. It is a object-oriented programming language with first-class functions.</p>
+<ul>
+<li><a href="#hotshot">Fener</a>
+<ul>
+<li><a href="#status">status</a></li>
+<li><a href="#getting-started">getting started</a></li>
+<li><a href="#testing">testing</a></li>
+<li><a href="#development">development</a></li>
+<li><a href="#contribution">contribution</a></li>
+</ul>
+</li>
+<li><a href="#semantics">Semantics</a>
+<ul>
+<li><a href="#expressions">expressions</a></li>
+<li><a href="#variables">variables</a></li>
+<li><a href="#comments">variables</a></li>
+<li><a href="#flow-control">flow-control</a></li>
+<li><a href="#functions">functions</a></li>
+<li><a href="#builtin">builtin</a></li>
+<li><a href="#class">class</a></li>
+</ul>
+</li>
+<li><a href="#data-stucture">Data Structures</a>
+<ul>
+<li><a href="#list">list</a></li>
+<li><a href="#maps">maps</a></li>
+</ul>
+</li>
+<li><a href="#import">Import</a>
+<ul>
+<li><a href="#import">import</a></li>
+<li><a href="#stdlib">stdlib</a></li>
+</ul>
+</li>
+<li><a href="#internals">Internals</a>
+<ul>
+<li><a href="#lexer">lexer</a></li>
+<li><a href="#parser">parser</a></li>
+<li><a href="#eval">eval</a></li>
+</ul>
+</li>
+</ul>
+<p>This is <code>fener</code>. A easy language written in Golang.</p>
+<p>It&rsquo;s a dynamicaly typed language with object-oriented features.
+It is designed similar to languages like <code>Ruby</code> or <code>Python</code>.</p>
+<p>Here&rsquo;s the <code>FizzBuzz</code> program written in fener</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1"> 1</a></span><span>fn <span style="color:#89b4fa">fizzbuzz</span>(n)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2"> 2</a></span><span>    <span style="color:#cba6f7">if</span> n <span style="color:#89dceb;font-weight:bold">%</span> <span style="color:#fab387">5</span> <span style="color:#89dceb;font-weight:bold">==</span> <span style="color:#fab387">0</span> <span style="color:#89dceb;font-weight:bold">&amp;&amp;</span> n <span style="color:#89dceb;font-weight:bold">%</span> <span style="color:#fab387">3</span> <span style="color:#89dceb;font-weight:bold">==</span> <span style="color:#fab387">0</span> then
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3"> 3</a></span><span>        <span style="color:#89dceb">print</span>(<span style="color:#a6e3a1">&#34;FizzBuzz&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4"> 4</a></span><span>    elif n <span style="color:#89dceb;font-weight:bold">%</span> <span style="color:#fab387">3</span> <span style="color:#89dceb;font-weight:bold">==</span> <span style="color:#fab387">0</span> then
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5"> 5</a></span><span>        <span style="color:#89dceb">print</span>(<span style="color:#a6e3a1">&#34;Fizz&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-6"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-6"> 6</a></span><span>    elif n <span style="color:#89dceb;font-weight:bold">%</span> <span style="color:#fab387">5</span> <span style="color:#89dceb;font-weight:bold">==</span> <span style="color:#fab387">0</span> then
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-7"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-7"> 7</a></span><span>        <span style="color:#89dceb">print</span>(<span style="color:#a6e3a1">&#34;Buzz&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-8"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-8"> 8</a></span><span>    <span style="color:#cba6f7">else</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-9"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-9"> 9</a></span><span>        <span style="color:#89dceb">print</span>(n)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-10"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-10">10</a></span><span>    end
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-11"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-11">11</a></span><span>end
+</span></span></code></pre></div><h1 id="status">Status</h1>
+<p>This language is a hobby project under heavy development.
+It&rsquo;s versatile and capable enough for small programs.</p>
+<p>It&rsquo;s designed for reading and experimenting.</p>
+<h1 id="getting-started">Getting Started</h1>
+<p>To use fener, you need the single binary.</p>
+<h2 id="go">Go</h2>
+<p>You can get fener by using the <code>Go</code> compiler.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>go install github.com/pspiagicw/fener@main
+</span></span></code></pre></div><p>Or if you use <a href="https://github.com/pspiagicw/gox">gox</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>gox install github.com/pspiagicw/fener@main
+</span></span></code></pre></div><h2 id="compile">Compile</h2>
+<p>To compile the project, you only need the <code>Go</code> compiler.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://github.com/pspiagicw/fener
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#89dceb">cd</span> fener
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>go build .
+</span></span></code></pre></div><h2 id="testing">Testing</h2>
+<p>fener has a extensive suite of tests.
+It&rsquo;s written in Go&rsquo;s native test runner.</p>
+<p>Which depends on the fener binary being compiled inside the project directory.</p>
+<pre tabindex="0"><code>go build .
+
+go test ./...
+</code></pre><p>You can run specific tests or get information about all subtests.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1">1</a></span><span><span style="color:#6c7086;font-style:italic"># Run only lexer tests, but show all subtests</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2">2</a></span><span>go <span style="color:#89dceb">test</span> -v ./lexer
+</span></span></code></pre></div><h1 id="contribution">Contribution</h1>
+<p>This project is under heavy development and contributions are highly appreciated.
+A lot of decisions are yet to be taken, and you can be part of them.</p>
+<h1 id="semantics">Semantics</h1>
+<p><code>fener</code> is a expression based language.
+Every valid statmeent/expression returns a value.</p>
+<p>You can interact with <code>fener</code> using the REPL.</p>
+<blockquote>
+<p>Run the repl using <code>fener repl</code>.</p>
+</blockquote>
+<h2 id="arithmetic">Arithmetic</h2>
+<p>You can run arithmetic expresions.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#fab387">1</span> + <span style="color:#fab387">2</span>
+</span></span><span style="display:flex;"><span>int<span style="color:#89dceb;font-weight:bold">(</span>3<span style="color:#89dceb;font-weight:bold">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#fab387">1</span> + <span style="color:#fab387">2</span> * <span style="color:#fab387">6</span> / <span style="color:#fab387">7</span> - <span style="color:#fab387">1</span>
+</span></span><span style="display:flex;"><span>int<span style="color:#89dceb;font-weight:bold">(</span>1<span style="color:#89dceb;font-weight:bold">)</span>
+</span></span></code></pre></div><p>fener has 3 fundamental data types.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#fab387">10</span>
+</span></span><span style="display:flex;"><span>int<span style="color:#89dceb;font-weight:bold">(</span>10<span style="color:#89dceb;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#89dceb">true</span>
+</span></span><span style="display:flex;"><span>bool<span style="color:#89dceb;font-weight:bold">(</span><span style="color:#89dceb">true</span><span style="color:#89dceb;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#89dceb">false</span>
+</span></span><span style="display:flex;"><span>bool<span style="color:#89dceb;font-weight:bold">(</span><span style="color:#89dceb">false</span><span style="color:#89dceb;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#a6e3a1">&#34;this is a string&#34;</span>
+</span></span><span style="display:flex;"><span>str<span style="color:#89dceb;font-weight:bold">(</span>this is a string<span style="color:#89dceb;font-weight:bold">)</span>
+</span></span></code></pre></div><p>Complex data types include <code>classes</code>, <code>list</code> and <code>maps</code>.</p>
+<blockquote>
+<p><code>lists</code> and <code>maps</code> are not implemented yet.</p>
+</blockquote>
+<ul>
+<li>Lists</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#89dceb;font-weight:bold">[</span><span style="color:#fab387">1</span> <span style="color:#fab387">2</span> <span style="color:#fab387">3</span> <span style="color:#fab387">4</span> 5<span style="color:#89dceb;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#89dceb;font-weight:bold">[</span>int<span style="color:#89dceb;font-weight:bold">(</span>1<span style="color:#89dceb;font-weight:bold">)</span> int<span style="color:#89dceb;font-weight:bold">(</span>2<span style="color:#89dceb;font-weight:bold">)</span> int<span style="color:#89dceb;font-weight:bold">(</span>3<span style="color:#89dceb;font-weight:bold">)</span> int<span style="color:#89dceb;font-weight:bold">(</span>4<span style="color:#89dceb;font-weight:bold">)</span> int<span style="color:#89dceb;font-weight:bold">(</span>5<span style="color:#89dceb;font-weight:bold">)]</span>
+</span></span></code></pre></div><ul>
+<li>Maps</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#89dceb;font-weight:bold">{</span> <span style="color:#a6e3a1">&#34;name&#34;</span> <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#a6e3a1">&#34;Chris&#34;</span> <span style="color:#a6e3a1">&#34;surname&#34;</span> <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#a6e3a1">&#34;Pratt&#34;</span> <span style="color:#89dceb;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#89dceb;font-weight:bold">{</span> str<span style="color:#89dceb;font-weight:bold">(</span>name<span style="color:#89dceb;font-weight:bold">)</span>-&gt;str<span style="color:#89dceb;font-weight:bold">(</span>Chris<span style="color:#89dceb;font-weight:bold">)</span> str<span style="color:#89dceb;font-weight:bold">(</span>surname<span style="color:#89dceb;font-weight:bold">)</span>-&gt;str<span style="color:#89dceb;font-weight:bold">(</span>Pratt<span style="color:#89dceb;font-weight:bold">)}</span>
+</span></span></code></pre></div><blockquote>
+<p>Classes are covered later.</p>
+</blockquote>
+<p>There is a bonus type <code>null</code>, which is returned by builtin functions and some statements.
+It can&rsquo;t be used by the user.</p>
+<h2 id="variables">Variables</h2>
+<p>Variables don&rsquo;t have any type, they can hold value of any type.</p>
+<p>The assignment expression <code>&lt;name&gt; = &lt;variables&gt;</code> returns the value.</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#f5e0dc">a</span> <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#fab387">20</span>
+</span></span><span style="display:flex;"><span>int<span style="color:#89dceb;font-weight:bold">(</span>20<span style="color:#89dceb;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#f5e0dc">b</span> <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#fab387">10</span>
+</span></span><span style="display:flex;"><span>int<span style="color:#89dceb;font-weight:bold">(</span>10<span style="color:#89dceb;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; a + b
+</span></span><span style="display:flex;"><span>int<span style="color:#89dceb;font-weight:bold">(</span>30<span style="color:#89dceb;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; <span style="color:#f5e0dc">a</span> <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#a6e3a1">&#34;something&#34;</span>
+</span></span><span style="display:flex;"><span>str<span style="color:#89dceb;font-weight:bold">(</span>something<span style="color:#89dceb;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>&gt;&gt;&gt; a
+</span></span><span style="display:flex;"><span>str<span style="color:#89dceb;font-weight:bold">(</span>something<span style="color:#89dceb;font-weight:bold">)</span>
+</span></span></code></pre></div><h2 id="comments">Comments</h2>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span><span style="color:#6c7086;font-style:italic">;; these are comments.</span>
+</span></span><span style="display:flex;"><span><span style="color:#6c7086;font-style:italic">;; Comments are marked by 2 consecutive semicolons.</span>
+</span></span></code></pre></div><h2 id="flow">Flow</h2>
+<p><code>fener</code> supports if-expressions and while-statements.</p>
+<h2 id="functions">Functions</h2>
+<p>You can declare functions using the <code>fn</code> keyword.</p>
+<h2 id="builtin">Builtin</h2>
+<h2 id="class">Class</h2>
 
     </div>
 </div>

@@ -4,10 +4,17 @@
     <title>Posts on falconite</title>
     <link>/posts/</link>
     <description>Recent content in Posts on falconite</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 11 Aug 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nixing my life!</title>
+      <link>/posts/how-i-started-loving-nixos/</link>
+      <pubDate>Sun, 11 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/how-i-started-loving-nixos/</guid>
+      <description>How NixOS became my ultimate goal</description>
+    </item>
     <item>
       <title>Age of the NPU</title>
       <link>/posts/age-of-the-npu/</link>

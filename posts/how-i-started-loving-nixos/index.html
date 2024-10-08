@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>
+nixing my life! | pspiagicw
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Hugo 0.126.1">
+
+
+<link rel="canonical" href="/posts/how-i-started-loving-nixos/" >
+<link href="/sass/main.min.ea91723d7236f1197c092b474cf79c543f6ec967f38424be6111cdd70ed10c3d.css" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/f250909d17.js" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a href="/">
+                <span class="terminal">pspiagicw@falconite $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu">
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="/" title="" >
+                        ~/home</a>
+                </li>
+                
+                <li>
+                    <a href="/posts" title="" >
+                        ~/writing</a>
+                </li>
+                
+                <li>
+                    <a href="/about" title="" >
+                        ~/about</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1>nixing my life!</h1>
+    
+    <section class="postMetadata">
+        <dl>
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="2024-08-11">Aug 11, 2024</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>5 minutes</dd>
+            
+            
+        </dl>
+    </section>
+    
+    <div>
+        <p>Isolation is a very important function to me.
+Everthing should have it&rsquo;s own scope and it&rsquo;s own place.</p>
+<p>I have chased this idea for the last 2 years.
+Since I have been building multiple projects across various domains.</p>
+<p>Let me describe this ordeal in depth.</p>
+<h2 id="roles">Roles</h2>
+<p>I have been always coding on my own since high school and never thought it as a task.
+But once college came about, the <code>hobby</code> became <code>study</code>.</p>
+<p>My hobby and study have to be kept separate. Thus the isolation anxiety began.</p>
+<h2 id="distrobox">distrobox</h2>
+<p>The first and most simple solution was to use distrobox.
+Use a <code>PopOS</code> distro on my main laptop.
+Use distrobox and it&rsquo;s separate home directory feature.
+<code>distrobox</code> can keep a separate home directory for each distribution you use.</p>
+<p><code>distrobox</code> for the uninitiated is a CLI tool to run multiple linux distro simultaenously through docker.
+Instead of using <code>docker</code> as a throwaway build/development environment, it encourages docker to be used as a complete CLI environment
+You can use it for everything including GUI apps and even running games through <code>Steam</code>.
+It can install sound, graphics drivers and connect this secondary distro to your main distro very tightly.</p>
+<p>This meant, my development tools (Python, poetry, Go, neovim) all were separated from normal life (Photos, College Work, GUI apps).</p>
+<p>But the college  had a problem.
+The Python and Machine Learning courses meant I had to install large collections of Python libraries.
+These included the behemoth <code>Tensorflow</code>, <code>OpenCV</code> and minor ones like <code>sklearn</code>.
+Although they were kept in a separate environment by <code>conda</code> or <code>miniconda</code>.
+I didn&rsquo;t like the pollution <code>conda</code> did on my environment.</p>
+<p>So I launched a ran a separate VM for those tools.
+I would fire up those tools when required.</p>
+<p>This is also one of the reasons to develop my tool <a href="https://github.com/pspiagicw/qemantra">qemantra</a>.</p>
+<h2 id="homelab">HomeLab</h2>
+<p>My homelab ran docker for almost a year.
+Then I became tired with maintaining all those tools and removed most of them.</p>
+<p>Then I kept the homelab for a remote development machine. Meaning</p>
+<ul>
+<li>All editors, compilers and other tools installed on my homelab.</li>
+<li>To develop, I simply ssh into my home lab.</li>
+</ul>
+<p>This meant I can development from anywhere (in my home) with any machine.</p>
+<p>If I use cloudflare tunnels I can work from anywhere in the world!</p>
+<p>I was very happy with this setup, but I had some hiccups.</p>
+<p>I was using <code>Ubuntu Server</code> meant I get the most stable packages, also they are fucking old!</p>
+<p>Most of my programs and development environment (Neovim Plugins) depends on latest <code>neovim</code>.
+Also most other tools were not in the repository or up-to-date, thus I had to manually compile/download them.</p>
+<p>This included the <code>Go</code> compiler. Most of other binary packages were maintained in the /usr directory.
+On top of this I had my own tools (<code>kato</code>, <code>groom</code> and <code>sinister</code>).</p>
+<p>My projects required their own dependencies which were polluting my environment.
+For example my CLI tools required <code>vhs</code> and<code>qemu</code>.</p>
+<p>Plus the multiple formatters, linters ,language servers and debuggers. Most of these were managed by <code>Mason</code>.</p>
+<p>But updating all of these tools was a pain.</p>
+<h2 id="enter-nixos">Enter NixOS</h2>
+<p>I had used Nix 5 years back, back then I was a distrohopper and didnt explore and adapt to the workflow NixOS provided.</p>
+<p>I came to NixOS with high expectectations due to the hype by both developers and Linux enthusiasts. AND DID IT DELIVER!</p>
+<p>Right now all my Linux devices are under Nix or runs NixOS bare-metal.</p>
+<p>Let me explain my setup in detail.</p>
+<p>I have 3 devices, my laptop (<code>starship</code>) and my homelab (<code>falcon</code>) and my remote server (<code>skylab</code>).</p>
+<p>My laptop runs NixOS bare-metal. It has a GNOME system with only Chrome and WezTerm installed.
+It has encryption stuff (GPG) and my password-manager (pass) installed.</p>
+<p>My remote server can&rsquo;t have it&rsquo;s operating system changed, thus I use <code>home-manager</code> to manage/configure everything.
+This includes programs, bash, neovim and git.</p>
+<p>My homelab runs NixOS bare-metal to run services like JellyFin.</p>
+<p>All the configuration is stored in a single repository <a href="https://github.com/pspiagicw/nixos">here</a>.</p>
+<blockquote>
+<p>Everything uses <code>Nix Flakes</code>, meaning the version of everything installed is locked. Unless I manually update it.</p>
+</blockquote>
+<p>This post doesn&rsquo;t serve as a guide or a walkthrough, Nix is awesome but very hard to understand and explain.
+Thus I am not going to delve into the details of my config.</p>
+<p>My custom Nix packaged apps are available <a href="https://github.com/pspiagicw/packages">here</a>.</p>
+<blockquote>
+<p>FYI, my config is designed for aarch64 and amd64, all packages also work.</p>
+</blockquote>
+<h2 id="per-project">Per project</h2>
+<p>One awesome feature I would use day and night is including a <code>flake.nix</code> in every project folder.
+This along with <code>direnv</code> allows storing a environment with all packages needed seaparately.</p>
+<p>Imagine a <code>virtual environment</code> of everything you need, the compiler, the debugger, formatter etc.
+That&rsquo;s what using this feature looks like.</p>
+<p>Here&rsquo;s how my Go development <code>flake.nix</code> looks like</p>
+<div class="highlight"><pre tabindex="0" style="color:#cdd6f4;background-color:#1e1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nix" data-lang="nix"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-1"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-1"> 1</a></span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-2"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-2"> 2</a></span><span>  description <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#a6e3a1">&#34;Go development environment&#34;</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-3"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-3"> 3</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-4"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-4"> 4</a></span><span>  inputs <span style="color:#89dceb;font-weight:bold">=</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-5"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-5"> 5</a></span><span>    <span style="color:#6c7086;font-style:italic"># Nixpkgs repository</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-6"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-6"> 6</a></span><span>    nixpkgs<span style="color:#89dceb;font-weight:bold">.</span>url <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#a6e3a1">&#34;github:nixos/nixpkgs/nixos-24.05&#34;</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-7"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-7"> 7</a></span><span>    custom<span style="color:#89dceb;font-weight:bold">.</span>url <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#a6e3a1">&#34;github:pspiagicw/packages&#34;</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-8"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-8"> 8</a></span><span>  };
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-9"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-9"> 9</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-10"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-10">10</a></span><span>  outputs <span style="color:#89dceb;font-weight:bold">=</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-11"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-11">11</a></span><span>    self<span style="color:#89dceb;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-12"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-12">12</a></span><span>    nixpkgs<span style="color:#89dceb;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-13"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-13">13</a></span><span>    custom<span style="color:#89dceb;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-14"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-14">14</a></span><span>  }: {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-15"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-15">15</a></span><span>    devShell<span style="color:#89dceb;font-weight:bold">.</span>x86_64-linux <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#cba6f7">let</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-16"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-16">16</a></span><span>      pkgs <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#94e2d5">import</span> nixpkgs {system <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#a6e3a1">&#34;x86_64-linux&#34;</span>;};
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-17"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-17">17</a></span><span>    <span style="color:#cba6f7">in</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-18"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-18">18</a></span><span>      pkgs<span style="color:#89dceb;font-weight:bold">.</span>mkShell {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-19"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-19">19</a></span><span>        buildInputs <span style="color:#89dceb;font-weight:bold">=</span> [
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-20"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-20">20</a></span><span>          pkgs<span style="color:#89dceb;font-weight:bold">.</span>gopls
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-21"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-21">21</a></span><span>          pkgs<span style="color:#89dceb;font-weight:bold">.</span>delve
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-22"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-22">22</a></span><span>          pkgs<span style="color:#89dceb;font-weight:bold">.</span>gotools
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-23"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-23">23</a></span><span>          pkgs<span style="color:#89dceb;font-weight:bold">.</span>go
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-24"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-24">24</a></span><span>        ];
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-25"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-25">25</a></span><span>      };
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-26"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-26">26</a></span><span>    devShell<span style="color:#89dceb;font-weight:bold">.</span>aarch64-linux <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#cba6f7">let</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-27"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-27">27</a></span><span>      pkgs <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#94e2d5">import</span> nixpkgs {system <span style="color:#89dceb;font-weight:bold">=</span> <span style="color:#a6e3a1">&#34;aarch64-linux&#34;</span>;};
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-28"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-28">28</a></span><span>    <span style="color:#cba6f7">in</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-29"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-29">29</a></span><span>      pkgs<span style="color:#89dceb;font-weight:bold">.</span>mkShell {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-30"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-30">30</a></span><span>        buildInputs <span style="color:#89dceb;font-weight:bold">=</span> [
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-31"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-31">31</a></span><span>          pkgs<span style="color:#89dceb;font-weight:bold">.</span>gopls
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-32"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-32">32</a></span><span>          pkgs<span style="color:#89dceb;font-weight:bold">.</span>delve
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-33"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-33">33</a></span><span>          pkgs<span style="color:#89dceb;font-weight:bold">.</span>gotools
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-34"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-34">34</a></span><span>          pkgs<span style="color:#89dceb;font-weight:bold">.</span>go
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-35"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-35">35</a></span><span>          custom<span style="color:#89dceb;font-weight:bold">.</span>packages<span style="color:#89dceb;font-weight:bold">.</span>aarch64-linux<span style="color:#89dceb;font-weight:bold">.</span>groom
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-36"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-36">36</a></span><span>        ];
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-37"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-37">37</a></span><span>      };
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-38"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-38">38</a></span><span>  };
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-39"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-39">39</a></span><span>}
+</span></span></code></pre></div><p>This automatically installs the <code>go</code> compiler, the <code>gopls</code> language server protocol, the <code>delve</code> debugger and my custom task runner <code>groom</code>.
+These tools are unique to that folder, meaning it will only be available when I am inside that directory.</p>
+<p>You also need <code>direnv</code> to identify a <code>flake.nix</code> and load it automatically into the shell.</p>
+<h2 id="obsession">Obsession</h2>
+<p>My obsession with software isolation is complete, I have the right tool to fuel this obsession and I don&rsquo;t think I am going anywhere else soon.</p>
+<p>Hope your obsession is also resolved and happy coding!</p>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>Made with ♥  using Hugo.</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>
