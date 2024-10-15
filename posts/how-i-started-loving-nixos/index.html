@@ -85,50 +85,43 @@ Everthing should have it&rsquo;s own scope and it&rsquo;s own place.</p>
 <p>I have chased this idea for the last 2 years.
 Since I have been building multiple projects across various domains.</p>
 <p>Let me describe this ordeal in depth.</p>
-<h2 id="roles">Roles</h2>
-<p>I have been always coding on my own since high school and never thought it as a task.
-But once college came about, the <code>hobby</code> became <code>study</code>.</p>
-<p>My hobby and study have to be kept separate. Thus the isolation anxiety began.</p>
+<h2 id="the-itch">The itch</h2>
+<p>I always had a itch to keep my life (Photos, Documents, Games) separate from my programming (Editors, Programming, Projects).</p>
+<p>This itch developed not only due to the privacy problems but also the fact that my main computing device was used by family members.</p>
+<p>It also makes it easy to use during my lazy days. I don&rsquo;t want to manage Xmonad when I want to browse through some photos or just watch a movie.</p>
+<h2 id="separate-os">separate OS</h2>
+<p>The solution is to run 2 operating systems. One user-friendly Ubuntu/PopOS types for ease of access where all my multimedia including my photos and games would be managed.
+A separate dual-booted specialty operating system with all the window-managers, terminal emulators and editors I want. Obviously running either Gentoo or Arch!</p>
+<p>This had quite a few problems</p>
+<ul>
+<li>I had to shutdown and boot again whenever I wanted to do something else.</li>
+<li>This was on a i3 6th-Gen (mobile) and a hard-drive to boot everything.</li>
+</ul>
+<p>Nevertheless it was extremely slow and cubersome, but I had lots of time and it sufficed for me.</p>
 <h2 id="distrobox">distrobox</h2>
-<p>The first and most simple solution was to use distrobox.
-Use a <code>PopOS</code> distro on my main laptop.
-Use distrobox and it&rsquo;s separate home directory feature.
-<code>distrobox</code> can keep a separate home directory for each distribution you use.</p>
+<p>The lockdown ended and I had to attend University in-person.</p>
+<p>The University requirements were simple, you should be able to go from debugging a kernel to playing <code>Witcher 3</code> within seconds.
+The previous setup didn&rsquo;t help this endeavour.</p>
+<p>The solution I settled on was to use distrobox.
+Use a <code>PopOS</code> distro as my main OS. And use a separate Arch Linux distro on the shell.
+By using distrobox and it&rsquo;s separate home directory feature, I could have a separate home directory for my programming stuff.</p>
+<p>Also my new laptop with a fast SSD helped me achieving this.</p>
 <p><code>distrobox</code> for the uninitiated is a CLI tool to run multiple linux distro simultaenously through docker.
 Instead of using <code>docker</code> as a throwaway build/development environment, it encourages docker to be used as a complete CLI environment
 You can use it for everything including GUI apps and even running games through <code>Steam</code>.
-It can install sound, graphics drivers and connect this secondary distro to your main distro very tightly.</p>
-<p>This meant, my development tools (Python, poetry, Go, neovim) all were separated from normal life (Photos, College Work, GUI apps).</p>
-<p>But the college  had a problem.
-The Python and Machine Learning courses meant I had to install large collections of Python libraries.
-These included the behemoth <code>Tensorflow</code>, <code>OpenCV</code> and minor ones like <code>sklearn</code>.
-Although they were kept in a separate environment by <code>conda</code> or <code>miniconda</code>.
-I didn&rsquo;t like the pollution <code>conda</code> did on my environment.</p>
-<p>So I launched a ran a separate VM for those tools.
-I would fire up those tools when required.</p>
-<p>This is also one of the reasons to develop my tool <a href="https://github.com/pspiagicw/qemantra">qemantra</a>.</p>
+It can install sound, graphics drivers and connect this secondary distro to your main distro.</p>
+<p>This meant, my development tools (Python, poetry, Go, neovim) all were separated from normal life (Photos, College Work, Games and GUI apps).</p>
 <h2 id="homelab">HomeLab</h2>
-<p>My homelab ran docker for almost a year.
-Then I became tired with maintaining all those tools and removed most of them.</p>
-<p>Then I kept the homelab for a remote development machine. Meaning</p>
-<ul>
-<li>All editors, compilers and other tools installed on my homelab.</li>
-<li>To develop, I simply ssh into my home lab.</li>
-</ul>
-<p>This meant I can development from anywhere (in my home) with any machine.</p>
-<p>If I use cloudflare tunnels I can work from anywhere in the world!</p>
-<p>I was very happy with this setup, but I had some hiccups.</p>
-<p>I was using <code>Ubuntu Server</code> meant I get the most stable packages, also they are fucking old!</p>
-<p>Most of my programs and development environment (Neovim Plugins) depends on latest <code>neovim</code>.
-Also most other tools were not in the repository or up-to-date, thus I had to manually compile/download them.</p>
-<p>This included the <code>Go</code> compiler. Most of other binary packages were maintained in the /usr directory.
-On top of this I had my own tools (<code>kato</code>, <code>groom</code> and <code>sinister</code>).</p>
-<p>My projects required their own dependencies which were polluting my environment.
-For example my CLI tools required <code>vhs</code> and<code>qemu</code>.</p>
-<p>Plus the multiple formatters, linters ,language servers and debuggers. Most of these were managed by <code>Mason</code>.</p>
-<p>But updating all of these tools was a pain.</p>
+<p>When I came back from college, I had some money I could invest in a home-lab. It was a pre-owned Lenovo ThinkCentere M600.</p>
+<p>It was one of the most powerful desktop I had held in my hand.
+I learnt the entire home-lab thing and got a perfect solution.</p>
+<p>Use a desktop laptop with PopOS/Mint. Whenever I want to program, simply SSH into the homelab.
+But maintaining docker and reverse proxy is hard. It required manual intervention atleast once a day, mostly because of my shitty WIFI.</p>
+<p>The next problem I faced is that &ldquo;running a stable, server operating system is opposite of using latest editors, packages etc.&rdquo;
+I had to manually compile/download mostly everything, including the <code>Go</code> compiler, <code>neovim</code> and tools like <code>ripgrep</code>.
+Managing everything was irritating and took a lot of my time.</p>
 <h2 id="enter-nixos">Enter NixOS</h2>
-<p>I had used Nix 5 years back, back then I was a distrohopper and didnt explore and adapt to the workflow NixOS provided.</p>
+<p>I had used Nix 5 years back, back when I was a distrohopper and didn&rsquo;t explore and adapt to the workflow NixOS provided.</p>
 <p>I came to NixOS with high expectectations due to the hype by both developers and Linux enthusiasts. AND DID IT DELIVER!</p>
 <p>Right now all my Linux devices are under Nix or runs NixOS bare-metal.</p>
 <p>Let me explain my setup in detail.</p>
@@ -149,8 +142,8 @@ Thus I am not going to delve into the details of my config.</p>
 <p>FYI, my config is designed for aarch64 and amd64, all packages also work.</p>
 </blockquote>
 <h2 id="per-project">Per project</h2>
-<p>One awesome feature I would use day and night is including a <code>flake.nix</code> in every project folder.
-This along with <code>direnv</code> allows storing a environment with all packages needed seaparately.</p>
+<p>One awesome feature that changed my workflow is including a <code>flake.nix</code> in every project folder.
+This along with <code>direnv</code> allows starting a environment with all packages isolated.</p>
 <p>Imagine a <code>virtual environment</code> of everything you need, the compiler, the debugger, formatter etc.
 That&rsquo;s what using this feature looks like.</p>
 <p>Here&rsquo;s how my Go development <code>flake.nix</code> looks like</p>
@@ -195,7 +188,8 @@ That&rsquo;s what using this feature looks like.</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f849c" id="prefix-39"><a style="outline:none;text-decoration:none;color:inherit" href="#prefix-39">39</a></span><span>}
 </span></span></code></pre></div><p>This automatically installs the <code>go</code> compiler, the <code>gopls</code> language server protocol, the <code>delve</code> debugger and my custom task runner <code>groom</code>.
 These tools are unique to that folder, meaning it will only be available when I am inside that directory.</p>
-<p>You also need <code>direnv</code> to identify a <code>flake.nix</code> and load it automatically into the shell.</p>
+<p>You also need <code>direnv</code> to identify a <code>flake.nix</code> and load it automatically into the shell.
+Using NixOS on the host system means that configuration is done automatically.</p>
 <h2 id="obsession">Obsession</h2>
 <p>My obsession with software isolation is complete, I have the right tool to fuel this obsession and I don&rsquo;t think I am going anywhere else soon.</p>
 <p>Hope your obsession is also resolved and happy coding!</p>
