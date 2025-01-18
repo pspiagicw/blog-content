@@ -6,8 +6,15 @@
     <description>Recent content in Posts on falconite</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jan 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Modern Programming Languages</title>
+      <link>/posts/modern-programming-language/</link>
+      <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/modern-programming-language/</guid>
+      <description>A modern programming language must have these features.</description>
+    </item>
     <item>
       <title>nixing my life!</title>
       <link>/posts/how-i-started-loving-nixos/</link>
@@ -83,7 +90,7 @@
       <link>/posts/rough-guide-on-matplotlib/</link>
       <pubDate>Mon, 17 May 2021 00:00:00 +0530</pubDate>
       <guid>/posts/rough-guide-on-matplotlib/</guid>
-      <description>Do you have the need to create graphs? Visualize highly numerical data , or just look at beautifully generated graphs and get turned on!</description>
+      <description>&lt;p&gt;Do you have the need to create graphs? Visualize highly numerical data , or just look at beautifully generated graphs and get turned on!&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

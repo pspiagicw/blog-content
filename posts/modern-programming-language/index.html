@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>
+Modern Programming Languages | pspiagicw
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="generator" content="Hugo 0.141.0">
+
+
+<link rel="canonical" href="/posts/modern-programming-language/" >
+<link href="/sass/main.min.ea91723d7236f1197c092b474cf79c543f6ec967f38424be6111cdd70ed10c3d.css" rel="stylesheet">
+
+<script src="https://kit.fontawesome.com/f250909d17.js" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a href="/">
+                <span class="terminal">pspiagicw@falconite $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu">
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="/" title="" >
+                        ~/home</a>
+                </li>
+                
+                <li>
+                    <a href="/posts" title="" >
+                        ~/writing</a>
+                </li>
+                
+                <li>
+                    <a href="/about" title="" >
+                        ~/about</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1>Modern Programming Languages</h1>
+    
+    <section class="postMetadata">
+        <dl>
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="2025-01-17">Jan 17, 2025</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>6 minutes</dd>
+            
+            
+        </dl>
+    </section>
+    
+    <div>
+        <p>Welcome to my first post of 2025! Hopefully, the quality and frequency of my posts will improve this year.</p>
+<p>One thing I hate about modern programming languages is the unnecessary complications they bring.<br>
+For example, I started fresh on a new laptop today, and I had to install all the compilers and editors I needed.<br>
+This got me thinking: why is installing a language&rsquo;s compiler or interpreter not enough?</p>
+<p>That&rsquo;s where this list comes from—essential features every modern programming language should have.</p>
+<h2 id="batteries-included-approach">Batteries-Included Approach</h2>
+<p>The first few pages of <em>Head First Python</em> stress the idea that Python is &ldquo;batteries included,&rdquo; meaning it provides many libraries out of the box.<br>
+Most modern languages follow a similar philosophy, but I believe we need to expand the definition.</p>
+<p>Here’s my proposal for what &ldquo;batteries included&rdquo; should mean in 2025:</p>
+<ul>
+<li>A bundled or easily installable language server.</li>
+<li>A built-in code formatter.</li>
+<li>Dependency management (like <code>Cargo</code> for Rust or <code>go</code> for Go).</li>
+<li>An integrated build system that tightly aligns with the language, with bonus points for VCS hooks.</li>
+<li>A project management system to create templates with starter code.</li>
+<li>A test runner that handles all types of tests, including benchmarks and examples.</li>
+<li>A package manager that supports installing and managing binaries or executables.</li>
+<li>A straightforward, secure system for publishing packages or binaries.</li>
+<li>A filesystem structure that keeps my home folder clean.</li>
+</ul>
+<blockquote>
+<p>The following rants are limited to languages I’ve worked with. Other languages may have similar flaws.</p>
+</blockquote>
+<h2 id="include-a-proper-language-server">Include a Proper Language Server</h2>
+<p>When I installed Lua through my package manager, I found that setting up its language server was unnecessarily difficult.<br>
+Running it on a bare-bones Debian installation was even worse.</p>
+<p>For example:</p>
+<ul>
+<li>Lua&rsquo;s language server (<code>lua-language-server</code>) often requires manual builds or additional tools to work.</li>
+<li>Rust makes it easy with <code>rust-analyzer</code>, which can be installed with a single command:  <code>rustup component add rust-analyzer</code>.</li>
+<li>Go provides <code>gopls</code>, which integrates seamlessly with most editors.</li>
+<li>Python, however, has multiple language servers you can use, like pyright, pylsp, and jedi.
+<ul>
+<li>Pyright (written in JavaScript/TypeScript) requires Node.js to install.</li>
+<li>Pylsp (Python Language Server Protocol) is written in Python but requires additional configuration to work with plugins like jedi.</li>
+<li>Jedi is often used directly in editors but lacks some of the features modern developers expect.</li>
+</ul>
+</li>
+</ul>
+<p>The sheer number of options for Python creates confusion, especially for newcomers.</p>
+<p>While choice can be a good thing, having a single, official language server would simplify the development experience.</p>
+<p>A language server should be included or installable with minimal effort.</p>
+<h2 id="add-formatters-to-old-languages">Add Formatters to Old Languages</h2>
+<p>Most older languages don’t include code formatters, which is understandable since they were designed before collaborative coding became mainstream.<br>
+However, in today’s world, built-in formatters should be standard.</p>
+<p>For example:</p>
+<ul>
+<li>Python: Tools like <code>black</code> and <code>autopep8</code> are separate installations.</li>
+<li>JavaScript: <code>prettier</code> dominates, but it requires installation through <code>npm</code>.</li>
+<li>Ruby: <code>rubocop</code> provides linting and formatting but is not part of the core language.</li>
+<li>C++: You’ll likely end up using <code>clang-format</code>, which is part of LLVM but not bundled with the language.</li>
+</ul>
+<p>While these tools exist, integrating them into the language would simplify workflows for developers.</p>
+<h2 id="modern-dependency-management">Modern Dependency Management</h2>
+<p>With collaborative coding now ubiquitous, modern dependency management is a necessity.<br>
+Many languages include their own solutions, like <code>Cargo</code> for Rust and <code>go.mod</code> for Go.<br>
+However, some languages rely on third-party tools, like Python (<code>pip</code>) and JavaScript (<code>npm</code>).</p>
+<p>Even within these ecosystems, fragmentation exists:</p>
+<ul>
+<li>Python: Alternatives like <code>poetry</code> and <code>pipenv</code> attempt to improve on <code>pip</code>.</li>
+<li>JavaScript: <code>yarn</code> offers an alternative to <code>npm</code> with better caching and performance.</li>
+<li>Ruby: <code>bundler</code> is the de facto dependency manager but requires separate installation.</li>
+<li>C++: No standard solution exists; developers use tools like <code>vcpkg</code>, <code>Conan</code>, or <code>CMake</code> for dependency management.</li>
+</ul>
+<p>While flexibility is nice, it often leads to confusion for newcomers.</p>
+<h2 id="build-systems-should-be-standard">Build Systems Should Be Standard</h2>
+<p>Build systems are often overlooked because many developers rely on text editors or tools like <code>make</code>.<br>
+However, an integrated build system that leverages language-specific optimizations, code generation, and documentation would be far superior.</p>
+<p>Languages like Java eventually developed tools like <code>Gradle</code> and <code>Maven</code> to fill this gap, but they remain separate installations.<br>
+Rust integrates its build system (<code>Cargo</code>) directly into the language ecosystem, which is a far better approach.</p>
+<h2 id="project-management-tools">Project Management Tools</h2>
+<p>This ties into the above points but focuses on creating template projects.<br>
+Frameworks and plugins often handle this, but why not include it natively?</p>
+<p>For example:</p>
+<ul>
+<li>Rust: <code>cargo new</code> creates a project with boilerplate files and directories.</li>
+<li>Go: <code>go mod init</code> sets up a module with all required metadata.</li>
+<li>Python: Django and Flask provide project scaffolding tools but are specific to the framework.</li>
+</ul>
+<p>A universal, language-wide project management system would be a game-changer.</p>
+<h2 id="tests-need-running">Tests Need Running</h2>
+<p>Every language should include a comprehensive testing framework with a great test runner.<br>
+It should support all types of testing—unit, integration, fuzzing, and benchmarking—and provide clear, detailed results.</p>
+<p>For example:</p>
+<ul>
+<li>Rust: <code>cargo test</code> is built into the ecosystem.</li>
+<li>Go: <code>go test</code> supports testing as a first-class citizen.</li>
+<li>Python: Tools like <code>unittest</code> and <code>pytest</code> are great but require separate installations.</li>
+<li>JavaScript: Popular libraries like <code>Jest</code> and <code>Mocha</code> dominate but are not bundled with the language.</li>
+</ul>
+<p>Include coverage tools and fuzzing support, too!</p>
+<h2 id="binaries-and-packages">Binaries and Packages</h2>
+<p>Package managers like <code>pip</code>, <code>cargo</code>, <code>go</code>, and <code>npm</code> allow for the execution of binaries and executables, but some implementations are lacking.</p>
+<p>For example:</p>
+<ul>
+<li>Python: Tools like <code>pipx</code> emerged to solve the problem of globally installing CLI tools without polluting the main Python environment.</li>
+<li>JavaScript: <code>npx</code> runs binaries temporarily without polluting your environment.</li>
+<li>Rust: <code>cargo install</code> places binaries in a predictable <code>~/.cargo/bin</code> folder.</li>
+<li>Go: While <code>go install</code> allows fetching binaries, the installation defaults to <code>$HOME/go/bin</code>, cluttering the home directory.</li>
+</ul>
+<p>Languages should adopt predictable, clean methods for handling binaries and dependencies.</p>
+<h2 id="publishing-should-be-easy">Publishing Should Be Easy</h2>
+<p>Publishing packages should be secure yet straightforward.<br>
+I shouldn’t need to install additional tools just to publish.</p>
+<p>For example:</p>
+<ul>
+<li>Python: Once had multiple ways to publish packages (<code>setup.py</code>, <code>distutils</code>, <code>wheel</code>). Now, tools like <code>poetry</code> simplify the process, but it’s still not included with the language.</li>
+<li>Rust: <code>cargo publish</code> makes publishing seamless.</li>
+<li>Go: Publishing binaries requires manual setup, often involving GitHub releases or custom scripts.</li>
+</ul>
+<p>Languages should aim for simplicity and stability in their publishing ecosystems.</p>
+<h2 id="keep-my-file-system-clean">Keep My File System Clean</h2>
+<p>Languages should avoid cluttering my home folder with cache, packages, binaries, or other files.</p>
+<p>For example:</p>
+<ul>
+<li>Go: Creates a <code>~/go</code> directory in the home folder, often owned by <code>root</code>.</li>
+<li>Python: <code>pip</code> sometimes leaves behind unused files in the home directory or environment.</li>
+<li>Rust: Places binaries in <code>~/.cargo/bin</code>, which is a good example of organization.</li>
+<li>This is unnecessary when proper standards like XDG (<code>~/.cache</code>, <code>~/.config</code>, <code>~/.local</code>) exist.</li>
+</ul>
+<p>Follow the standards, keep my home folder clean, and make me happy.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>That’s the end of my rant. If you’re building a programming language, please consider these points!</p>
+<p>Modern programming languages can reduce developer frustration and improve the experience with thoughtful design and inclusion of these features.</p>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>Made with ♥  using Hugo.</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>
